@@ -36,6 +36,7 @@ import S25b from './slides/S25b_JornadaEmocional'
 import S26 from './slides/S26_ConductasConfianza'
 import S27 from './slides/S27_ConductasDestruyen'
 import S28 from './slides/S28_PequenosDetalles'
+import S28b from './slides/S28b_PoderDelNombre'
 import S29 from './slides/S29_ModeloFlorence'
 import S30 from './slides/S30_EstandaresFlorence'
 import S31 from './slides/S31_EjercicioPractico'
@@ -44,13 +45,13 @@ import S33 from './slides/S33_FraseCierre'
 import S34 from './slides/S34_Referencias'
 import S35 from './slides/S35_Portada_Cierre'
 
-// 39 slides total
+// 40 slides total
 const slides = [
   S01, S02, S03, S04, S05, S06, S07, S07b,
   S08, S09, S10, S11, S12, S13, S13b, S14,
   S15, S16, S17, S18, S19, S20, S21, S21b,
   S22, S23, S24, S25, S25b, S26, S27,
-  S28, S29, S30, S31, S32, S33, S34, S35,
+  S28, S28b, S29, S30, S31, S32, S33, S34, S35,
 ]
 
 export default function App() {

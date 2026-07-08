@@ -32,11 +32,11 @@ export default function S02_QuienesSomos() {
         position: 'absolute', inset: 0,
         backgroundImage: 'url(/images/2.png)',
         backgroundSize: 'cover',
-        backgroundPosition: 'right center',
+        backgroundPosition: 'left center',
       }} />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to left, rgba(238,242,247,0) 0%, rgba(238,242,247,0.6) 36%, rgba(238,242,247,0.97) 52%, #EEF2F7 65%)',
+        background: 'linear-gradient(to right, rgba(238,242,247,0) 0%, rgba(238,242,247,0.6) 36%, rgba(238,242,247,0.97) 52%, #EEF2F7 65%)',
       }} />
       <div style={{
         position: 'absolute', inset: 0,
