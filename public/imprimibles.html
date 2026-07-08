@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imprimibles — Taller Hosperation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f0f4f8;
+      color: #0C2D4E;
+    }
+
+    /* ── Screen navigation ── */
+    .screen-only {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem;
+      background: #0C2D4E;
+      color: white;
+    }
+    .screen-only h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
+    .screen-only p { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+    .btn-print {
+      background: #45C5BE;
+      color: #0C2D4E;
+      border: none;
+      border-radius: 10px;
+      padding: 0.7rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+    .btn-print:hover { background: #2BA8A2; }
+    .index-links {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .index-links a {
+      color: #45C5BE; font-size: 0.85rem; text-decoration: underline; cursor: pointer;
+    }
+
+    /* ── Sheet layout ── */
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      margin: 2rem auto;
+      padding: 14mm 16mm;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Branding header ── */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #45C5BE;
+      margin-bottom: 14px;
+    }
+    .brand-header img { height: 28px; }
+    .brand-header .taller-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #45C5BE;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: right;
+      line-height: 1.4;
+    }
+    .brand-header .taller-label span {
+      display: block;
+      color: #0C2D4E;
+      font-weight: 400;
+    }
+
+    /* ── Activity badge ── */
+    .badge {
+      display: inline-block;
+      background: #0C2D4E;
+      color: white;
+      border-radius: 100px;
+      padding: 3px 14px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .badge.teal { background: #45C5BE; color: #0C2D4E; }
+    .badge.red { background: #E53E3E; color: white; }
+
+    /* ── Sheet title ── */
+    .sheet-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: #0C2D4E;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .sheet-subtitle {
+      font-size: 0.82rem;
+      color: #4a6581;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    /* ────────────────────────────────────────
+       SHEET 1 — Dinámicas de apertura
+    ──────────────────────────────────────── */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      flex: 1;
+    }
+    .cut-line {
+      position: absolute;
+      left: 50%;
+      top: 60px;
+      bottom: 14mm;
+      width: 0;
+      border-left: 1.5px dashed #a0b4c8;
+    }
+    .cut-label {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 4px 8px;
+      font-size: 0.6rem;
+      color: #a0b4c8;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .case-card {
+      padding: 14px 18px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .case-card.right { padding-left: 22px; }
+
+    .case-team {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      width: fit-content;
+    }
+    .case-team.navy { background: rgba(12,45,78,0.1); color: #0C2D4E; }
+    .case-team.teal { background: rgba(69,197,190,0.15); color: #1a8a84; }
+
+    .case-scenario {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: #0C2D4E;
+      line-height: 1.25;
+    }
+
+    .teal-bar {
+      width: 36px;
+      height: 3px;
+      background: #45C5BE;
+      border-radius: 2px;
+    }
+
+    .situation-box {
+      background: #f5f8fc;
+      border-left: 3px solid #0C2D4E;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 12px;
+    }
+    .situation-box p {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #2d4a62;
+    }
+
+    .question-box {
+      background: #0C2D4E;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .question-box .q-label {
+      font-size: 0.58rem;
+      font-weight: 800;
+      color: #45C5BE;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 5px;
+    }
+    .question-box p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+    }
+
+    .write-space {
+      border: 1.5px dashed #c5d8e8;
+      border-radius: 8px;
+      padding: 8px 10px;
+      flex: 1;
+      min-height: 70px;
+    }
+    .write-space .ws-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: #a0b4c8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .steps-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .step-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #EEF2F7;
+      border-radius: 8px;
+      padding: 5px 10px;
+      flex: 1;
+    }
+    .step-pill .num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0C2D4E;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-pill .step-text {
+      font-size: 0.65rem;
+      color: #0C2D4E;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* ────────────────────────────────────────
+       SHEET 2 — La orquesta
+    ──────────────────────────────────────── */
+    .examples-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+    }
+    .examples-table th {
+      background: #0C2D4E;
+      color: white;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      text-align: left;
+      letter-spacing: 0.05em;
+    }
+    .examples-table td {
+      font-size: 0.78rem;
+      padding: 8px 12px;
+      border-bottom: 1px solid #e8eef4;
+      vertical-align: top;
+      line-height: 1.5;
+      color: #2d4a62;
+    }
+    .examples-table tr:nth-child(even) td { background: #f7fafc; }
+    .examples-table .instrument-tag {
+      display: inline-block;
+      background: rgba(69,197,190,0.15);
+      color: #1a8a84;
+      border-radius: 5px;
+      padding: 1px 8px;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .steps-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .step-card {
+      border: 1.5px solid #dce8f0;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .step-card .step-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, #45C5BE, #2BA8A2);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 6px;
+    }
+    .step-card .step-title {
+      font-size: 0.8rem; font-weight: 700; color: #0C2D4E;
+      margin-bottom: 2px;
+    }
+    .step-card .step-time {
+      font-size: 0.62rem; color: #45C5BE; font-weight: 700;
+      background: rgba(69,197,190,0.1);
+      border-radius: 5px; padding: 1px 7px;
+      display: inline-block; margin-bottom: 5px;
+    }
+    .step-card .step-desc {
+      font-size: 0.72rem; color: #4a6581; line-height: 1.5;
+    }
+
+    .key-question {
+      background: #0C2D4E;
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: white;
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .key-question strong { color: #45C5BE; }
+
+    .my-instrument {
+      border: 1.5px dashed #c5d8e8;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 10px;
+    }
+    .my-instrument .mi-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #a0b4c8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .fill-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      align-items: baseline;
+    }
+    .fill-row label {
+      font-size: 0.72rem;
+      color: #0C2D4E;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .fill-line {
+      flex: 1;
+      border-bottom: 1px solid #c5d8e8;
+      height: 1rem;
+    }
+
+    /* ────────────────────────────────────────
+       SHEET 3 — Caso de manejo
+    ──────────────────────────────────────── */
+    .case-quote {
+      background: #fff5f5;
+      border: 2px solid rgba(229,62,62,0.25);
+      border-left: 5px solid #E53E3E;
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+    }
+    .case-quote .who {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #C53030;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 7px;
+    }
+    .case-quote blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #0C2D4E;
+      line-height: 1.4;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .q-block {
+      border: 1.5px solid #e8eef4;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .q-block .q-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #E53E3E;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 6px;
+    }
+    .q-block p {
+      font-size: 0.78rem;
+      color: #2d4a62;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .q-block .answer-line {
+      border-bottom: 1px solid #dce8f0;
+      height: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .takeaway {
+      background: rgba(12,45,78,0.05);
+      border: 1px solid rgba(12,45,78,0.12);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.8rem;
+      color: #0C2D4E;
+      font-weight: 600;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    /* ── Footer ── */
+    .sheet-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid #dce8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sheet-footer span {
+      font-size: 0.6rem;
+      color: #a0b4c8;
+    }
+    .sheet-footer .facilit {
+      font-weight: 600;
+      color: #0C2D4E;
+      font-size: 0.65rem;
+    }
+
+    /* ────────────────────────────────────────
+       PRINT STYLES
+    ──────────────────────────────────────── */
+    @media print {
+      body { background: white; }
+      .screen-only { display: none !important; }
+      .sheet {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
+      .sheet:last-child { page-break-after: auto; break-after: auto; }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+
+    @media screen {
+      .sheet {
+        box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+        border-radius: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-only header -->
+  <div class="screen-only">
+    <h1>Imprimibles del Taller</h1>
+    <p>Profesionalización del Servicio Hospitalario · Hosperation + Aula Consultoría</p>
+    <button class="btn-print" onclick="window.print()">Imprimir todo (3 hojas)</button>
+    <div class="index-links">
+      <a onclick="document.getElementById('hoja1').scrollIntoView({behavior:'smooth'})">Hoja 1 — Dinámica de apertura</a>
+      <a onclick="document.getElementById('hoja2').scrollIntoView({behavior:'smooth'})">Hoja 2 — La orquesta hospitalaria</a>
+      <a onclick="document.getElementById('hoja3').scrollIntoView({behavior:'smooth'})">Hoja 3 — Caso de manejo</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HOJA 1 — DINÁMICA DE APERTURA
+  ══════════════════════════════════════════ -->
+  <div class="sheet" id="hoja1">
+    <div class="brand-header">
+      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
+      <div class="taller-label">
+        Dinámica de apertura · 8 minutos
+        <span>Profesionalización del Servicio Hospitalario</span>
+      </div>
+    </div>
+
+    <!-- Instrucciones generales -->
+    <div class="steps-row" style="margin-bottom:12px;">
+      <div class="step-pill">
+        <div class="num">1</div>
+        <div class="step-text">Formen 2 equipos — Dividan el grupo en partes iguales</div>
+      </div>
+      <div class="step-pill">
+        <div class="num">2</div>
+        <div class="step-text">Lean su caso — Cada equipo recibe un escenario distinto</div>
+      </div>
+      <div class="step-pill">
+        <div class="num">3</div>
+        <div class="step-text">8 min de análisis — Discutan y preparen su postura</div>
+      </div>
+    </div>
+
+    <!-- Cortar aquí -->
+    <div style="position:relative; flex:1; display:flex;">
+      <div class="cut-line"></div>
+      <div class="cut-label">✂ cortar aquí</div>
+
+      <!-- CASO A -->
+      <div class="case-card" style="flex:1; border-right: 1px dashed #c5d8e8;">
+        <div>
+          <span class="case-team navy">Equipo Azul</span>
+        </div>
+        <div class="badge">Caso A</div>
+        <div class="case-scenario">El turno agotado</div>
+        <div class="teal-bar"></div>
+
+        <div class="situation-box">
+          <p>
+            Son las 11 p.m. Tu turno termina en 20 minutos. Tienes 3 pacientes pendientes.
+            Un familiar llega al puesto de enfermería visiblemente ansioso y te interrumpe
+            pidiendo información del paciente del cuarto 12, que es el tercero en tu lista.
+          </p>
+        </div>
+
+        <div class="question-box">
+          <div class="q-label">Pregunta clave para el equipo</div>
+          <p>
+            ¿Qué haces? ¿Cómo equilibras la urgencia clínica con la necesidad humana del familiar?
+          </p>
+        </div>
+
+        <div style="font-size:0.65rem; font-weight:700; color:#4a6581; margin-bottom:4px;">
+          Representen al personal de salud
+        </div>
+
+        <div class="write-space">
+          <div class="ws-label">Nuestra postura como equipo</div>
+        </div>
+      </div>
+
+      <!-- CASO B -->
+      <div class="case-card right" style="flex:1;">
+        <div>
+          <span class="case-team teal">Equipo Verde</span>
+        </div>
+        <div class="badge teal">Caso B</div>
+        <div class="case-scenario">La familia que no escucha</div>
+        <div class="teal-bar"></div>
+
+        <div class="situation-box">
+          <p>
+            Un paciente adulto mayor, consciente y orientado, firmó su consentimiento para el
+            procedimiento. Su familia llega y exige que se posponga porque "no todos estuvieron
+            de acuerdo". El médico ya está listo. El paciente dice que sí quiere continuar.
+          </p>
+        </div>
+
+        <div class="question-box">
+          <div class="q-label">Pregunta clave para el equipo</div>
+          <p>
+            ¿Cómo manejas el conflicto entre la autonomía del paciente y las presiones familiares?
+            ¿Qué comunicarías y a quién?
+          </p>
+        </div>
+
+        <div style="font-size:0.65rem; font-weight:700; color:#4a6581; margin-bottom:4px;">
+          Representen al equipo interdisciplinario
+        </div>
+
+        <div class="write-space">
+          <div class="ws-label">Nuestra postura como equipo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-footer">
+      <span>Después de 8 minutos, cada equipo presenta su postura al grupo · No hay respuestas incorrectas</span>
+      <span class="facilit">Mtro. Jován Naranjo</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       HOJA 2 — LA ORQUESTA HOSPITALARIA
+  ══════════════════════════════════════════ -->
+  <div class="sheet" id="hoja2">
+    <div class="brand-header">
+      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
+      <div class="taller-label">
+        Actividad grupal · 10 minutos
+        <span>Profesionalización del Servicio Hospitalario</span>
+      </div>
+    </div>
+
+    <div class="badge teal">Actividad grupal</div>
+    <div class="sheet-title">La orquesta hospitalaria</div>
+    <div class="sheet-subtitle">
+      Si el hospital fuera una orquesta, ¿qué instrumento sería tu área?<br/>
+      Cada músico importa — uno solo desafinado afecta a toda la sala.
+    </div>
+
+    <!-- Ejemplos -->
+    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">
+      Ejemplos para orientarte
+    </div>
+    <table class="examples-table">
+      <thead>
+        <tr>
+          <th style="width:22%;">Área</th>
+          <th style="width:28%;">Instrumento</th>
+          <th>¿Qué pasa cuando falla?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Recepción</strong></td>
+          <td><span class="instrument-tag">Violín principal</span></td>
+          <td>Es el primer sonido que escucha el paciente. Una nota fría o apresurada desafina toda la experiencia.</td>
+        </tr>
+        <tr>
+          <td><strong>Enfermería</strong></td>
+          <td><span class="instrument-tag">Percusión</span></td>
+          <td>Mantiene el ritmo de la atención. Sin su presencia constante, el paciente pierde el pulso de lo que ocurre.</td>
+        </tr>
+        <tr>
+          <td><strong>Limpieza</strong></td>
+          <td><span class="instrument-tag">El silencio entre notas</span></td>
+          <td>Invisible cuando funciona; imposible ignorar cuando no. Su ausencia contamina la percepción de todo lo demás.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pasos -->
+    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
+      Cómo funciona la actividad
+    </div>
+    <div class="steps-cards">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Individual</div>
+        <div class="step-time">3 minutos</div>
+        <div class="step-desc">Piensa qué instrumento representa mejor a tu área y por qué. Escríbelo en el espacio de abajo.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">En equipo</div>
+        <div class="step-time">5 minutos</div>
+        <div class="step-desc">Compartan en la mesa. Discutan: ¿qué pasa cuando ese instrumento falla o llega tarde?</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Al grupo</div>
+        <div class="step-time">2 minutos</div>
+        <div class="step-desc">Un representante comparte el instrumento de su área y la respuesta. Una sola oración basta.</div>
+      </div>
+    </div>
+
+    <!-- Pregunta clave -->
+    <div class="key-question" style="margin-bottom:12px;">
+      Pregunta clave: <strong>¿Cómo afecta el trabajo de tu área a la experiencia del paciente, aunque nunca lo veas en persona?</strong>
+    </div>
+
+    <!-- Mi instrumento (para llenar) -->
+    <div class="my-instrument">
+      <div class="mi-label">Mi espacio — complétalo individualmente</div>
+      <div class="fill-row">
+        <label>Mi área:</label>
+        <div class="fill-line"></div>
+      </div>
+      <div class="fill-row">
+        <label>Mi instrumento:</label>
+        <div class="fill-line"></div>
+      </div>
+      <div class="fill-row" style="align-items:flex-start; margin-top:4px;">
+        <label style="padding-top:2px;">¿Por qué?</label>
+        <div style="flex:1;">
+          <div class="fill-line"></div>
+          <div class="fill-line" style="margin-top:8px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-footer">
+      <span>No hay respuestas incorrectas — lo que importa es la reflexión sobre el impacto de tu área</span>
+      <span class="facilit">Mtro. Jován Naranjo</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       HOJA 3 — CASO DE MANEJO
+  ══════════════════════════════════════════ -->
+  <div class="sheet" id="hoja3">
+    <div class="brand-header">
+      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
+      <div class="taller-label">
+        Ejercicio práctico · 10 minutos en grupos
+        <span>Profesionalización del Servicio Hospitalario</span>
+      </div>
+    </div>
+
+    <div class="badge red">Ejercicio práctico</div>
+    <div class="sheet-title">Caso de manejo</div>
+    <div class="sheet-subtitle">
+      Un paciente o familiar dice algo difícil. ¿Cómo respondes? Analicen juntos el escenario.
+    </div>
+
+    <!-- Cita -->
+    <div class="case-quote">
+      <div class="who">El paciente / familiar dice:</div>
+      <blockquote>"Llevo más de una hora esperando y nadie me explica nada. Esto es una falta de respeto."</blockquote>
+    </div>
+
+    <!-- Preguntas -->
+    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
+      Analicen en equipo — respondan cada pregunta
+    </div>
+    <div class="questions-grid">
+      <div class="q-block">
+        <div class="q-num">1</div>
+        <p>¿Qué siente probablemente esta persona en este momento?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+      </div>
+      <div class="q-block">
+        <div class="q-num">2</div>
+        <p>¿Cuál sería una respuesta inmediata que muestre presencia y empatía?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+      </div>
+      <div class="q-block">
+        <div class="q-num">3</div>
+        <p>¿Qué información concreta puedes ofrecer aunque no tengas la solución?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+      </div>
+      <div class="q-block">
+        <div class="q-num">4</div>
+        <p>¿Cómo cierras la interacción de manera que la persona se sienta atendida?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+      </div>
+    </div>
+
+    <!-- Propuesta de respuesta del equipo -->
+    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
+      Nuestra respuesta propuesta (escríbanla aquí)
+    </div>
+    <div style="border: 1.5px dashed #c5d8e8; border-radius:10px; padding:12px 14px; min-height:80px; margin-bottom:12px;"></div>
+
+    <!-- Frase de cierre -->
+    <div class="takeaway">
+      "Responder bien no siempre significa resolver de inmediato — también implica
+      <em>informar, contener, orientar y dar seguimiento.</em>"
+    </div>
+
+    <div class="sheet-footer">
+      <span>Después de 10 minutos, comparten su respuesta propuesta con el grupo</span>
+      <span class="facilit">Mtro. Jován Naranjo</span>
+    </div>
+  </div>
+
+</body>
+</html>
