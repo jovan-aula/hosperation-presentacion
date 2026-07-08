@@ -1,64 +1,91 @@
 import { motion } from 'framer-motion'
 
-const journeySteps = [
+// Simple face icons
+const FaceHappy = ({ size = 28 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+    <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3"/>
+    <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3"/>
+  </svg>
+)
+
+const FaceNeutral = ({ size = 28 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="8" y1="15" x2="16" y2="15"/>
+    <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3"/>
+    <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3"/>
+  </svg>
+)
+
+const FaceSad = ({ size = 28 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M16 16s-1.5-2-4-2-4 2-4 2"/>
+    <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3"/>
+    <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3"/>
+  </svg>
+)
+
+const ArrowRight = () => (
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(12,45,78,0.2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"/>
+    <polyline points="12 5 19 12 12 19"/>
+  </svg>
+)
+
+const steps = [
   {
-    code: 'V1',
-    label: 'Antes de ingresar',
-    sublabel: 'Antesala / Pre-consulta',
+    phase: 'Antes de entrar',
+    sub: 'Sala de espera',
+    face: FaceNeutral,
+    faceColor: '#718096',
+    mood: 'Ansioso, incertidumbre',
     alegria: 1.67,
     desprecio: 0.24,
-    implicacion: 18.25,
-    color: '#0C2D4E',
-    note: 'Incertidumbre y ansiedad dominan; la alegría es mínima.',
+    alegraWidth: '28%',
+    desprecioWidth: '4%',
+    highlight: false,
+    bg: 'white',
+    border: 'rgba(12,45,78,0.12)',
   },
   {
-    code: 'V2',
-    label: 'Durante la atención',
-    sublabel: 'Consulta / Exploración',
+    phase: 'Durante la consulta',
+    sub: 'Con el médico / enfermería',
+    face: FaceSad,
+    faceColor: '#e53e3e',
+    mood: 'El momento crítico',
     alegria: 3.34,
     desprecio: 1.96,
-    implicacion: 25.80,
-    color: '#45C5BE',
-    note: 'El desprecio se DISPARA: 8× vs V1. La interacción define la experiencia.',
+    alegraWidth: '56%',
+    desprecioWidth: '79%',
+    highlight: true,
+    bg: 'rgba(229,62,62,0.04)',
+    border: '#e53e3e',
   },
   {
-    code: 'V3',
-    label: 'Al salir',
-    sublabel: 'Post-consulta / Hospitalización',
+    phase: 'Al salir',
+    sub: 'Post-consulta',
+    face: FaceHappy,
+    faceColor: '#38a169',
+    mood: 'Más tranquilo, pero...',
     alegria: 5.28,
     desprecio: 2.27,
-    implicacion: 24.54,
-    color: '#2BA8A2',
-    note: 'La alegría crece, pero el desprecio permanece elevado. El daño no se borra fácil.',
+    alegraWidth: '88%',
+    desprecioWidth: '91%',
+    highlight: false,
+    bg: 'white',
+    border: 'rgba(69,197,190,0.3)',
   },
 ]
-
-const correlations = [
-  { label: 'Desprecio ↔ Satisfacción Global', r: '-0.353', p: 'p<0.05 (AP)', color: '#e53e3e' },
-  { label: 'Desprecio ↔ Satisfacción Global', r: '-0.351', p: 'p<0.05 (AE)', color: '#e53e3e' },
-  { label: 'Disgusto ↔ Satisfacción Personas', r: '-0.386', p: 'p<0.05 (AE)', color: '#dd6b20' },
-  { label: 'Desprecio ↔ Satisfacción Organización', r: '-0.365', p: 'p<0.05 (AE)', color: '#e53e3e' },
-]
-
-function Bar({ value, max, color }) {
-  return (
-    <div style={{ flex: 1, background: 'rgba(12,45,78,0.08)', borderRadius: '4px', height: '8px', overflow: 'hidden' }}>
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: `${(value / max) * 100}%` }}
-        transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-        style={{ height: '100%', background: color, borderRadius: '4px' }}
-      />
-    </div>
-  )
-}
 
 export default function S25b_JornadaEmocional() {
   return (
     <div className="slide" style={{
       background: 'linear-gradient(160deg, #EEF2F7 0%, #dff4f3 100%)',
-      padding: '44px 72px',
-      gap: '1.2rem',
+      padding: '36px 64px',
+      gap: '1.1rem',
     }}>
       <div style={{
         position: 'absolute', inset: 0,
@@ -69,127 +96,195 @@ export default function S25b_JornadaEmocional() {
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: -16 }}
+        initial={{ opacity: 0, y: -14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         style={{ textAlign: 'center' }}
       >
-        <div className="pill pill--solid" style={{ marginBottom: '0.4rem' }}>Neurociencia aplicada · Rodríguez Fuertes, 2018</div>
-        <h2 className="slide-title" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.8rem)' }}>
-          El viaje emocional del paciente
+        <div className="pill pill--solid" style={{ marginBottom: '0.4rem' }}>Rodríguez Fuertes, 2018 · Neuroimagen</div>
+        <h2 className="slide-title" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.6rem)', margin: 0 }}>
+          ¿Cómo se siente el paciente en cada momento?
         </h2>
-        <p className="slide-subtitle" style={{ fontSize: '0.95rem' }}>
-          Primer estudio en España que mide emociones con neuroimagen durante la experiencia sanitaria
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-light)', marginTop: '0.3rem' }}>
+          Estudio con neuroimagen que midió emociones reales durante la atención médica
         </p>
       </motion.div>
 
-      {/* Journey grid */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '1rem', width: '100%', maxWidth: '920px',
-        }}
-      >
-        {journeySteps.map((step, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-            style={{
-              background: 'white',
-              borderRadius: '16px',
-              padding: '1.2rem',
-              boxShadow: 'var(--shadow-md)',
-              border: `2px solid ${step.color}30`,
-              display: 'flex', flexDirection: 'column', gap: '0.7rem',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div>
-                <div style={{
-                  background: step.color, color: 'white',
-                  borderRadius: '8px', padding: '2px 10px',
-                  fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.06em',
-                  display: 'inline-block', marginBottom: '4px',
-                }}>
-                  {step.code}
+      {/* Timeline */}
+      <div style={{
+        display: 'flex', alignItems: 'stretch',
+        gap: '0.6rem', width: '100%', maxWidth: '960px',
+      }}>
+        {steps.map((s, i) => (
+          <>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.2 + i * 0.15 }}
+              style={{
+                flex: 1,
+                background: s.bg,
+                border: `2px solid ${s.border}`,
+                borderRadius: '18px',
+                padding: '1.3rem 1.2rem',
+                display: 'flex', flexDirection: 'column', gap: '0.85rem',
+                boxShadow: s.highlight ? '0 6px 28px rgba(229,62,62,0.18)' : 'var(--shadow-md)',
+                position: 'relative',
+              }}
+            >
+              {/* Phase label */}
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
+                <div>
+                  <div style={{
+                    fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.07em',
+                    textTransform: 'uppercase',
+                    color: s.highlight ? '#e53e3e' : 'var(--text-light)',
+                    marginBottom: '3px',
+                  }}>
+                    {s.sub}
+                  </div>
+                  <div style={{
+                    fontWeight: 700, fontSize: '1rem',
+                    color: s.highlight ? '#c53030' : 'var(--navy)',
+                    lineHeight: 1.2,
+                  }}>
+                    {s.phase}
+                  </div>
                 </div>
-                <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--navy)', lineHeight: 1.2 }}>{step.label}</div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>{step.sublabel}</div>
+                <div style={{ color: s.faceColor, flexShrink: 0 }}>
+                  <s.face size={34} />
+                </div>
               </div>
-            </div>
 
-            {/* Metrics */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#38a169', width: '70px', flexShrink: 0 }}>Alegría</span>
-                <Bar value={step.alegria} max={6} color="#38a169" />
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#38a169', width: '30px', textAlign: 'right' }}>{step.alegria}</span>
+              {/* Mood */}
+              <div style={{
+                fontSize: '0.78rem', color: s.highlight ? '#c53030' : 'var(--text-light)',
+                fontStyle: 'italic', fontWeight: s.highlight ? 700 : 400,
+              }}>
+                {s.mood}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#e53e3e', width: '70px', flexShrink: 0 }}>Desprecio</span>
-                <Bar value={step.desprecio} max={6} color="#e53e3e" />
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#e53e3e', width: '30px', textAlign: 'right' }}>{step.desprecio}</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#45C5BE', width: '70px', flexShrink: 0 }}>Implicación</span>
-                <Bar value={step.implicacion} max={30} color="#45C5BE" />
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#45C5BE', width: '30px', textAlign: 'right' }}>{step.implicacion}</span>
-              </div>
-            </div>
 
-            <p style={{
-              fontSize: '0.72rem', color: step.code === 'V2' ? '#e53e3e' : 'var(--text-light)',
-              fontStyle: 'italic', lineHeight: 1.4, margin: 0,
-              fontWeight: step.code === 'V2' ? 700 : 400,
-            }}>
-              {step.note}
-            </p>
-          </motion.div>
+              {/* Emotion bars */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                {/* Alegría */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#38a169' }}>😊 Alegría</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#38a169' }}>{s.alegria}</span>
+                  </div>
+                  <div style={{ height: '10px', background: 'rgba(12,45,78,0.07)', borderRadius: '6px', overflow: 'hidden' }}>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: s.alegraWidth }}
+                      transition={{ duration: 1.2, delay: 0.5 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      style={{ height: '100%', background: 'linear-gradient(90deg, #68d391, #38a169)', borderRadius: '6px' }}
+                    />
+                  </div>
+                </div>
+                {/* Desprecio */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#e53e3e' }}>😤 Desprecio</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#e53e3e' }}>{s.desprecio}</span>
+                  </div>
+                  <div style={{ height: '10px', background: 'rgba(12,45,78,0.07)', borderRadius: '6px', overflow: 'hidden' }}>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: s.desprecioWidth }}
+                      transition={{ duration: 1.2, delay: 0.6 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      style={{ height: '100%', background: s.highlight ? 'linear-gradient(90deg, #fc8181, #e53e3e)' : 'linear-gradient(90deg, #fc8181, #c53030)', borderRadius: '6px' }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* 8× badge on V2 */}
+              {s.highlight && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.1, type: 'spring', stiffness: 220 }}
+                  style={{
+                    position: 'absolute', top: '-18px', right: '16px',
+                    background: 'linear-gradient(135deg, #c53030, #e53e3e)',
+                    borderRadius: '50px',
+                    padding: '4px 14px',
+                    boxShadow: '0 4px 16px rgba(229,62,62,0.45)',
+                    display: 'flex', alignItems: 'baseline', gap: '4px',
+                  }}
+                >
+                  <span style={{
+                    fontFamily: 'DM Serif Display, serif',
+                    fontSize: '1.4rem', color: 'white', lineHeight: 1,
+                  }}>8×</span>
+                  <span style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.85)', fontWeight: 700 }}>
+                    más desprecio
+                  </span>
+                </motion.div>
+              )}
+            </motion.div>
+
+            {/* Arrow between cards */}
+            {i < steps.length - 1 && (
+              <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                <ArrowRight />
+              </div>
+            )}
+          </>
         ))}
-      </motion.div>
+      </div>
 
-      {/* Correlations */}
+      {/* Bottom insight */}
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.85 }}
+        transition={{ delay: 1.0 }}
         style={{
-          maxWidth: '920px', width: '100%',
-          background: 'white', borderRadius: '14px',
-          padding: '1rem 1.4rem',
-          boxShadow: 'var(--shadow-sm)',
-          border: '1px solid rgba(229,62,62,0.2)',
+          maxWidth: '960px', width: '100%',
+          display: 'grid', gridTemplateColumns: '1fr 1fr',
+          gap: '0.8rem',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.6rem' }}>
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#e53e3e' }} />
-          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-            Correlaciones significativas (Tabla 79-81)
-          </span>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem' }}>
-          {correlations.map((c, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                fontSize: '0.82rem', fontWeight: 800, color: c.color,
-                background: `${c.color}15`, borderRadius: '6px', padding: '2px 8px', flexShrink: 0,
-              }}>
-                r = {c.r}
-              </span>
-              <span style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>
-                {c.label} <span style={{ color: 'var(--text-muted)' }}>({c.p})</span>
-              </span>
+        {/* Key insight */}
+        <div style={{
+          background: 'linear-gradient(135deg, #0C2D4E, #163557)',
+          borderRadius: '14px',
+          padding: '1rem 1.4rem',
+          display: 'flex', gap: '12px', alignItems: 'center',
+        }}>
+          <div style={{
+            fontSize: '2rem', lineHeight: 1, flexShrink: 0,
+          }}>💡</div>
+          <div>
+            <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'white', lineHeight: 1.3, marginBottom: '3px' }}>
+              El trato durante la consulta es el momento que más importa.
             </div>
-          ))}
+            <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.45)', fontStyle: 'italic' }}>
+              No el edificio, no el equipo — la persona que atiende.
+            </div>
+          </div>
         </div>
-        <p style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '0.5rem', fontStyle: 'italic' }}>
-          Rodríguez Fuertes, A. (2018). <em>Emociones e Interacciones Sociales en Experiencia Sanitaria</em>. Universidad Autónoma de Madrid.
-        </p>
+
+        {/* Takeaway */}
+        <div style={{
+          background: 'white',
+          borderRadius: '14px',
+          padding: '1rem 1.4rem',
+          border: '2px solid rgba(229,62,62,0.2)',
+          display: 'flex', gap: '12px', alignItems: 'center',
+          boxShadow: 'var(--shadow-sm)',
+        }}>
+          <div style={{ fontSize: '2rem', lineHeight: 1, flexShrink: 0 }}>⚠️</div>
+          <div>
+            <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#c53030', lineHeight: 1.3, marginBottom: '3px' }}>
+              El desprecio en la consulta destruye satisfacción.
+            </div>
+            <div style={{ fontSize: '0.72rem', color: 'var(--text-light)', fontStyle: 'italic' }}>
+              Incluso si el diagnóstico fue correcto.
+            </div>
+          </div>
+        </div>
       </motion.div>
     </div>
   )

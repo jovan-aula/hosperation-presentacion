@@ -27,9 +27,9 @@ function GoogleIcon() {
 // Reseñas reales — Google Maps · seleccionadas por patrón de servicio/comunicación
 const negativeReviews = [
   {
-    avatar: 'GW',
+    avatar: 'CL',
     avatarColor: '#5C6BC0',
-    name: 'G. W.',
+    name: 'C. L.',
     stars: 1,
     time: 'Hace 3 meses',
     text: 'Llamamos para verificar la situación con la doctora que atendió a mi pareja. El recepcionista no quiso pasarme a ningún médico, diciéndome que teníamos que ir a otra consulta. Mientras tanto mi pareja ardiendo en fiebre. No les importan sus pacientes.',
@@ -38,9 +38,9 @@ const negativeReviews = [
     diagnosis: 'El paciente no necesitaba una cita nueva — necesitaba una respuesta. El recepcionista cerró una puerta cuando su rol era abrirla. Un solo gesto de escucha habría cambiado esta reseña.',
   },
   {
-    avatar: 'SV',
+    avatar: 'MA',
     avatarColor: '#2E7D32',
-    name: 'Sergio V.',
+    name: 'Marco A.',
     stars: 1,
     time: 'Hace 3 meses',
     text: 'Al día siguiente marcamos para comentarle a la doctora mi situación. El recepcionista se portó bien grosero y me dijo que no podía pasarme a nadie, que necesitaba ir en persona y pagar otra consulta. Yo no podía ni caminar del dolor.',
@@ -49,9 +49,9 @@ const negativeReviews = [
     diagnosis: 'Un paciente que no puede caminar, al teléfono, buscando orientación. La respuesta fue una barrera administrativa. La comunicación reactiva puede ser tan dañina como la ausencia total de atención.',
   },
   {
-    avatar: 'NM',
+    avatar: 'LP',
     avatarColor: '#7B1FA2',
-    name: 'Norely M.',
+    name: 'Laura P.',
     stars: 1,
     time: 'Hace 2 meses',
     text: 'Me hicieron esperar más de 30 minutos únicamente para darme el alta, sin ofrecer siquiera un lugar donde sentarme. No recibí receta, tratamiento ni explicación clara, y aun así me cobraron $1,500 por la consulta. Falta total de empatía.',
@@ -60,9 +60,9 @@ const negativeReviews = [
     diagnosis: 'El alta no es el final de la atención — es el último momento de verdad. 30 minutos de espera sin asiento, sin receta, sin explicación: el paciente se va con la sensación de no importarle a nadie.',
   },
   {
-    avatar: 'MR',
+    avatar: 'RT',
     avatarColor: '#00695C',
-    name: 'Ma. R.',
+    name: 'Rosa T.',
     stars: 2,
     time: 'Hace un año',
     text: 'Decidí llevar a mi esposo al Sharp en Chulavista donde le hicieron todos los estudios. Salió completamente bien, ni siquiera requirió antibióticos. Afuera del hospital dice "Laboratorios 24 hrs" pero al momento de solicitarlo me dijeron que no era posible sin internamiento. Nadie explicó por qué.',
@@ -74,27 +74,27 @@ const negativeReviews = [
 
 const positiveReviews = [
   {
-    avatar: 'JG',
+    avatar: 'KM',
     avatarColor: '#1565C0',
-    name: 'Jatziri G.',
+    name: 'Karla M.',
     stars: 5,
     time: 'Hace 4 meses',
-    text: 'La Dra. Quezada atendió a mi niño a la brevedad. En todo momento estuvo al pendiente. A los enfermeros(as) las gracias por cómo trataron a mi niño, con esa dulzura que es lo que ellos necesitan en esos momentos. Sin duda alguna siempre será mi primera opción.',
+    text: 'La Dra. González atendió a mi niño a la brevedad. En todo momento estuvo al pendiente. A los enfermeros(as) las gracias por cómo trataron a mi niño, con esa dulzura que es lo que ellos necesitan en esos momentos. Sin duda alguna siempre será mi primera opción.',
     tag: 'Calidez con paciente pediátrico',
   },
   {
-    avatar: 'SM',
+    avatar: 'DR',
     avatarColor: '#BF360C',
-    name: 'Sebastián M.',
+    name: 'Daniel R.',
     stars: 5,
     time: 'Hace 4 meses',
     text: 'El médico me explicó todo con claridad, resolvió mis dudas y me dio mucha confianza. Se siente un ambiente profesional pero al mismo tiempo humano, lo cual es muy importante cuando uno va por temas de salud.',
     tag: 'Claridad + Confianza',
   },
   {
-    avatar: 'AD',
+    avatar: 'TV',
     avatarColor: '#2E7D32',
-    name: 'Adrián',
+    name: 'Tomás V.',
     stars: 5,
     time: 'Hace un mes',
     text: 'La calidad humana de cada persona hizo una enorme diferencia. Llegué en un momento complicado y desde el primer minuto recibí atención humana, profesional y cálida. Gracias por brindar tranquilidad y confianza en uno de los momentos más difíciles.',
@@ -139,7 +139,7 @@ export default function S13b_VozDelPaciente() {
         }}>
           <GoogleIcon />
           <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            Reseñas reales · Google Maps
+            Testimonios · Google Maps
           </span>
         </div>
         <h2 style={{
@@ -328,7 +328,7 @@ export default function S13b_VozDelPaciente() {
                 fontSize: 'clamp(1rem, 2vw, 1.35rem)',
                 color: 'white', margin: '0 0 0.4rem', lineHeight: 1.4,
               }}>
-                "La Dra. Quezada, el Dr. Ramírez, la Enf. de pediatría...{' '}
+                "La Dra. González, el Dr. Ramírez, la Enf. de pediatría...{' '}
                 <span style={{ color: '#45C5BE' }}>tienen nombre propio en las reseñas buenas.</span>"
               </p>
               <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)', margin: 0 }}>
