@@ -42,7 +42,7 @@ const cases = [
     situacion:
       'Un paciente adulto mayor, consciente y orientado, firmó su consentimiento para el procedimiento. Su familia llega y exige que se posponga porque "no todos estuvieron de acuerdo". El médico ya está listo. El paciente dice que sí quiere continuar.',
     pregunta: '¿Cómo manejas el conflicto entre la autonomía del paciente y las presiones familiares? ¿Qué comunicarías y a quién?',
-    rolEquipo: 'Equipo Verde — representen al equipo interdisciplinario',
+    rolEquipo: 'Equipo Verde — representen al equipo del hospital',
   },
 ]
 

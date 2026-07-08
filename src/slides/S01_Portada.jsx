@@ -41,7 +41,7 @@ export default function S01_Portada() {
             src="/logo-sin-fondo.png"
             alt="Aula Consultoría + Hosperation"
             style={{
-              height: '60px',
+              height: '90px',
               objectFit: 'contain',
               objectPosition: 'left center',
             }}

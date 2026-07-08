@@ -20,96 +20,121 @@ const internal = ['Médicos', 'Enfermería', 'Recepción', 'Caja', 'Laboratorio'
 
 export default function S19_AQuienAtendemos() {
   return (
-    <div className="slide bg-dots" style={{ padding: '55px 80px', gap: '1.5rem' }}>
-      <div className="corner-accent" />
+    <div className="slide" style={{ padding: '55px 60px 55px 48%', gap: '1rem', position: 'relative' }}>
 
-      <div className="grid-split" style={{ maxWidth: '1000px', width: '100%', gridTemplateColumns: '1fr 2fr', gap: '3rem' }}>
-        {/* Left */}
+      {/* Background image — left, fades to right */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'url(/images/12.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'left center',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to right, rgba(238,242,247,0) 0%, rgba(238,242,247,0.55) 35%, rgba(238,242,247,0.97) 52%, #EEF2F7 65%)',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'radial-gradient(circle, rgba(12,45,78,0.04) 1.5px, transparent 1.5px)',
+        backgroundSize: '28px 28px', pointerEvents: 'none',
+      }} />
+
+      {/* Title — floated over image */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        style={{
+          position: 'absolute', left: '2.5rem', bottom: '2.5rem',
+          maxWidth: '300px',
+        }}
+      >
+        <div className="pill" style={{ marginBottom: '0.5rem' }}>Nuestros clientes</div>
+        <h2 style={{
+          fontFamily: 'DM Serif Display, serif',
+          fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
+          color: '#0C2D4E', fontWeight: 400, lineHeight: 1.15, margin: '0 0 0.5rem',
+          textShadow: '0 1px 12px rgba(238,242,247,0.9)',
+        }}>
+          ¿A quién<br />atendemos?
+        </h2>
+        <p style={{
+          fontSize: '0.8rem', color: 'var(--text-light)', lineHeight: 1.5,
+          textShadow: '0 1px 8px rgba(238,242,247,0.9)',
+        }}>
+          Todo el personal tiene clientes,<br />aunque no siempre los llamemos así.
+        </p>
+      </motion.div>
+
+      {/* Right — cards */}
+      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+
+        {/* External */}
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
+          initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{
+            background: 'white', borderRadius: '16px', padding: '1.4rem',
+            boxShadow: 'var(--shadow-md)', border: '2px solid rgba(69,197,190,0.3)',
+          }}
         >
-          <div className="pill">Nuestros clientes</div>
-          <h2 className="slide-title">¿A quién atendemos?</h2>
-          <div className="teal-bar" />
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-light)', lineHeight: 1.65 }}>
-            Todo el personal de un hospital tiene clientes, aunque no siempre los llamemos así.
-          </p>
-
-          <div style={{
-            background: 'linear-gradient(135deg, #0C2D4E, #163557)',
-            borderRadius: '14px',
-            padding: '1.2rem',
-            color: 'white',
-          }}>
-            <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, margin: 0 }}>
-              "Atender bien al cliente interno es la base para atender bien al cliente externo."
-            </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
+            <IconGlobe />
+            <div>
+              <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--teal-dark)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                Cliente Externo
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Personas que vienen de fuera del hospital</div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {external.map((e) => (
+              <span key={e} className="pill" style={{ fontSize: '0.8rem' }}>{e}</span>
+            ))}
           </div>
         </motion.div>
 
-        {/* Right: Two cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {/* External */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{
-              background: 'white',
-              borderRadius: '16px',
-              padding: '1.4rem',
-              boxShadow: 'var(--shadow-md)',
-              border: '2px solid rgba(69,197,190,0.3)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
-              <IconGlobe />
-              <div>
-                <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--teal-dark)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                  Cliente Externo
-                </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Personas que vienen de fuera del hospital</div>
+        {/* Internal */}
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          style={{
+            background: 'white', borderRadius: '16px', padding: '1.4rem',
+            boxShadow: 'var(--shadow-md)', border: '2px solid rgba(12,45,78,0.2)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
+            <IconHospitalSmall />
+            <div>
+              <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                Cliente Interno
               </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Personas que forman parte del equipo</div>
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {external.map((e) => (
-                <span key={e} className="pill" style={{ fontSize: '0.8rem' }}>{e}</span>
-              ))}
-            </div>
-          </motion.div>
+          </div>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {internal.map((e) => (
+              <span key={e} className="pill pill--navy" style={{ fontSize: '0.8rem' }}>{e}</span>
+            ))}
+          </div>
+        </motion.div>
 
-          {/* Internal */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            style={{
-              background: 'white',
-              borderRadius: '16px',
-              padding: '1.4rem',
-              boxShadow: 'var(--shadow-md)',
-              border: '2px solid rgba(12,45,78,0.2)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
-              <IconHospitalSmall />
-              <div>
-                <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                  Cliente Interno
-                </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Personas que forman parte del equipo</div>
-              </div>
-            </div>
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {internal.map((e) => (
-                <span key={e} className="pill pill--navy" style={{ fontSize: '0.8rem' }}>{e}</span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+        {/* Quote */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+          style={{
+            background: 'linear-gradient(135deg, #0C2D4E, #163557)',
+            borderRadius: '12px', padding: '0.9rem 1.2rem',
+          }}
+        >
+          <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'rgba(255,255,255,0.82)', lineHeight: 1.55, margin: 0 }}>
+            "Atender bien al compañero de trabajo es la base para atender bien al paciente."
+          </p>
+        </motion.div>
       </div>
     </div>
   )

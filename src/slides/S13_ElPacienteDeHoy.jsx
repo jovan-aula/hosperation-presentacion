@@ -35,78 +35,99 @@ const behaviors = [
 
 export default function S13_ElPacienteDeHoy() {
   return (
-    <div className="slide bg-dots" style={{ padding: '55px 80px', gap: '1.5rem' }}>
-      <div className="corner-accent" />
+    <div className="slide bg-dots" style={{ padding: '50px 60px 50px 48%', gap: '0.65rem', position: 'relative' }}>
 
-      <div className="grid-split" style={{ maxWidth: '1000px', width: '100%', gridTemplateColumns: '1fr 2fr', gap: '3rem' }}>
-        {/* Left */}
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
-        >
-          <div className="pill">Contexto</div>
-          <h2 className="slide-title">El paciente de hoy</h2>
-          <div className="teal-bar" />
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-light)', lineHeight: 1.65 }}>
-            El perfil de quien acude a un hospital ha cambiado radicalmente en la última década.
-          </p>
+      {/* Background image — left half, fades right */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'url(/images/13.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'left center',
+        opacity: 1,
+      }} />
+      {/* Gradient: image visible left → bg color right */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to right, rgba(238,242,247,0) 0%, rgba(238,242,247,0.6) 36%, rgba(238,242,247,0.97) 52%, #EEF2F7 65%)',
+      }} />
 
+      {/* Header floated over image area */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        style={{
+          position: 'absolute', left: '2.5rem', bottom: '2.5rem',
+          maxWidth: '280px',
+        }}
+      >
+        <div className="pill" style={{ marginBottom: '0.5rem' }}>Contexto</div>
+        <h2 style={{
+          fontFamily: 'DM Serif Display, serif',
+          fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
+          color: '#0C2D4E', fontWeight: 400, lineHeight: 1.15, margin: '0 0 0.5rem',
+          textShadow: '0 1px 12px rgba(238,242,247,0.9)',
+        }}>
+          El paciente<br />de hoy
+        </h2>
+        <p style={{
+          fontSize: '0.82rem', color: 'var(--text-light)', lineHeight: 1.5,
+          textShadow: '0 1px 8px rgba(238,242,247,0.9)',
+        }}>
+          Ha cambiado radicalmente<br />en la última década.
+        </p>
+      </motion.div>
+
+      {/* Right — behaviors (positioned via padding-left) */}
+      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '0.62rem', width: '100%' }}>
+        {behaviors.map((b, i) => (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            key={i}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{
-              background: 'linear-gradient(135deg, #0C2D4E, #163557)',
-              borderRadius: '16px',
-              padding: '1.3rem',
-              color: 'white',
+              display: 'flex', alignItems: 'flex-start', gap: '1rem',
+              background: 'white',
+              borderRadius: '12px',
+              padding: '0.85rem 1.2rem',
+              boxShadow: 'var(--shadow-sm)',
+              border: '1px solid rgba(69,197,190,0.18)',
             }}
           >
-            <div style={{ marginBottom: '8px', color: '#45C5BE' }}>
-              <IconStar size={28} color="#45C5BE" />
+            <div style={{
+              width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0,
+              background: 'rgba(69,197,190,0.12)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: '#2BA8A2',
+            }}>
+              <b.icon />
             </div>
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'white', margin: 0, lineHeight: 1.4 }}>
-              "La confianza es uno de los activos más importantes del hospital."
-            </p>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--navy)' }}>{b.action}</div>
+              <div style={{ fontSize: '0.82rem', color: 'var(--text-light)', marginTop: '2px' }}>
+                {b.stat}{b.source && <span style={{ color: 'var(--teal-dark)', fontStyle: 'italic' }}> — {b.source}</span>}
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
+        ))}
 
-        {/* Right */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-          {behaviors.map((b, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{
-                display: 'flex', alignItems: 'flex-start', gap: '1rem',
-                background: 'white',
-                borderRadius: '12px',
-                padding: '0.85rem 1.2rem',
-                boxShadow: 'var(--shadow-sm)',
-                border: '1px solid rgba(69,197,190,0.18)',
-              }}
-            >
-              <div style={{
-                width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0,
-                background: 'rgba(69,197,190,0.12)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: '#2BA8A2',
-              }}>
-                <b.icon />
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--navy)' }}>{b.action}</div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-light)', marginTop: '2px' }}>
-                  {b.stat}{b.source && <span style={{ color: 'var(--teal-dark)', fontStyle: 'italic' }}> — {b.source}</span>}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Quote card */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.75 }}
+          style={{
+            background: 'linear-gradient(135deg, #0C2D4E, #163557)',
+            borderRadius: '12px', padding: '0.85rem 1.2rem',
+            display: 'flex', gap: '10px', alignItems: 'center',
+          }}
+        >
+          <IconStar size={18} color="#45C5BE" />
+          <p style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white', margin: 0, lineHeight: 1.45 }}>
+            "La confianza es uno de los activos más importantes del hospital."
+          </p>
+        </motion.div>
       </div>
     </div>
   )

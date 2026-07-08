@@ -504,18 +504,19 @@
   <div class="screen-only">
     <h1>Imprimibles del Taller</h1>
     <p>Profesionalización del Servicio Hospitalario · Hosperation + Aula Consultoría</p>
-    <button class="btn-print" onclick="window.print()">Imprimir todo (3 hojas)</button>
+    <button class="btn-print" onclick="window.print()">Imprimir todo (4 hojas)</button>
     <div class="index-links">
-      <a onclick="document.getElementById('hoja1').scrollIntoView({behavior:'smooth'})">Hoja 1 — Dinámica de apertura</a>
-      <a onclick="document.getElementById('hoja2').scrollIntoView({behavior:'smooth'})">Hoja 2 — La orquesta hospitalaria</a>
-      <a onclick="document.getElementById('hoja3').scrollIntoView({behavior:'smooth'})">Hoja 3 — Caso de manejo</a>
+      <a onclick="document.getElementById('hoja1a').scrollIntoView({behavior:'smooth'})">Hoja 1 — Caso A (Equipo Azul)</a>
+      <a onclick="document.getElementById('hoja1b').scrollIntoView({behavior:'smooth'})">Hoja 2 — Caso B (Equipo Verde)</a>
+      <a onclick="document.getElementById('hoja2').scrollIntoView({behavior:'smooth'})">Hoja 3 — La orquesta hospitalaria</a>
+      <a onclick="document.getElementById('hoja3').scrollIntoView({behavior:'smooth'})">Hoja 4 — Caso de manejo</a>
     </div>
   </div>
 
   <!-- ══════════════════════════════════════════
-       HOJA 1 — DINÁMICA DE APERTURA
+       HOJA 1A — CASO A (EQUIPO AZUL)
   ══════════════════════════════════════════ -->
-  <div class="sheet" id="hoja1">
+  <div class="sheet" id="hoja1a">
     <div class="brand-header">
       <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
       <div class="taller-label">
@@ -524,104 +525,167 @@
       </div>
     </div>
 
-    <!-- Instrucciones generales -->
-    <div class="steps-row" style="margin-bottom:12px;">
+    <!-- Instrucciones -->
+    <div class="steps-row" style="margin-bottom:18px;">
       <div class="step-pill">
         <div class="num">1</div>
-        <div class="step-text">Formen 2 equipos — Dividan el grupo en partes iguales</div>
+        <div class="step-text">Lean el caso en equipo</div>
       </div>
       <div class="step-pill">
         <div class="num">2</div>
-        <div class="step-text">Lean su caso — Cada equipo recibe un escenario distinto</div>
+        <div class="step-text">8 min para discutir y decidir su postura</div>
       </div>
       <div class="step-pill">
         <div class="num">3</div>
-        <div class="step-text">8 min de análisis — Discutan y preparen su postura</div>
+        <div class="step-text">Presenten al grupo completo</div>
       </div>
     </div>
 
-    <!-- Cortar aquí -->
-    <div style="position:relative; flex:1; display:flex;">
-      <div class="cut-line"></div>
-      <div class="cut-label">✂ cortar aquí</div>
-
-      <!-- CASO A -->
-      <div class="case-card" style="flex:1; border-right: 1px dashed #c5d8e8;">
-        <div>
-          <span class="case-team navy">Equipo Azul</span>
-        </div>
-        <div class="badge">Caso A</div>
-        <div class="case-scenario">El turno agotado</div>
+    <!-- CASO A — full page -->
+    <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <span class="case-team navy" style="margin-bottom:10px; display:inline-block;">Equipo Azul</span>
+        <div class="badge" style="display:block; width:fit-content; margin-bottom:8px;">Caso A</div>
+        <div class="case-scenario" style="font-size:1.35rem; margin-bottom:6px;">El turno agotado</div>
         <div class="teal-bar"></div>
-
-        <div class="situation-box">
-          <p>
-            Son las 11 p.m. Tu turno termina en 20 minutos. Tienes 3 pacientes pendientes.
-            Un familiar llega al puesto de enfermería visiblemente ansioso y te interrumpe
-            pidiendo información del paciente del cuarto 12, que es el tercero en tu lista.
-          </p>
-        </div>
-
-        <div class="question-box">
-          <div class="q-label">Pregunta clave para el equipo</div>
-          <p>
-            ¿Qué haces? ¿Cómo equilibras la urgencia clínica con la necesidad humana del familiar?
-          </p>
-        </div>
-
-        <div style="font-size:0.65rem; font-weight:700; color:#4a6581; margin-bottom:4px;">
-          Representen al personal de salud
-        </div>
-
-        <div class="write-space">
-          <div class="ws-label">Nuestra postura como equipo</div>
-        </div>
       </div>
 
-      <!-- CASO B -->
-      <div class="case-card right" style="flex:1;">
-        <div>
-          <span class="case-team teal">Equipo Verde</span>
-        </div>
-        <div class="badge teal">Caso B</div>
-        <div class="case-scenario">La familia que no escucha</div>
-        <div class="teal-bar"></div>
+      <div class="situation-box" style="padding:14px 16px;">
+        <p style="font-size:0.88rem; line-height:1.7;">
+          Son las 11 p.m. Tu turno termina en 20 minutos. Tienes 3 pacientes pendientes.
+          Un familiar llega al puesto de enfermería visiblemente ansioso y te interrumpe
+          pidiendo información del paciente del cuarto 12, que es el tercero en tu lista.
+        </p>
+      </div>
 
-        <div class="situation-box">
-          <p>
-            Un paciente adulto mayor, consciente y orientado, firmó su consentimiento para el
-            procedimiento. Su familia llega y exige que se posponga porque "no todos estuvieron
-            de acuerdo". El médico ya está listo. El paciente dice que sí quiere continuar.
-          </p>
-        </div>
+      <div class="question-box" style="padding:14px 16px;">
+        <div class="q-label">Pregunta clave para el equipo</div>
+        <p style="font-size:0.9rem; line-height:1.6;">
+          ¿Qué haces? ¿Cómo equilibras la urgencia clínica con la necesidad humana del familiar?
+        </p>
+      </div>
 
-        <div class="question-box">
-          <div class="q-label">Pregunta clave para el equipo</div>
-          <p>
-            ¿Cómo manejas el conflicto entre la autonomía del paciente y las presiones familiares?
-            ¿Qué comunicarías y a quién?
-          </p>
-        </div>
+      <div style="font-size:0.72rem; font-weight:700; color:#4a6581; margin-top:4px;">
+        Representen al personal de salud — pongan en práctica lo que haría su equipo
+      </div>
 
-        <div style="font-size:0.65rem; font-weight:700; color:#4a6581; margin-bottom:4px;">
-          Representen al equipo interdisciplinario
+      <!-- Espacio para escribir -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+        <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em;">
+          Nuestra postura como equipo
         </div>
-
-        <div class="write-space">
-          <div class="ws-label">Nuestra postura como equipo</div>
+        <div style="border:1.5px dashed #c5d8e8; border-radius:10px; flex:1; padding:12px; display:flex; flex-direction:column; gap:14px;">
+          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
+            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿Qué haríamos primero?</div>
+            <div style="height:32px;"></div>
+          </div>
+          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
+            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿Qué le diríamos al familiar?</div>
+            <div style="height:32px;"></div>
+          </div>
+          <div>
+            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">Lo que aprendimos de este caso</div>
+            <div style="height:32px;"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="sheet-footer">
-      <span>Después de 8 minutos, cada equipo presenta su postura al grupo · No hay respuestas incorrectas</span>
+      <span>No hay respuestas incorrectas — lo que importa es la reflexión y la discusión del equipo</span>
       <span class="facilit">Mtro. Jován Naranjo</span>
     </div>
   </div>
 
 
   <!-- ══════════════════════════════════════════
-       HOJA 2 — LA ORQUESTA HOSPITALARIA
+       HOJA 1B — CASO B (EQUIPO VERDE)
+  ══════════════════════════════════════════ -->
+  <div class="sheet" id="hoja1b">
+    <div class="brand-header">
+      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
+      <div class="taller-label">
+        Dinámica de apertura · 8 minutos
+        <span>Profesionalización del Servicio Hospitalario</span>
+      </div>
+    </div>
+
+    <!-- Instrucciones -->
+    <div class="steps-row" style="margin-bottom:18px;">
+      <div class="step-pill">
+        <div class="num">1</div>
+        <div class="step-text">Lean el caso en equipo</div>
+      </div>
+      <div class="step-pill">
+        <div class="num">2</div>
+        <div class="step-text">8 min para discutir y decidir su postura</div>
+      </div>
+      <div class="step-pill">
+        <div class="num">3</div>
+        <div class="step-text">Presenten al grupo completo</div>
+      </div>
+    </div>
+
+    <!-- CASO B — full page -->
+    <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <span class="case-team teal" style="margin-bottom:10px; display:inline-block;">Equipo Verde</span>
+        <div class="badge teal" style="display:block; width:fit-content; margin-bottom:8px;">Caso B</div>
+        <div class="case-scenario" style="font-size:1.35rem; margin-bottom:6px;">La familia que no escucha</div>
+        <div class="teal-bar"></div>
+      </div>
+
+      <div class="situation-box" style="padding:14px 16px; border-left-color:#45C5BE;">
+        <p style="font-size:0.88rem; line-height:1.7;">
+          Un paciente adulto mayor, consciente y orientado, firmó su consentimiento para el
+          procedimiento. Su familia llega y exige que se posponga porque "no todos estuvieron
+          de acuerdo". El médico ya está listo. El paciente dice que sí quiere continuar.
+        </p>
+      </div>
+
+      <div class="question-box" style="padding:14px 16px; background:#1a6b67;">
+        <div class="q-label">Pregunta clave para el equipo</div>
+        <p style="font-size:0.9rem; line-height:1.6;">
+          ¿Cómo manejas el conflicto entre lo que quiere el paciente y la presión de su familia?
+          ¿Qué comunicarías y a quién?
+        </p>
+      </div>
+
+      <div style="font-size:0.72rem; font-weight:700; color:#4a6581; margin-top:4px;">
+        Representen al equipo del hospital — pongan en práctica lo que haría su equipo
+      </div>
+
+      <!-- Espacio para escribir -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+        <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em;">
+          Nuestra postura como equipo
+        </div>
+        <div style="border:1.5px dashed #a8d5d3; border-radius:10px; flex:1; padding:12px; display:flex; flex-direction:column; gap:14px;">
+          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
+            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿A quién hablaríamos primero y qué le diríamos?</div>
+            <div style="height:32px;"></div>
+          </div>
+          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
+            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿Cómo protegemos la decisión del paciente?</div>
+            <div style="height:32px;"></div>
+          </div>
+          <div>
+            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">Lo que aprendimos de este caso</div>
+            <div style="height:32px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-footer">
+      <span>No hay respuestas incorrectas — lo que importa es la reflexión y la discusión del equipo</span>
+      <span class="facilit">Mtro. Jován Naranjo</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       HOJA 3 — LA ORQUESTA HOSPITALARIA
   ══════════════════════════════════════════ -->
   <div class="sheet" id="hoja2">
     <div class="brand-header">
