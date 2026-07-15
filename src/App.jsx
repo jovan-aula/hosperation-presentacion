@@ -14,6 +14,7 @@ import S07 from './slides/S07_ReglasDelJuego'
 import S07b from './slides/S07b_DinamicaApertura'
 import S08 from './slides/S08_PreguntaApertura'
 import S09 from './slides/S09_QueesProfesional'
+import S09b from './slides/S09b_ProfesionistaVsProfesional'
 import S10 from './slides/S10_CumplirVsProfesionalizar'
 import S11 from './slides/S11_QueesProfesionalizar'
 import S12 from './slides/S12_PorQueImportaHospital'
@@ -34,6 +35,7 @@ import S24 from './slides/S24_EmpatiaProf'
 import S25 from './slides/S25_EmpatiaYAdherencia'
 import S25b from './slides/S25b_JornadaEmocional'
 import S26 from './slides/S26_ConductasConfianza'
+import S26b from './slides/S26b_MetodoPECP'
 import S27 from './slides/S27_ConductasDestruyen'
 import S28 from './slides/S28_PequenosDetalles'
 import S28b from './slides/S28b_PoderDelNombre'
@@ -45,12 +47,12 @@ import S33 from './slides/S33_FraseCierre'
 import S34 from './slides/S34_Referencias'
 import S35 from './slides/S35_Portada_Cierre'
 
-// 40 slides total
+// 42 slides total
 const slides = [
   S01, S02, S03, S04, S05, S06, S07, S07b,
-  S08, S09, S10, S11, S12, S13, S13b, S14,
+  S08, S09, S09b, S10, S11, S12, S13, S13b, S14,
   S15, S16, S17, S18, S19, S20, S21, S21b,
-  S22, S23, S24, S25, S25b, S26, S27,
+  S22, S23, S24, S25, S25b, S26, S26b, S27,
   S28, S28b, S29, S30, S31, S32, S33, S34, S35,
 ]
 
