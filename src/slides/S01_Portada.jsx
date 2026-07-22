@@ -124,14 +124,14 @@ export default function S01_Portada() {
         transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         style={{ position: 'relative', overflow: 'hidden' }}
       >
-        {/* Hospital photo */}
+        {/* Hospital Florence building */}
         <img
-          src="/images/5.png"
-          alt="Profesional de salud"
+          src="/images/florence-building.jpg"
+          alt="Hospital Florence"
           style={{
             width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center',
-            filter: 'brightness(0.85) saturate(0.9)',
+            objectFit: 'cover', objectPosition: 'center top',
+            filter: 'brightness(0.8) saturate(0.85)',
           }}
         />
         {/* Gradient overlay */}

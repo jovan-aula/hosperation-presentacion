@@ -381,6 +381,73 @@
     }
 
     /* ────────────────────────────────────────
+       HOJA 0 — Presentación personal
+    ──────────────────────────────────────── */
+    .pres-section {
+      border: 1.5px solid #dce8f0;
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pres-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pres-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+      color: white;
+    }
+    .pres-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .pres-hint {
+      font-size: 0.72rem;
+      color: #7a96b0;
+      font-style: italic;
+      margin-left: 44px;
+      line-height: 1.5;
+    }
+    .pres-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-left: 44px;
+    }
+    .pres-line {
+      border-bottom: 1.5px solid #c5d8e8;
+      min-height: 1.4rem;
+    }
+    .commitment-box {
+      background: #f5f8fc;
+      border-radius: 10px;
+      padding: 14px 16px;
+      border-left: 4px solid #45C5BE;
+    }
+    .commitment-box .cb-label {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #45C5BE;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .commitment-box p {
+      font-size: 0.78rem;
+      color: #4a6581;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    /* ────────────────────────────────────────
        SHEET 3 — Caso de manejo
     ──────────────────────────────────────── */
     .case-quote {
@@ -506,12 +573,114 @@
     <p>Profesionalización del Servicio Hospitalario · Hosperation + Aula Consultoría</p>
     <button class="btn-print" onclick="window.print()">Imprimir todo (4 hojas)</button>
     <div class="index-links">
-      <a onclick="document.getElementById('hoja1a').scrollIntoView({behavior:'smooth'})">Hoja 1 — Caso A (Equipo Azul)</a>
-      <a onclick="document.getElementById('hoja1b').scrollIntoView({behavior:'smooth'})">Hoja 2 — Caso B (Equipo Verde)</a>
-      <a onclick="document.getElementById('hoja2').scrollIntoView({behavior:'smooth'})">Hoja 3 — La orquesta hospitalaria</a>
+      <a onclick="document.getElementById('hoja0').scrollIntoView({behavior:'smooth'})">Hoja 1 — Presentación personal</a>
+      <a onclick="document.getElementById('hoja1a').scrollIntoView({behavior:'smooth'})">Hoja 2 — Caso A (Equipo Azul)</a>
+      <a onclick="document.getElementById('hoja1b').scrollIntoView({behavior:'smooth'})">Hoja 3 — Caso B (Equipo Verde)</a>
       <a onclick="document.getElementById('hoja3').scrollIntoView({behavior:'smooth'})">Hoja 4 — Caso de manejo</a>
     </div>
   </div>
+
+  <!-- ══════════════════════════════════════════
+       HOJA 0 — PRESENTACIÓN PERSONAL
+  ══════════════════════════════════════════ -->
+  <div class="sheet" id="hoja0">
+    <div class="brand-header">
+      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
+      <div class="taller-label">
+        Dinámica de inicio · 1–2 min por persona
+        <span>Profesionalización del Servicio Hospitalario</span>
+      </div>
+    </div>
+
+    <div class="badge teal">Actividad de presentación</div>
+    <div class="sheet-title">Conociéndonos</div>
+    <div class="sheet-subtitle" style="margin-bottom:22px;">
+      Completa esta hoja antes de presentarte con el grupo.<br/>
+      Comparte cada punto en voz alta cuando sea tu turno.
+    </div>
+
+    <!-- Sección 1 — Nombre -->
+    <div class="pres-section" style="margin-bottom:14px; border-color: rgba(12,45,78,0.18);">
+      <div class="pres-section-header">
+        <div class="pres-num" style="background: #0C2D4E;">01</div>
+        <div>
+          <div class="pres-label" style="color:#0C2D4E;">Tu nombre</div>
+        </div>
+      </div>
+      <div class="pres-hint">¿Cómo te llamas y cómo prefieres que te llamen?</div>
+      <div class="pres-lines">
+        <div class="pres-line"></div>
+      </div>
+    </div>
+
+    <!-- Sección 2 — Actividad -->
+    <div class="pres-section" style="margin-bottom:14px; border-color: rgba(69,197,190,0.35);">
+      <div class="pres-section-header">
+        <div class="pres-num" style="background: #2BA8A2;">02</div>
+        <div>
+          <div class="pres-label" style="color:#2BA8A2;">Tu actividad en el hospital</div>
+        </div>
+      </div>
+      <div class="pres-hint">¿En qué área trabajas y qué haces día a día?</div>
+      <div class="pres-lines">
+        <div class="pres-line"></div>
+        <div class="pres-line"></div>
+      </div>
+    </div>
+
+    <!-- Sección 3 — Compromiso -->
+    <div class="pres-section" style="flex:1; border-color: rgba(69,197,190,0.35); border-width: 2px;">
+      <div class="pres-section-header">
+        <div class="pres-num" style="background: linear-gradient(135deg, #45C5BE, #2BA8A2);">03</div>
+        <div>
+          <div class="pres-label" style="color:#1a8a84;">Mi compromiso en esta capacitación</div>
+        </div>
+      </div>
+      <div class="pres-hint">¿Qué esperas llevarte? ¿Qué quieres mejorar o aprender?</div>
+
+      <div class="commitment-box" style="margin-left:44px;">
+        <div class="cb-label">Para reflexionar antes de escribir</div>
+        <p>
+          Piensa en una situación reciente con un paciente o compañero que no salió como esperabas.
+          ¿Qué habrías hecho diferente? Eso puede ser tu compromiso de hoy.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="pres-line"></div>
+          <div class="pres-line"></div>
+          <div class="pres-line"></div>
+          <div class="pres-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firma del compromiso -->
+    <div style="margin-top:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px;">
+      <div style="flex:1;">
+        <div style="font-size:0.6rem; font-weight:700; color:#a0b4c8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">
+          Firma
+        </div>
+        <div style="border-bottom: 1.5px solid #c5d8e8; height:1.6rem;"></div>
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:0.6rem; font-weight:700; color:#a0b4c8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">
+          Fecha
+        </div>
+        <div style="border-bottom: 1.5px solid #c5d8e8; height:1.6rem;"></div>
+      </div>
+      <div style="flex:2;">
+        <div style="font-size:0.6rem; font-weight:700; color:#a0b4c8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">
+          Hospital / Institución
+        </div>
+        <div style="border-bottom: 1.5px solid #c5d8e8; height:1.6rem;"></div>
+      </div>
+    </div>
+
+    <div class="sheet-footer" style="margin-top:16px;">
+      <span>Profesionalización del Servicio Hospitalario · Hosperation + Aula Consultoría</span>
+      <span class="facilit">Mtro. Jován Naranjo</span>
+    </div>
+  </div>
+
 
   <!-- ══════════════════════════════════════════
        HOJA 1A — CASO A (EQUIPO AZUL)
@@ -520,79 +689,86 @@
     <div class="brand-header">
       <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
       <div class="taller-label">
-        Dinámica de apertura · 8 minutos
+        Dinámica de apertura · 8 minutos en equipo
         <span>Profesionalización del Servicio Hospitalario</span>
       </div>
     </div>
 
-    <!-- Instrucciones -->
-    <div class="steps-row" style="margin-bottom:18px;">
-      <div class="step-pill">
-        <div class="num">1</div>
-        <div class="step-text">Lean el caso en equipo</div>
+    <!-- Instrucción de equipo -->
+    <div style="background:#f0f6ff; border-radius:10px; padding:10px 16px; margin-bottom:14px; display:flex; align-items:center; gap:12px;">
+      <div style="font-size:1.3rem; flex-shrink:0;">👥</div>
+      <p style="font-size:0.8rem; color:#0C2D4E; font-weight:600; line-height:1.5; margin:0;">
+        Lean el caso en equipo, discútanlo y lleguen a una postura colectiva.<br/>
+        <span style="font-weight:400; color:#4a6581;">No hay respuesta correcta — lo que importa es el razonamiento detrás de su decisión.</span>
+      </p>
+    </div>
+
+    <!-- Caso -->
+    <div>
+      <span class="case-team navy" style="margin-bottom:8px; display:inline-block;">Equipo Azul — personal de salud en turno</span>
+      <div class="badge" style="display:block; width:fit-content; margin-bottom:6px;">Caso A</div>
+      <div class="case-scenario" style="font-size:1.3rem; margin-bottom:4px;">El turno que no fue tuyo</div>
+      <div class="teal-bar" style="margin-bottom:12px;"></div>
+    </div>
+
+    <div class="situation-box" style="padding:12px 16px; margin-bottom:8px;">
+      <p style="font-size:0.88rem; line-height:1.7;">
+        Al inicio de tu turno recibes a un paciente frustrado. Ayer le explicaron su procedimiento
+        de una forma; hoy otro médico le dijo algo completamente diferente. No sabe a quién creerle.
+        Revisas el expediente — ambas versiones tienen algo de verdad, pero nadie coordinó el mensaje.
+        El paciente te mira y pregunta: "¿Me pueden decir la verdad de una vez?"
+      </p>
+    </div>
+
+    <!-- Experiencia emocional -->
+    <div style="border-left:3px solid #0C2D4E; background:rgba(12,45,78,0.04); border-radius:0 8px 8px 0; padding:8px 12px; margin-bottom:12px;">
+      <div style="font-size:0.6rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:3px;">El paciente en este momento siente</div>
+      <p style="font-size:0.78rem; color:#2d4a62; font-style:italic; margin:0; line-height:1.5;">Confusión · Desconfianza · Sensación de que nadie está realmente a cargo</p>
+    </div>
+
+    <!-- Preguntas de análisis -->
+    <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
+      Analicen en equipo — respondan las tres preguntas
+    </div>
+    <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:12px;">
+      <div class="q-block" style="border-color:#c5d8e8;">
+        <div class="q-num" style="background:#0C2D4E;">1</div>
+        <p style="font-weight:700; color:#0C2D4E;">¿Cómo responden sin desacreditar a ninguno de sus colegas?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
       </div>
-      <div class="step-pill">
-        <div class="num">2</div>
-        <div class="step-text">8 min para discutir y decidir su postura</div>
+      <div class="q-block" style="border-color:#c5d8e8;">
+        <div class="q-num" style="background:#0C2D4E;">2</div>
+        <p style="font-weight:700; color:#0C2D4E;">¿De quién es la responsabilidad cuando el mensaje del equipo no es consistente?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
       </div>
-      <div class="step-pill">
-        <div class="num">3</div>
-        <div class="step-text">Presenten al grupo completo</div>
+      <div class="q-block" style="border-color:#c5d8e8;">
+        <div class="q-num" style="background:#0C2D4E;">3</div>
+        <p style="font-weight:700; color:#0C2D4E;">¿Qué le dicen concretamente para que recupere la confianza en el hospital?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
       </div>
     </div>
 
-    <!-- CASO A — full page -->
-    <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
-      <div>
-        <span class="case-team navy" style="margin-bottom:10px; display:inline-block;">Equipo Azul</span>
-        <div class="badge" style="display:block; width:fit-content; margin-bottom:8px;">Caso A</div>
-        <div class="case-scenario" style="font-size:1.35rem; margin-bottom:6px;">El turno agotado</div>
-        <div class="teal-bar"></div>
+    <!-- Postura del equipo + disenso -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
+      <div style="border:1.5px dashed #c5d8e8; border-radius:10px; padding:10px 12px;">
+        <div style="font-size:0.62rem; color:#0C2D4E; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Postura del equipo</div>
+        <div class="answer-line"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
       </div>
-
-      <div class="situation-box" style="padding:14px 16px;">
-        <p style="font-size:0.88rem; line-height:1.7;">
-          Son las 11 p.m. Tu turno termina en 20 minutos. Tienes 3 pacientes pendientes.
-          Un familiar llega al puesto de enfermería visiblemente ansioso y te interrumpe
-          pidiendo información del paciente del cuarto 12, que es el tercero en tu lista.
-        </p>
-      </div>
-
-      <div class="question-box" style="padding:14px 16px;">
-        <div class="q-label">Pregunta clave para el equipo</div>
-        <p style="font-size:0.9rem; line-height:1.6;">
-          ¿Qué haces? ¿Cómo equilibras la urgencia clínica con la necesidad humana del familiar?
-        </p>
-      </div>
-
-      <div style="font-size:0.72rem; font-weight:700; color:#4a6581; margin-top:4px;">
-        Representen al personal de salud — pongan en práctica lo que haría su equipo
-      </div>
-
-      <!-- Espacio para escribir -->
-      <div style="flex:1; display:flex; flex-direction:column; gap:10px; margin-top:4px;">
-        <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em;">
-          Nuestra postura como equipo
-        </div>
-        <div style="border:1.5px dashed #c5d8e8; border-radius:10px; flex:1; padding:12px; display:flex; flex-direction:column; gap:14px;">
-          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
-            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿Qué haríamos primero?</div>
-            <div style="height:32px;"></div>
-          </div>
-          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
-            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿Qué le diríamos al familiar?</div>
-            <div style="height:32px;"></div>
-          </div>
-          <div>
-            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">Lo que aprendimos de este caso</div>
-            <div style="height:32px;"></div>
-          </div>
-        </div>
+      <div style="border:1.5px dashed #e8c5c5; border-radius:10px; padding:10px 12px; background:#fff8f8;">
+        <div style="font-size:0.62rem; color:#c53030; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">¿Alguien pensó diferente? ¿Por qué?</div>
+        <div class="answer-line"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
       </div>
     </div>
 
-    <div class="sheet-footer">
-      <span>No hay respuestas incorrectas — lo que importa es la reflexión y la discusión del equipo</span>
+    <div class="sheet-footer" style="margin-top:12px;">
+      <span>El disenso dentro del equipo también es valioso — anótenlo, no lo ignoren</span>
       <span class="facilit">Mtro. Jován Naranjo</span>
     </div>
   </div>
@@ -605,187 +781,88 @@
     <div class="brand-header">
       <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
       <div class="taller-label">
-        Dinámica de apertura · 8 minutos
+        Dinámica de apertura · 8 minutos en equipo
         <span>Profesionalización del Servicio Hospitalario</span>
       </div>
     </div>
 
-    <!-- Instrucciones -->
-    <div class="steps-row" style="margin-bottom:18px;">
-      <div class="step-pill">
-        <div class="num">1</div>
-        <div class="step-text">Lean el caso en equipo</div>
+    <!-- Instrucción de equipo -->
+    <div style="background:#f0fafa; border-radius:10px; padding:10px 16px; margin-bottom:14px; display:flex; align-items:center; gap:12px;">
+      <div style="font-size:1.3rem; flex-shrink:0;">👥</div>
+      <p style="font-size:0.8rem; color:#1a6b67; font-weight:600; line-height:1.5; margin:0;">
+        Lean el caso en equipo, discútanlo y lleguen a una postura colectiva.<br/>
+        <span style="font-weight:400; color:#4a6581;">No hay respuesta correcta — lo que importa es el razonamiento detrás de su decisión.</span>
+      </p>
+    </div>
+
+    <!-- Caso -->
+    <div>
+      <span class="case-team teal" style="margin-bottom:8px; display:inline-block;">Equipo Verde — equipo del hospital</span>
+      <div class="badge teal" style="display:block; width:fit-content; margin-bottom:6px;">Caso B</div>
+      <div class="case-scenario" style="font-size:1.3rem; margin-bottom:4px;">La regla y el ser humano</div>
+      <div style="display:inline-block; background:rgba(69,197,190,0.12); border-radius:6px; padding:2px 10px; font-size:0.68rem; font-weight:700; color:#1a8a84; margin-bottom:8px;">
+        ⚡ Protocolo institucional vs. atención humanizada
       </div>
-      <div class="step-pill">
-        <div class="num">2</div>
-        <div class="step-text">8 min para discutir y decidir su postura</div>
+      <div class="teal-bar" style="margin-bottom:12px;"></div>
+    </div>
+
+    <div class="situation-box" style="padding:12px 16px; border-left-color:#45C5BE; margin-bottom:8px;">
+      <p style="font-size:0.88rem; line-height:1.7;">
+        Una paciente de 78 años, post-operada, llora y dice tener miedo de estar sola.
+        El protocolo es claro: visitas solo de 3 a 5 p.m. Son las 7 a.m. Su hija llama
+        desesperada. Tu jefa acaba de salir de la sala y fue explícita: nadie entra fuera de horario.
+      </p>
+    </div>
+
+    <!-- Experiencia emocional -->
+    <div style="border-left:3px solid #2BA8A2; background:rgba(69,197,190,0.06); border-radius:0 8px 8px 0; padding:8px 12px; margin-bottom:12px;">
+      <div style="font-size:0.6rem; font-weight:800; color:#1a6b67; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:3px;">El paciente en este momento siente</div>
+      <p style="font-size:0.78rem; color:#2d4a62; font-style:italic; margin:0; line-height:1.5;">Miedo · Soledad · Vulnerabilidad — está en un lugar desconocido, con dolor, sin su familia</p>
+    </div>
+
+    <!-- Preguntas de análisis -->
+    <div style="font-size:0.65rem; font-weight:800; color:#1a6b67; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
+      Analicen en equipo — respondan las tres preguntas
+    </div>
+    <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:12px;">
+      <div class="q-block" style="border-color:#a8d5d3;">
+        <div class="q-num" style="background:#2BA8A2;">1</div>
+        <p style="font-weight:700; color:#1a6b67;">¿Qué está sintiendo esta paciente en este momento? Descríbanlo con detalle.</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
       </div>
-      <div class="step-pill">
-        <div class="num">3</div>
-        <div class="step-text">Presenten al grupo completo</div>
+      <div class="q-block" style="border-color:#a8d5d3;">
+        <div class="q-num" style="background:#2BA8A2;">2</div>
+        <p style="font-weight:700; color:#1a6b67;">Si no pueden dejar entrar a la hija, ¿qué palabras concretas le dirían a la paciente para que se sienta menos sola?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
+      </div>
+      <div class="q-block" style="border-color:#a8d5d3;">
+        <div class="q-num" style="background:#2BA8A2;">3</div>
+        <p style="font-weight:700; color:#1a6b67;">¿Qué diferencia haría en su experiencia que alguien se sentara dos minutos con ella antes de continuar?</p>
+        <div class="answer-line"></div>
+        <div class="answer-line"></div>
       </div>
     </div>
 
-    <!-- CASO B — full page -->
-    <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
-      <div>
-        <span class="case-team teal" style="margin-bottom:10px; display:inline-block;">Equipo Verde</span>
-        <div class="badge teal" style="display:block; width:fit-content; margin-bottom:8px;">Caso B</div>
-        <div class="case-scenario" style="font-size:1.35rem; margin-bottom:6px;">La familia que no escucha</div>
-        <div class="teal-bar"></div>
+    <!-- Postura del equipo + disenso -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
+      <div style="border:1.5px dashed #a8d5d3; border-radius:10px; padding:10px 12px;">
+        <div style="font-size:0.62rem; color:#1a6b67; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Postura del equipo</div>
+        <div class="answer-line"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
       </div>
-
-      <div class="situation-box" style="padding:14px 16px; border-left-color:#45C5BE;">
-        <p style="font-size:0.88rem; line-height:1.7;">
-          Un paciente adulto mayor, consciente y orientado, firmó su consentimiento para el
-          procedimiento. Su familia llega y exige que se posponga porque "no todos estuvieron
-          de acuerdo". El médico ya está listo. El paciente dice que sí quiere continuar.
-        </p>
-      </div>
-
-      <div class="question-box" style="padding:14px 16px; background:#1a6b67;">
-        <div class="q-label">Pregunta clave para el equipo</div>
-        <p style="font-size:0.9rem; line-height:1.6;">
-          ¿Cómo manejas el conflicto entre lo que quiere el paciente y la presión de su familia?
-          ¿Qué comunicarías y a quién?
-        </p>
-      </div>
-
-      <div style="font-size:0.72rem; font-weight:700; color:#4a6581; margin-top:4px;">
-        Representen al equipo del hospital — pongan en práctica lo que haría su equipo
-      </div>
-
-      <!-- Espacio para escribir -->
-      <div style="flex:1; display:flex; flex-direction:column; gap:10px; margin-top:4px;">
-        <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em;">
-          Nuestra postura como equipo
-        </div>
-        <div style="border:1.5px dashed #a8d5d3; border-radius:10px; flex:1; padding:12px; display:flex; flex-direction:column; gap:14px;">
-          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
-            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿A quién hablaríamos primero y qué le diríamos?</div>
-            <div style="height:32px;"></div>
-          </div>
-          <div style="border-bottom:1px solid #dce8f0; padding-bottom:10px;">
-            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">¿Cómo protegemos la decisión del paciente?</div>
-            <div style="height:32px;"></div>
-          </div>
-          <div>
-            <div style="font-size:0.62rem; color:#a0b4c8; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;">Lo que aprendimos de este caso</div>
-            <div style="height:32px;"></div>
-          </div>
-        </div>
+      <div style="border:1.5px dashed #e8c5c5; border-radius:10px; padding:10px 12px; background:#fff8f8;">
+        <div style="font-size:0.62rem; color:#c53030; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">¿Alguien pensó diferente? ¿Por qué?</div>
+        <div class="answer-line"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
+        <div class="answer-line" style="margin-top:8px;"></div>
       </div>
     </div>
 
-    <div class="sheet-footer">
-      <span>No hay respuestas incorrectas — lo que importa es la reflexión y la discusión del equipo</span>
-      <span class="facilit">Mtro. Jován Naranjo</span>
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════
-       HOJA 3 — LA ORQUESTA HOSPITALARIA
-  ══════════════════════════════════════════ -->
-  <div class="sheet" id="hoja2">
-    <div class="brand-header">
-      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
-      <div class="taller-label">
-        Actividad grupal · 10 minutos
-        <span>Profesionalización del Servicio Hospitalario</span>
-      </div>
-    </div>
-
-    <div class="badge teal">Actividad grupal</div>
-    <div class="sheet-title">La orquesta hospitalaria</div>
-    <div class="sheet-subtitle">
-      Si el hospital fuera una orquesta, ¿qué instrumento sería tu área?<br/>
-      Cada músico importa — uno solo desafinado afecta a toda la sala.
-    </div>
-
-    <!-- Ejemplos -->
-    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">
-      Ejemplos para orientarte
-    </div>
-    <table class="examples-table">
-      <thead>
-        <tr>
-          <th style="width:22%;">Área</th>
-          <th style="width:28%;">Instrumento</th>
-          <th>¿Qué pasa cuando falla?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Recepción</strong></td>
-          <td><span class="instrument-tag">Violín principal</span></td>
-          <td>Es el primer sonido que escucha el paciente. Una nota fría o apresurada desafina toda la experiencia.</td>
-        </tr>
-        <tr>
-          <td><strong>Enfermería</strong></td>
-          <td><span class="instrument-tag">Percusión</span></td>
-          <td>Mantiene el ritmo de la atención. Sin su presencia constante, el paciente pierde el pulso de lo que ocurre.</td>
-        </tr>
-        <tr>
-          <td><strong>Limpieza</strong></td>
-          <td><span class="instrument-tag">El silencio entre notas</span></td>
-          <td>Invisible cuando funciona; imposible ignorar cuando no. Su ausencia contamina la percepción de todo lo demás.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Pasos -->
-    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
-      Cómo funciona la actividad
-    </div>
-    <div class="steps-cards">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <div class="step-title">Individual</div>
-        <div class="step-time">3 minutos</div>
-        <div class="step-desc">Piensa qué instrumento representa mejor a tu área y por qué. Escríbelo en el espacio de abajo.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <div class="step-title">En equipo</div>
-        <div class="step-time">5 minutos</div>
-        <div class="step-desc">Compartan en la mesa. Discutan: ¿qué pasa cuando ese instrumento falla o llega tarde?</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <div class="step-title">Al grupo</div>
-        <div class="step-time">2 minutos</div>
-        <div class="step-desc">Un representante comparte el instrumento de su área y la respuesta. Una sola oración basta.</div>
-      </div>
-    </div>
-
-    <!-- Pregunta clave -->
-    <div class="key-question" style="margin-bottom:12px;">
-      Pregunta clave: <strong>¿Cómo afecta el trabajo de tu área a la experiencia del paciente, aunque nunca lo veas en persona?</strong>
-    </div>
-
-    <!-- Mi instrumento (para llenar) -->
-    <div class="my-instrument">
-      <div class="mi-label">Mi espacio — complétalo individualmente</div>
-      <div class="fill-row">
-        <label>Mi área:</label>
-        <div class="fill-line"></div>
-      </div>
-      <div class="fill-row">
-        <label>Mi instrumento:</label>
-        <div class="fill-line"></div>
-      </div>
-      <div class="fill-row" style="align-items:flex-start; margin-top:4px;">
-        <label style="padding-top:2px;">¿Por qué?</label>
-        <div style="flex:1;">
-          <div class="fill-line"></div>
-          <div class="fill-line" style="margin-top:8px;"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sheet-footer">
-      <span>No hay respuestas incorrectas — lo que importa es la reflexión sobre el impacto de tu área</span>
+    <div class="sheet-footer" style="margin-top:12px;">
+      <span>El disenso dentro del equipo también es valioso — anótenlo, no lo ignoren</span>
       <span class="facilit">Mtro. Jován Naranjo</span>
     </div>
   </div>

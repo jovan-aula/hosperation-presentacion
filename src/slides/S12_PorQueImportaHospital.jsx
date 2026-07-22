@@ -1,144 +1,209 @@
 import { motion } from 'framer-motion'
-import { IconHospital, IconUsers, IconHeart } from '../components/Icons'
 
-const IconPerson = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-    <circle cx="12" cy="7" r="4"/>
+const IconHeart = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
   </svg>
 )
 
-const IconStethoscope = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
-    <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
-    <circle cx="20" cy="10" r="2"/>
+const IconChart = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10"/>
+    <line x1="12" y1="20" x2="12" y2="4"/>
+    <line x1="6" y1="20" x2="6" y2="14"/>
   </svg>
 )
 
-const IconBox = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="21 8 21 21 3 21 3 8"/>
-    <rect x="1" y="3" width="22" height="5"/>
-    <line x1="10" y1="12" x2="14" y2="12"/>
+const IconMegaphone = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 11l19-9-9 19-2-8-8-2z"/>
   </svg>
 )
 
-const stakeholders = [
-  { label: 'Paciente', Icon: IconHospital, angle: 0 },
-  { label: 'Familiar', Icon: IconUsers, angle: 60 },
-  { label: 'Visitante', Icon: IconPerson, angle: 120 },
-  { label: 'Personal', Icon: IconStethoscope, angle: 180 },
-  { label: 'Proveedor', Icon: IconBox, angle: 240 },
-  { label: 'Acompañante', Icon: IconHeart, angle: 300 },
+const impacts = [
+  {
+    icon: IconHeart,
+    stat: '80%',
+    title: 'de las quejas no son sobre la calidad médica',
+    desc: 'Son sobre el trato, la comunicación y la falta de información. El paciente juzga lo que puede ver y sentir.',
+    source: 'Advisory Board, 2016',
+    color: '#45C5BE',
+  },
+  {
+    icon: IconChart,
+    stat: '+19%',
+    title: 'de adherencia cuando hay buena comunicación',
+    desc: 'Pacientes que entienden su tratamiento y se sienten escuchados lo siguen más. La experiencia impacta el resultado clínico.',
+    source: 'Derksen et al., 2013',
+    color: '#45C5BE',
+  },
+  {
+    icon: IconMegaphone,
+    stat: '11×',
+    title: 'más lo comparte un paciente insatisfecho',
+    desc: 'Uno satisfecho lo cuenta a 3 personas. Uno que vivió una mala experiencia lo cuenta a 11. La reputación se construye en cada interacción.',
+    source: 'Press Ganey, 2022',
+    color: '#45C5BE',
+  },
 ]
 
 export default function S12_PorQueImportaHospital() {
-  const radius = 150
-
   return (
-    <div className="slide bg-dots" style={{ padding: '55px 80px', gap: '1.5rem' }}>
+    <div className="slide bg-dots" style={{ padding: '52px 72px', gap: '0', flexDirection: 'row', alignItems: 'stretch' }}>
       <div className="corner-accent" />
 
+      {/* Left — emotional anchor */}
       <motion.div
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        style={{ textAlign: 'center' }}
-      >
-        <h2 className="slide-title">¿Por qué importa en un hospital?</h2>
-        <p className="slide-subtitle">Cada persona que entra al hospital trae consigo un mundo</p>
-      </motion.div>
-
-      <div style={{ position: 'relative', width: '420px', height: '360px', flexShrink: 0 }}>
-        {/* Center */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          style={{
-            position: 'absolute',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '110px', height: '110px', borderRadius: '50%',
-            background: 'linear-gradient(135deg, #0C2D4E, #1a4068)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 8px 30px rgba(12,45,78,0.4), 0 0 0 10px rgba(69,197,190,0.12)',
-            zIndex: 10, textAlign: 'center', padding: '0.5rem',
-          }}
-        >
-          <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'white', lineHeight: 1.3 }}>
-            Atención<br/>Hospitalaria
-          </span>
-        </motion.div>
-
-        {/* Stakeholder nodes */}
-        {stakeholders.map((s, i) => {
-          const angleRad = (s.angle - 90) * (Math.PI / 180)
-          const x = 50 + (radius / 210) * 100 * Math.cos(angleRad)
-          const y = 50 + (radius / 180) * 100 * Math.sin(angleRad)
-          return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.35 + i * 0.08 }}
-              style={{
-                position: 'absolute',
-                left: `${x}%`,
-                top: `${y}%`,
-                transform: 'translate(-50%, -50%)',
-                zIndex: 5,
-              }}
-            >
-              <div style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '0.6rem 0.8rem',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px',
-                boxShadow: 'var(--shadow-md)',
-                border: '1.5px solid rgba(69,197,190,0.25)',
-                minWidth: '70px',
-              }}>
-                <div style={{ color: 'var(--teal-dark)' }}>
-                  <s.Icon size={20} color="var(--teal-dark)" />
-                </div>
-                <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--navy)', textAlign: 'center' }}>{s.label}</span>
-              </div>
-              {/* Connection line (SVG) */}
-              <svg style={{
-                position: 'absolute', top: '50%', left: '50%',
-                overflow: 'visible', pointerEvents: 'none', zIndex: -1,
-              }}>
-                <line
-                  x1={0} y1={0}
-                  x2={`${(50 - x) / 100 * 420}`}
-                  y2={`${(50 - y) / 100 * 360}`}
-                  stroke="rgba(69,197,190,0.25)" strokeWidth="1.5" strokeDasharray="4,4"
-                />
-              </svg>
-            </motion.div>
-          )
-        })}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.5 }}
+        initial={{ opacity: 0, x: -24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         style={{
-          maxWidth: '680px',
-          background: 'linear-gradient(135deg, rgba(12,45,78,0.06), rgba(69,197,190,0.08))',
-          border: '1px solid rgba(69,197,190,0.2)',
-          borderRadius: '14px',
-          padding: '1rem 1.6rem',
-          textAlign: 'center',
+          flex: '0 0 38%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          paddingRight: '3rem',
+          borderRight: '1.5px solid rgba(69,197,190,0.2)',
+          gap: '1.4rem',
         }}
       >
-        <p style={{ fontSize: '0.9rem', color: 'var(--navy)', fontWeight: 600, fontStyle: 'italic', lineHeight: 1.6, margin: 0 }}>
-          "Detrás de cada persona hay preocupaciones, expectativas, relaciones, miedos y necesidades particulares. Cada interacción puede aumentar o disminuir su incertidumbre y confianza."
+        <div>
+          <div className="pill" style={{ marginBottom: '0.8rem' }}>¿Por qué importa?</div>
+          <h2 style={{
+            fontFamily: 'DM Serif Display, serif',
+            fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)',
+            fontWeight: 400,
+            color: 'var(--navy)',
+            lineHeight: 1.2,
+            margin: 0,
+          }}>
+            La experiencia del paciente<br/>
+            <span style={{ color: '#45C5BE' }}>no es solo servicio.</span><br/>
+            Es clínica.
+          </h2>
+        </div>
+
+        <div style={{
+          background: 'linear-gradient(135deg, #0C2D4E, #1a4068)',
+          borderRadius: '16px',
+          padding: '1.4rem',
+        }}>
+          <p style={{
+            fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)',
+            color: 'rgba(255,255,255,0.88)',
+            lineHeight: 1.7,
+            margin: 0,
+            fontStyle: 'italic',
+          }}>
+            "Quien entra al hospital no entra como cliente. Entra con miedo, con preguntas sin respuesta, con alguien que ama en riesgo."
+          </p>
+        </div>
+
+        <p style={{
+          fontSize: '0.85rem',
+          color: 'var(--text-light)',
+          lineHeight: 1.65,
+          margin: 0,
+        }}>
+          Cada interacción — un saludo, una explicación, una espera — puede aumentar o reducir esa carga emocional. Eso es lo que está en juego.
         </p>
       </motion.div>
+
+      {/* Right — 3 impact cards */}
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: '1rem',
+        paddingLeft: '3rem',
+      }}>
+        {impacts.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55, delay: 0.2 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{
+              background: 'white',
+              borderRadius: '14px',
+              padding: '1rem 1.2rem',
+              display: 'flex',
+              gap: '1rem',
+              alignItems: 'flex-start',
+              boxShadow: 'var(--shadow-sm)',
+              border: '1.5px solid rgba(69,197,190,0.15)',
+            }}
+          >
+            {/* Stat */}
+            <div style={{
+              flexShrink: 0,
+              minWidth: '64px',
+              textAlign: 'center',
+            }}>
+              <div style={{
+                fontFamily: 'DM Serif Display, serif',
+                fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                color: '#0C2D4E',
+                lineHeight: 1,
+                marginBottom: '2px',
+              }}>{item.stat}</div>
+              <div style={{
+                width: '28px', height: '28px', borderRadius: '8px',
+                background: 'rgba(69,197,190,0.12)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                margin: '0 auto',
+                color: '#2BA8A2',
+              }}>
+                <item.icon />
+              </div>
+            </div>
+
+            {/* Text */}
+            <div style={{ flex: 1 }}>
+              <div style={{
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                color: 'var(--navy)',
+                lineHeight: 1.3,
+                marginBottom: '0.3rem',
+              }}>
+                {item.title}
+              </div>
+              <p style={{
+                fontSize: '0.78rem',
+                color: 'var(--text-light)',
+                lineHeight: 1.55,
+                margin: 0,
+                marginBottom: '0.35rem',
+              }}>
+                {item.desc}
+              </p>
+              <span style={{
+                fontSize: '0.65rem',
+                color: '#45C5BE',
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+              }}>{item.source}</span>
+            </div>
+          </motion.div>
+        ))}
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          style={{
+            textAlign: 'right',
+            fontSize: '0.78rem',
+            color: 'var(--navy)',
+            fontWeight: 700,
+            paddingTop: '0.3rem',
+          }}
+        >
+          No es tecnología. No es presupuesto. Es decisión.
+        </motion.div>
+      </div>
     </div>
   )
 }

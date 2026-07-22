@@ -2,20 +2,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { IconClock, IconTeam, IconLightbulb } from '../components/Icons'
 
-const IconHospitalInline = ({ active }) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#45C5BE' : '#0C2D4E'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-    <path d="M9 22V12h6v10"/>
-    <path d="M12 9v6M9 12h6" strokeWidth="1.5"/>
+const IconAlert = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+    <line x1="12" y1="9" x2="12" y2="13"/>
+    <line x1="12" y1="17" x2="12.01" y2="17"/>
   </svg>
 )
 
-const IconPeopleInline = ({ active }) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#2BA8A2' : '#2BA8A2'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+const IconShield = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
   </svg>
 )
 
@@ -25,31 +22,43 @@ const cases = [
     title: 'Caso A',
     color: '#0C2D4E',
     accent: '#45C5BE',
-    IconComp: IconHospitalInline,
-    escenario: 'El turno agotado',
+    IconComp: IconAlert,
+    escenario: 'El turno que no fue tuyo',
+    tension: null,
     situacion:
-      'Son las 11 p.m. Tu turno termina en 20 minutos. Tienes 3 pacientes pendientes. Un familiar llega al puesto de enfermería visiblemente ansioso y te interrumpe pidiendo información del paciente del cuarto 12, que es el tercero en tu lista.',
-    pregunta: '¿Qué haces? ¿Cómo equilibras la urgencia clínica con la necesidad humana del familiar?',
-    rolEquipo: 'Equipo Azul — representen al personal de salud',
+      'Al inicio de tu turno recibes a un paciente frustrado. Ayer le explicaron su procedimiento de una forma; hoy otro médico le dijo algo completamente diferente. No sabe a quién creerle. Revisas el expediente — ambas versiones tienen algo de verdad, pero nadie coordinó el mensaje. El paciente te mira y pregunta: "¿Me pueden decir la verdad de una vez?"',
+    emocion: 'Confusión · Desconfianza · Sensación de que nadie está realmente a cargo',
+    preguntas: [
+      '¿Cómo respondes sin desacreditar a ninguno de tus colegas?',
+      '¿De quién es la responsabilidad cuando el mensaje del equipo no es consistente?',
+      '¿Qué le dices concretamente para que recupere la confianza en el hospital?',
+    ],
+    rolEquipo: 'Equipo Azul — personal de salud en turno',
   },
   {
     id: 'B',
     title: 'Caso B',
     color: '#2BA8A2',
-    accent: '#0C2D4E',
-    IconComp: IconPeopleInline,
-    escenario: 'La familia que no escucha',
+    accent: '#081e35',
+    IconComp: IconShield,
+    escenario: 'La regla y el ser humano',
+    tension: 'Protocolo institucional vs. atención humanizada',
     situacion:
-      'Un paciente adulto mayor, consciente y orientado, firmó su consentimiento para el procedimiento. Su familia llega y exige que se posponga porque "no todos estuvieron de acuerdo". El médico ya está listo. El paciente dice que sí quiere continuar.',
-    pregunta: '¿Cómo manejas el conflicto entre la autonomía del paciente y las presiones familiares? ¿Qué comunicarías y a quién?',
-    rolEquipo: 'Equipo Verde — representen al equipo del hospital',
+      'Una paciente de 78 años, post-operada, llora y dice tener miedo de estar sola. El protocolo es claro: visitas solo de 3 a 5 p.m. Son las 7 a.m. Su hija llama desesperada. Tu jefa acaba de salir de la sala y fue explícita: nadie entra fuera de horario.',
+    emocion: 'Miedo · Soledad · Vulnerabilidad — está en un lugar desconocido, con dolor, sin su familia',
+    preguntas: [
+      '¿Qué está sintiendo esta paciente en este momento? Descríbanlo con detalle.',
+      'Si no pueden dejar entrar a la hija, ¿qué palabras concretas le dirían para que se sienta menos sola?',
+      '¿Qué diferencia haría que alguien se sentara dos minutos con ella antes de continuar?',
+    ],
+    rolEquipo: 'Equipo Verde — equipo del hospital',
   },
 ]
 
 const steps = [
   { icon: IconTeam, label: 'Formen 2 equipos', sub: 'Dividan el grupo en partes iguales' },
-  { icon: IconLightbulb, label: 'Lean su caso', sub: 'Cada equipo recibe un escenario distinto' },
-  { icon: IconClock, label: '8 minutos de análisis', sub: 'Discutan, decidan y preparen su postura' },
+  { icon: IconLightbulb, label: 'Lean su dilema', sub: 'No hay respuesta correcta — hay decisiones' },
+  { icon: IconClock, label: '8 min de análisis', sub: 'Defiendan su postura con argumentos' },
 ]
 
 export default function S07b_DinamicaApertura() {
@@ -58,8 +67,8 @@ export default function S07b_DinamicaApertura() {
   return (
     <div className="slide" style={{
       background: 'linear-gradient(160deg, #EEF2F7 0%, #dde9f5 100%)',
-      padding: '44px 72px',
-      gap: '1.2rem',
+      padding: '40px 72px',
+      gap: '1rem',
     }}>
       <div style={{
         position: 'absolute', inset: 0,
@@ -78,11 +87,11 @@ export default function S07b_DinamicaApertura() {
         <div className="pill pill--solid" style={{ marginBottom: '0.4rem', background: '#0C2D4E', color: 'white', borderColor: '#0C2D4E' }}>
           Dinámica de apertura
         </div>
-        <h2 className="slide-title" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.8rem)' }}>
-          ¿Qué harías tú?
+        <h2 className="slide-title" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.8rem)', margin: 0 }}>
+          Dilemas reales. Decisiones tuyas.
         </h2>
-        <p className="slide-subtitle" style={{ fontSize: '0.95rem' }}>
-          Dos equipos · Dos casos reales · Una decisión difícil
+        <p className="slide-subtitle" style={{ fontSize: '0.92rem', marginTop: '0.3rem' }}>
+          Dos equipos · Dos dilemas éticos · Sin respuesta fácil
         </p>
       </motion.div>
 
@@ -91,7 +100,7 @@ export default function S07b_DinamicaApertura() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', width: '100%', maxWidth: '720px' }}
+        style={{ display: 'flex', gap: '1rem', justifyContent: 'center', width: '100%', maxWidth: '720px' }}
       >
         {steps.map((s, i) => (
           <motion.div
@@ -102,7 +111,7 @@ export default function S07b_DinamicaApertura() {
             style={{
               background: 'white',
               borderRadius: '14px',
-              padding: '0.9rem 1.1rem',
+              padding: '0.85rem 1rem',
               display: 'flex', alignItems: 'center', gap: '10px',
               boxShadow: 'var(--shadow-sm)',
               border: '1.5px solid rgba(69,197,190,0.2)',
@@ -110,15 +119,15 @@ export default function S07b_DinamicaApertura() {
             }}
           >
             <div style={{
-              width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0,
+              width: '34px', height: '34px', borderRadius: '10px', flexShrink: 0,
               background: 'rgba(69,197,190,0.12)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <s.icon size={18} color="#2BA8A2" />
+              <s.icon size={17} color="#2BA8A2" />
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--navy)', lineHeight: 1.2 }}>{s.label}</div>
-              <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>{s.sub}</div>
+              <div style={{ fontWeight: 700, fontSize: '0.82rem', color: 'var(--navy)', lineHeight: 1.2 }}>{s.label}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-light)' }}>{s.sub}</div>
             </div>
           </motion.div>
         ))}
@@ -127,7 +136,7 @@ export default function S07b_DinamicaApertura() {
       {/* Case cards */}
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1fr',
-        gap: '1.2rem', width: '100%', maxWidth: '920px',
+        gap: '1.2rem', width: '100%', maxWidth: '960px',
       }}>
         {cases.map((c, i) => (
           <motion.div
@@ -139,32 +148,32 @@ export default function S07b_DinamicaApertura() {
             whileHover={{ y: -3, boxShadow: `0 16px 40px ${c.color}25` }}
             style={{
               background: active === c.id
-                ? `linear-gradient(135deg, ${c.color} 0%, ${c.color}dd 100%)`
+                ? `linear-gradient(135deg, ${c.color} 0%, ${c.color}e8 100%)`
                 : 'white',
               borderRadius: '18px',
-              padding: '1.4rem',
+              padding: '1.3rem',
               boxShadow: 'var(--shadow-md)',
-              border: `2px solid ${c.color}${active === c.id ? 'ff' : '35'}`,
+              border: `2px solid ${c.color}${active === c.id ? 'ff' : '30'}`,
               cursor: 'pointer',
               transition: 'background 0.3s, border 0.3s',
             }}
           >
             {/* Card header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.8rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.6rem' }}>
               <div>
                 <div style={{
                   display: 'inline-block',
-                  background: active === c.id ? 'rgba(255,255,255,0.2)' : `${c.color}15`,
+                  background: active === c.id ? 'rgba(255,255,255,0.18)' : `${c.color}15`,
                   color: active === c.id ? 'white' : c.color,
                   borderRadius: '8px', padding: '2px 12px',
-                  fontSize: '0.78rem', fontWeight: 800, letterSpacing: '0.08em',
+                  fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.08em',
                   marginBottom: '4px',
                 }}>
                   {c.title}
                 </div>
                 <div style={{
                   fontFamily: 'DM Serif Display, serif',
-                  fontSize: '1.15rem',
+                  fontSize: '1.1rem',
                   color: active === c.id ? 'white' : 'var(--navy)',
                   lineHeight: 1.2,
                 }}>
@@ -172,24 +181,61 @@ export default function S07b_DinamicaApertura() {
                 </div>
               </div>
               <div style={{
-                width: '42px', height: '42px', borderRadius: '12px', flexShrink: 0,
-                background: active === c.id ? 'rgba(255,255,255,0.2)' : `${c.color}12`,
+                width: '40px', height: '40px', borderRadius: '12px', flexShrink: 0,
+                background: active === c.id ? 'rgba(255,255,255,0.18)' : `${c.color}12`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: active === c.id ? c.accent : c.color,
               }}>
-                <c.IconComp active={active === c.id} />
+                <c.IconComp />
               </div>
             </div>
 
+            {/* Tension badge */}
+            {c.tension && (
+              <div style={{
+                display: 'inline-block',
+                background: active === c.id ? 'rgba(255,255,255,0.12)' : 'rgba(69,197,190,0.1)',
+                color: active === c.id ? c.accent : '#1a8a84',
+                borderRadius: '6px', padding: '2px 10px',
+                fontSize: '0.68rem', fontWeight: 700,
+                marginBottom: '0.65rem',
+                letterSpacing: '0.04em',
+              }}>
+                ⚡ {c.tension}
+              </div>
+            )}
+
             {/* Situation */}
             <p style={{
-              fontSize: '0.82rem',
+              fontSize: '0.81rem',
               color: active === c.id ? 'rgba(255,255,255,0.85)' : 'var(--text-light)',
-              lineHeight: 1.6, margin: 0, marginBottom: '0.8rem',
+              lineHeight: 1.65, margin: 0, marginBottom: '0.65rem',
             }}>
               {c.situacion}
             </p>
 
-            {/* Question */}
+            {/* Patient emotion */}
+            <div style={{
+              borderRadius: '8px',
+              padding: '0.5rem 0.75rem',
+              background: active === c.id ? 'rgba(255,255,255,0.1)' : 'rgba(12,45,78,0.05)',
+              borderLeft: `3px solid ${active === c.id ? c.accent : c.color}60`,
+              marginBottom: '0.5rem',
+            }}>
+              <span style={{
+                fontSize: '0.63rem', fontWeight: 800,
+                color: active === c.id ? c.accent : c.color,
+                textTransform: 'uppercase', letterSpacing: '0.08em',
+                display: 'block', marginBottom: '2px',
+              }}>El paciente en este momento siente</span>
+              <span style={{
+                fontSize: '0.76rem',
+                color: active === c.id ? 'rgba(255,255,255,0.8)' : 'var(--text-light)',
+                fontStyle: 'italic', lineHeight: 1.4,
+              }}>{c.emocion}</span>
+            </div>
+
+            {/* Questions revealed on click */}
             <AnimatePresence>
               {active === c.id && (
                 <motion.div
@@ -197,39 +243,52 @@ export default function S07b_DinamicaApertura() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   style={{
-                    borderTop: '1px solid rgba(255,255,255,0.2)',
-                    paddingTop: '0.7rem',
-                    marginTop: '0.4rem',
+                    borderTop: '1px solid rgba(255,255,255,0.18)',
+                    paddingTop: '0.75rem',
+                    marginTop: '0.3rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.45rem',
                   }}
                 >
-                  <p style={{
-                    fontSize: '0.82rem', fontWeight: 700,
-                    color: active === c.id ? c.accent : c.color,
-                    lineHeight: 1.5, margin: 0,
-                  }}>
-                    {c.pregunta}
-                  </p>
+                  <div style={{ fontSize: '0.65rem', fontWeight: 800, color: c.accent, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.2rem' }}>
+                    Preguntas para el equipo
+                  </div>
+                  {c.preguntas.map((p, idx) => (
+                    <div key={idx} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                      <span style={{
+                        fontSize: '0.68rem', fontWeight: 800,
+                        color: c.accent,
+                        flexShrink: 0, paddingTop: '1px',
+                      }}>{idx + 1}.</span>
+                      <p style={{
+                        fontSize: '0.78rem', fontWeight: 600,
+                        color: 'rgba(255,255,255,0.9)',
+                        lineHeight: 1.5, margin: 0,
+                      }}>{p}</p>
+                    </div>
+                  ))}
                 </motion.div>
               )}
             </AnimatePresence>
 
             {/* Role + hint */}
             <div style={{
-              marginTop: '0.7rem',
+              marginTop: '0.65rem',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             }}>
               <span style={{
-                fontSize: '0.72rem', fontWeight: 600,
-                color: active === c.id ? 'rgba(255,255,255,0.7)' : 'var(--teal-dark)',
+                fontSize: '0.7rem', fontWeight: 600,
+                color: active === c.id ? 'rgba(255,255,255,0.65)' : 'var(--teal-dark)',
               }}>
                 {c.rolEquipo}
               </span>
               <span style={{
-                fontSize: '0.68rem',
-                color: active === c.id ? 'rgba(255,255,255,0.5)' : 'var(--text-muted)',
+                fontSize: '0.66rem',
+                color: active === c.id ? 'rgba(255,255,255,0.45)' : 'var(--text-muted)',
                 fontStyle: 'italic',
               }}>
-                {active === c.id ? 'Clic para cerrar' : 'Clic para ver la pregunta clave'}
+                {active === c.id ? 'Clic para cerrar' : 'Clic para ver las preguntas'}
               </span>
             </div>
           </motion.div>
@@ -241,9 +300,9 @@ export default function S07b_DinamicaApertura() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9 }}
-        style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic' }}
+        style={{ fontSize: '0.76rem', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic' }}
       >
-        Después de 8 minutos, cada equipo presentará su postura al grupo · No hay respuestas incorrectas
+        Deben llegar a una postura como equipo y estar listos para defenderla · El disenso interno también vale
       </motion.p>
     </div>
   )

@@ -1,82 +1,38 @@
 import { motion } from 'framer-motion'
 
-// Simple face icons
-const FaceHappy = ({ size = 28 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-    <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3"/>
-    <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3"/>
-  </svg>
-)
-
-const FaceNeutral = ({ size = 28 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <line x1="8" y1="15" x2="16" y2="15"/>
-    <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3"/>
-    <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3"/>
-  </svg>
-)
-
-const FaceSad = ({ size = 28 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M16 16s-1.5-2-4-2-4 2-4 2"/>
-    <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3"/>
-    <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3"/>
-  </svg>
-)
-
-const ArrowRight = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(12,45,78,0.2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="5" y1="12" x2="19" y2="12"/>
-    <polyline points="12 5 19 12 12 19"/>
-  </svg>
-)
-
-const steps = [
+const phases = [
   {
+    num: '1',
     phase: 'Antes de entrar',
     sub: 'Sala de espera',
-    face: FaceNeutral,
-    faceColor: '#718096',
-    mood: 'Ansioso, incertidumbre',
-    alegria: 1.67,
-    desprecio: 0.24,
-    alegraWidth: '28%',
-    desprecioWidth: '4%',
-    highlight: false,
+    emoji: '😐',
+    feeling: 'Ansioso, pero en espera. Todavía tiene control de sus emociones.',
+    color: '#718096',
     bg: 'white',
-    border: 'rgba(12,45,78,0.12)',
+    border: 'rgba(113,128,150,0.25)',
+    highlight: false,
   },
   {
+    num: '2',
     phase: 'Durante la consulta',
-    sub: 'Con el médico / enfermería',
-    face: FaceSad,
-    faceColor: '#e53e3e',
-    mood: 'El momento crítico',
-    alegria: 3.34,
-    desprecio: 1.96,
-    alegraWidth: '56%',
-    desprecioWidth: '79%',
-    highlight: true,
-    bg: 'rgba(229,62,62,0.04)',
+    sub: 'Con el médico o enfermería',
+    emoji: '😟',
+    feeling: 'Momento más vulnerable. Tiene miedo. Necesita sentirse tomado en cuenta.',
+    color: '#e53e3e',
+    bg: 'rgba(229,62,62,0.03)',
     border: '#e53e3e',
+    highlight: true,
   },
   {
-    phase: 'Al salir',
+    num: '3',
+    phase: 'Al salir / Alta',
     sub: 'Post-consulta',
-    face: FaceHappy,
-    faceColor: '#38a169',
-    mood: 'Más tranquilo, pero...',
-    alegria: 5.28,
-    desprecio: 2.27,
-    alegraWidth: '88%',
-    desprecioWidth: '91%',
-    highlight: false,
+    emoji: '😌',
+    feeling: 'Mucho más tranquilo. La última impresión define cómo recuerda toda la visita.',
+    color: '#38a169',
     bg: 'white',
-    border: 'rgba(69,197,190,0.3)',
+    border: 'rgba(56,161,105,0.25)',
+    highlight: false,
   },
 ]
 
@@ -84,206 +40,123 @@ export default function S25b_JornadaEmocional() {
   return (
     <div className="slide" style={{
       background: 'linear-gradient(160deg, #EEF2F7 0%, #dff4f3 100%)',
-      padding: '36px 64px',
-      gap: '1.1rem',
+      padding: '44px 72px',
+      gap: '1.4rem',
     }}>
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'radial-gradient(circle, rgba(69,197,190,0.1) 1px, transparent 1px)',
-        backgroundSize: '28px 28px',
-        pointerEvents: 'none',
+        backgroundImage: 'radial-gradient(circle, rgba(69,197,190,0.08) 1px, transparent 1px)',
+        backgroundSize: '28px 28px', pointerEvents: 'none',
       }} />
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: -14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
         style={{ textAlign: 'center' }}
       >
-        <div className="pill pill--solid" style={{ marginBottom: '0.4rem' }}>Rodríguez Fuertes, 2018 · Neuroimagen</div>
-        <h2 className="slide-title" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.6rem)', margin: 0 }}>
+        <div className="pill pill--solid" style={{ marginBottom: '0.5rem' }}>
+          Rodríguez Fuertes, 2018 · Neuroimagen y codificación facial en 60 pacientes
+        </div>
+        <h2 className="slide-title" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)', margin: '0 0 0.4rem 0' }}>
           ¿Cómo se siente el paciente en cada momento?
         </h2>
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-light)', marginTop: '0.3rem' }}>
-          Estudio con neuroimagen que midió emociones reales durante la atención médica
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-light)', margin: 0 }}>
+          Un estudio midió sus emociones con tecnología de neuroimagen — en tiempo real — durante tres momentos de la atención.
         </p>
       </motion.div>
 
-      {/* Timeline */}
-      <div style={{
-        display: 'flex', alignItems: 'stretch',
-        gap: '0.6rem', width: '100%', maxWidth: '960px',
-      }}>
-        {steps.map((s, i) => (
-          <>
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.2 + i * 0.15 }}
-              style={{
-                flex: 1,
-                background: s.bg,
-                border: `2px solid ${s.border}`,
-                borderRadius: '18px',
-                padding: '1.3rem 1.2rem',
-                display: 'flex', flexDirection: 'column', gap: '0.85rem',
-                boxShadow: s.highlight ? '0 6px 28px rgba(229,62,62,0.18)' : 'var(--shadow-md)',
-                position: 'relative',
-              }}
-            >
-              {/* Phase label */}
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
-                <div>
-                  <div style={{
-                    fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.07em',
-                    textTransform: 'uppercase',
-                    color: s.highlight ? '#e53e3e' : 'var(--text-light)',
-                    marginBottom: '3px',
-                  }}>
-                    {s.sub}
-                  </div>
-                  <div style={{
-                    fontWeight: 700, fontSize: '1rem',
-                    color: s.highlight ? '#c53030' : 'var(--navy)',
-                    lineHeight: 1.2,
-                  }}>
-                    {s.phase}
-                  </div>
-                </div>
-                <div style={{ color: s.faceColor, flexShrink: 0 }}>
-                  <s.face size={34} />
-                </div>
-              </div>
+      {/* 3 phases */}
+      <div style={{ display: 'flex', gap: '1.2rem', width: '100%', maxWidth: '980px', alignItems: 'stretch' }}>
+        {phases.map((p, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+            style={{
+              flex: 1,
+              background: p.bg,
+              border: `2px solid ${p.border}`,
+              borderRadius: '20px',
+              padding: '1.6rem 1.4rem',
+              display: 'flex', flexDirection: 'column', alignItems: 'center',
+              textAlign: 'center', gap: '0.9rem',
+              position: 'relative',
+              boxShadow: p.highlight ? '0 8px 32px rgba(229,62,62,0.18)' : 'var(--shadow-sm)',
+            }}
+          >
+            {/* Step number */}
+            <div style={{
+              position: 'absolute', top: '-14px',
+              width: '28px', height: '28px', borderRadius: '50%',
+              background: p.highlight ? '#e53e3e' : p.color,
+              color: 'white', fontSize: '0.8rem', fontWeight: 800,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: p.highlight ? '0 4px 12px rgba(229,62,62,0.4)' : 'none',
+            }}>{p.num}</div>
 
-              {/* Mood */}
-              <div style={{
-                fontSize: '0.78rem', color: s.highlight ? '#c53030' : 'var(--text-light)',
-                fontStyle: 'italic', fontWeight: s.highlight ? 700 : 400,
-              }}>
-                {s.mood}
-              </div>
-
-              {/* Emotion bars */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                {/* Alegría */}
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#38a169' }}>😊 Alegría</span>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#38a169' }}>{s.alegria}</span>
-                  </div>
-                  <div style={{ height: '10px', background: 'rgba(12,45,78,0.07)', borderRadius: '6px', overflow: 'hidden' }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: s.alegraWidth }}
-                      transition={{ duration: 1.2, delay: 0.5 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      style={{ height: '100%', background: 'linear-gradient(90deg, #68d391, #38a169)', borderRadius: '6px' }}
-                    />
-                  </div>
-                </div>
-                {/* Desprecio */}
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#e53e3e' }}>😤 Desprecio</span>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#e53e3e' }}>{s.desprecio}</span>
-                  </div>
-                  <div style={{ height: '10px', background: 'rgba(12,45,78,0.07)', borderRadius: '6px', overflow: 'hidden' }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: s.desprecioWidth }}
-                      transition={{ duration: 1.2, delay: 0.6 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      style={{ height: '100%', background: s.highlight ? 'linear-gradient(90deg, #fc8181, #e53e3e)' : 'linear-gradient(90deg, #fc8181, #c53030)', borderRadius: '6px' }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* 8× badge on V2 */}
-              {s.highlight && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.1, type: 'spring', stiffness: 220 }}
-                  style={{
-                    position: 'absolute', top: '-18px', right: '16px',
-                    background: 'linear-gradient(135deg, #c53030, #e53e3e)',
-                    borderRadius: '50px',
-                    padding: '4px 14px',
-                    boxShadow: '0 4px 16px rgba(229,62,62,0.45)',
-                    display: 'flex', alignItems: 'baseline', gap: '4px',
-                  }}
-                >
-                  <span style={{
-                    fontFamily: 'DM Serif Display, serif',
-                    fontSize: '1.4rem', color: 'white', lineHeight: 1,
-                  }}>8×</span>
-                  <span style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.85)', fontWeight: 700 }}>
-                    más desprecio
-                  </span>
-                </motion.div>
-              )}
-            </motion.div>
-
-            {/* Arrow between cards */}
-            {i < steps.length - 1 && (
-              <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-                <ArrowRight />
-              </div>
+            {/* Critical badge */}
+            {p.highlight && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.1, type: 'spring', stiffness: 220 }}
+                style={{
+                  position: 'absolute', top: '-14px', right: '16px',
+                  background: 'linear-gradient(135deg, #c53030, #e53e3e)',
+                  borderRadius: '50px', padding: '3px 12px',
+                  boxShadow: '0 4px 14px rgba(229,62,62,0.45)',
+                  display: 'flex', alignItems: 'baseline', gap: '4px',
+                }}
+              >
+                <span style={{ fontFamily: 'DM Serif Display, serif', fontSize: '1.2rem', color: 'white', lineHeight: 1 }}>8×</span>
+                <span style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.9)', fontWeight: 700 }}>más ignorado</span>
+              </motion.div>
             )}
-          </>
+
+            {/* Phase label */}
+            <div>
+              <div style={{ fontSize: '0.62rem', fontWeight: 800, color: p.color, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>
+                {p.sub}
+              </div>
+              <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: '1.3rem', color: p.highlight ? '#c53030' : 'var(--navy)', lineHeight: 1.2 }}>
+                {p.phase}
+              </div>
+            </div>
+
+            {/* Emoji */}
+            <div style={{ fontSize: '3.5rem', lineHeight: 1 }}>{p.emoji}</div>
+
+            {/* Feeling */}
+            <p style={{
+              fontSize: '0.85rem', color: p.highlight ? '#742a2a' : 'var(--text-light)',
+              lineHeight: 1.6, margin: 0, flex: 1,
+              background: p.highlight ? 'rgba(229,62,62,0.06)' : 'rgba(12,45,78,0.04)',
+              borderRadius: '10px', padding: '0.7rem 0.8rem',
+            }}>
+              {p.feeling}
+            </p>
+          </motion.div>
         ))}
       </div>
 
-      {/* Bottom insight */}
+      {/* Bottom callout */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0 }}
+        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
         style={{
-          maxWidth: '960px', width: '100%',
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: '0.8rem',
+          width: '100%', maxWidth: '980px',
+          background: '#0C2D4E', borderRadius: '16px',
+          padding: '1rem 1.8rem',
+          display: 'flex', alignItems: 'center', gap: '1.2rem',
         }}
       >
-        {/* Key insight */}
-        <div style={{
-          background: 'linear-gradient(135deg, #0C2D4E, #163557)',
-          borderRadius: '14px',
-          padding: '1rem 1.4rem',
-          display: 'flex', gap: '12px', alignItems: 'center',
-        }}>
-          <div style={{
-            fontSize: '2rem', lineHeight: 1, flexShrink: 0,
-          }}>💡</div>
-          <div>
-            <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'white', lineHeight: 1.3, marginBottom: '3px' }}>
-              El trato durante la consulta es el momento que más importa.
-            </div>
-            <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.45)', fontStyle: 'italic' }}>
-              No el edificio, no el equipo — la persona que atiende.
-            </div>
-          </div>
-        </div>
-
-        {/* Takeaway */}
-        <div style={{
-          background: 'white',
-          borderRadius: '14px',
-          padding: '1rem 1.4rem',
-          border: '2px solid rgba(229,62,62,0.2)',
-          display: 'flex', gap: '12px', alignItems: 'center',
-          boxShadow: 'var(--shadow-sm)',
-        }}>
-          <div style={{ fontSize: '2rem', lineHeight: 1, flexShrink: 0 }}>⚠️</div>
-          <div>
-            <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#c53030', lineHeight: 1.3, marginBottom: '3px' }}>
-              El desprecio en la consulta destruye satisfacción.
-            </div>
-            <div style={{ fontSize: '0.72rem', color: 'var(--text-light)', fontStyle: 'italic' }}>
-              Incluso si el diagnóstico fue correcto.
-            </div>
-          </div>
+        <div style={{ fontSize: '1.8rem', flexShrink: 0 }}>🔬</div>
+        <div>
+          <p style={{ fontSize: '0.92rem', fontWeight: 700, color: 'white', margin: '0 0 3px 0', lineHeight: 1.4 }}>
+            El momento de <em>más</em> contacto humano es donde el paciente se siente <em>más</em> ignorado.
+          </p>
+          <p style={{ fontSize: '0.78rem', color: 'rgba(69,197,190,0.85)', margin: 0 }}>
+            ¿Qué genera esa sensación? ¿Y qué la elimina? → siguiente diapositiva
+          </p>
         </div>
       </motion.div>
     </div>

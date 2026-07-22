@@ -8,6 +8,8 @@ import S01 from './slides/S01_Portada'
 import S02 from './slides/S02_QuienesSomos'
 import S03 from './slides/S03_Bio'
 import S04 from './slides/S04_PropositoGeneral'
+import S04b from './slides/S04b_ActividadPresentacion'
+import S04c from './slides/S04c_CompromisoCialdini'
 import S05 from './slides/S05_DatosDuros'
 import S06 from './slides/S06_Objetivos'
 import S07 from './slides/S07_ReglasDelJuego'
@@ -20,20 +22,29 @@ import S11 from './slides/S11_QueesProfesionalizar'
 import S12 from './slides/S12_PorQueImportaHospital'
 import S13 from './slides/S13_ElPacienteDeHoy'
 import S13b from './slides/S13b_VozDelPaciente'
+import S13c from './slides/S13c_ActividadResenas'
 import S14 from './slides/S14_FraseERMI'
 import S15 from './slides/S15_OchoPasos'
 import S16 from './slides/S16_HospitalAcronimo'
 import S17 from './slides/S17_QueEsHospitalidad'
 import S18 from './slides/S18_ComoSeIntegra'
 import S19 from './slides/S19_AQuienAtendemos'
-import S20 from './slides/S20_ActividadOrquesta'
 import S21 from './slides/S21_MomentosDeVerdad'
+import S21a from './slides/S21a_MomentosYDolor'
 import S21b from './slides/S21b_PatientJourneyMap'
 import S22 from './slides/S22_ComunicacionProfesional'
 import S23 from './slides/S23_CostoDeComunicar'
 import S24 from './slides/S24_EmpatiaProf'
 import S25 from './slides/S25_EmpatiaYAdherencia'
+import S25_StroopInstruccion from './slides/S25_StroopInstruccion'
+import { StroopP1, StroopP2, StroopP3, StroopP4, StroopP5, StroopP6, StroopP7, StroopP8, StroopP9, StroopP10 } from './slides/S25_StroopPalabras'
+import S25_StroopB from './slides/S25_StroopB_Revela'
+import S25_MartilloA from './slides/S25_MartilloA_Calculo'
+import S25_MartilloB from './slides/S25_MartilloB_Pregunta'
+import S25_MartilloC from './slides/S25_MartilloC_Revela'
 import S25b from './slides/S25b_JornadaEmocional'
+import S25c from './slides/S25c_ParadojaSatisfaccion'
+import S25d from './slides/S25d_PeakEndRule'
 import S26 from './slides/S26_ConductasConfianza'
 import S26b from './slides/S26b_MetodoPECP'
 import S27 from './slides/S27_ConductasDestruyen'
@@ -49,10 +60,16 @@ import S35 from './slides/S35_Portada_Cierre'
 
 // 42 slides total
 const slides = [
-  S01, S02, S03, S04, S05, S06, S07, S07b,
-  S08, S09, S09b, S10, S11, S12, S13, S13b, S14,
-  S15, S16, S17, S18, S19, S20, S21, S21b,
-  S22, S23, S24, S25, S25b, S26, S26b, S27,
+  S01, S02, S03, S04, S04b, S04c, S05, S06, S07, S07b,
+  S08, S09, S09b, S10, S11, S12, S13, S13b, S13c, S14,
+  S15, S16, S17, S18, S19, S21, S21a, S21b,
+  S22, S23, S24, S25,
+  S25_StroopInstruccion,
+  StroopP1, StroopP2, StroopP3, StroopP4, StroopP5,
+  StroopP6, StroopP7, StroopP8, StroopP9, StroopP10,
+  S25_StroopB,
+  S25_MartilloA, S25_MartilloB, S25_MartilloC,
+  S25b, S25c, S25d, S26, S26b, S27,
   S28, S28b, S29, S30, S31, S32, S33, S34, S35,
 ]
 
