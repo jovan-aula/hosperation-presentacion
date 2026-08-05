@@ -34,7 +34,7 @@ const elementos = [
   {
     num: '05',
     label: 'Comprensión mutua',
-    context: 'Preguntar "¿entendió lo que le expliqué?" no es redundante — es cerrar el ciclo de comunicación.',
+    context: 'Preguntar "¿me expliqué con claridad?" no es redundante — es cerrar el ciclo de comunicación.',
     color: '#45C5BE',
   },
 ]
