@@ -370,9 +370,10 @@
 <div class="screen-only">
   <h1>Imprimibles — Módulo 2</h1>
   <p>Comunicación Asertiva en la Atención Hospitalaria · Hosperation + Aula Consultoría</p>
-  <button class="btn-print" onclick="window.print()">Imprimir todo (4 hojas)</button>
+  <button class="btn-print" onclick="window.print()">Imprimir todo (5 hojas)</button>
   <div class="index-links">
-    <a onclick="document.getElementById('hojaA').scrollIntoView({behavior:'smooth'})">A — Dilemas + Termómetro</a>
+    <a onclick="document.getElementById('hojaA').scrollIntoView({behavior:'smooth'})">A1 — Dilemas de apertura</a>
+    <a onclick="document.getElementById('hojaA2').scrollIntoView({behavior:'smooth'})">A2 — Termómetro asertivo</a>
     <a onclick="document.getElementById('hojaB').scrollIntoView({behavior:'smooth'})">B — Fraseología estandarizada</a>
     <a onclick="document.getElementById('hojaC').scrollIntoView({behavior:'smooth'})">C — Los 7 mensajes</a>
     <a onclick="document.getElementById('hojaD').scrollIntoView({behavior:'smooth'})">D — La Caja Asertiva</a>
@@ -452,54 +453,84 @@
   <div class="wline"></div>
   <div class="wline"></div>
 
-  <!-- Termómetro asertivo — cierre de Hoja A -->
-  <div style="margin-top:18px; padding-top:14px; border-top:1.5px solid #e8eef4;">
-    <div class="badge badge-navy" style="margin-bottom:8px;">Termómetro asertivo · Individual · 3 min</div>
-    <div style="font-size:0.78rem; color:#4a6581; margin-bottom:10px;">Evalúate del 1 al 5. Esta sección es solo para ti.</div>
+  <div class="sheet-footer" style="margin-top:auto;">
+    <span>Comparte tu respuesta solo cuando el facilitador lo indique</span>
+    <span class="facilit">Mtro. Jován Naranjo</span>
+  </div>
+</div>
 
-    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; margin-bottom:5px;">
-      <div></div>
-      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">1</div>
-      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">2</div>
-      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">3</div>
-      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">4</div>
-      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">5</div>
-      <div style="font-size:0.55rem; color:#a0b4c8; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;">Pregunta para reflexionar</div>
-    </div>
 
-    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
-      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Tono de voz</div>
-      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
-      <div style="font-size:0.64rem; color:#a0b4c8;">¿Cómo suenas cuando estás bajo presión?</div>
-    </div>
-    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
-      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Postura y gestos</div>
-      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
-      <div style="font-size:0.64rem; color:#a0b4c8;">¿Tu cuerpo comunica apertura o tensión?</div>
-    </div>
-    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
-      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Claridad del mensaje</div>
-      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
-      <div style="font-size:0.64rem; color:#a0b4c8;">¿Dices lo que quieres decir, sin rodeos?</div>
-    </div>
-    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
-      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Empatía activa</div>
-      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
-      <div style="font-size:0.64rem; color:#a0b4c8;">¿Reconoces lo que siente el otro antes de responder?</div>
-    </div>
-    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; margin-bottom:8px;">
-      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Ritmo al hablar</div>
-      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
-      <div style="font-size:0.64rem; color:#a0b4c8;">¿Hablas muy rápido cuando estás nervioso?</div>
-    </div>
-    <div style="background:#f5f8fc; border-radius:8px; padding:8px 12px;">
-      <div class="box-label">El elemento en que quiero enfocarme hoy</div>
-      <div class="wline"></div>
+<!-- ═══════════════════════════════════════════════
+     HOJA A2 — TERMÓMETRO ASERTIVO
+     Entregar junto con Hoja A1
+═══════════════════════════════════════════════ -->
+<div class="sheet" id="hojaA2">
+  <div class="brand-header">
+    <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" />
+    <div class="brand-label">
+      Ejercicio 1 · Hoja A2
+      <span>Comunicación Asertiva · Módulo 2</span>
     </div>
   </div>
 
-  <div class="sheet-footer" style="margin-top:14px;">
-    <span>Comparte tu respuesta solo cuando el facilitador lo indique</span>
+  <div class="badge badge-navy">Termómetro asertivo · Individual · 3 min</div>
+  <div class="sheet-title">¿Dónde estoy hoy?</div>
+  <div class="sheet-sub">Evalúate del 1 al 5 en cada elemento. Sé honesto — esta hoja es solo para ti.</div>
+  <div class="teal-bar"></div>
+
+  <div style="margin-bottom:20px;">
+    <div style="display:grid; grid-template-columns:180px repeat(5,32px) 1fr; gap:6px; align-items:center; margin-bottom:8px;">
+      <div></div>
+      <div style="text-align:center; font-size:0.6rem; color:#a0b4c8; font-weight:700;">1</div>
+      <div style="text-align:center; font-size:0.6rem; color:#a0b4c8; font-weight:700;">2</div>
+      <div style="text-align:center; font-size:0.6rem; color:#a0b4c8; font-weight:700;">3</div>
+      <div style="text-align:center; font-size:0.6rem; color:#a0b4c8; font-weight:700;">4</div>
+      <div style="text-align:center; font-size:0.6rem; color:#a0b4c8; font-weight:700;">5</div>
+      <div style="font-size:0.6rem; color:#a0b4c8; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;">Pregunta para reflexionar</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:180px repeat(5,32px) 1fr; gap:6px; align-items:center; padding:10px 0; border-bottom:1px solid #f0f4f8;">
+      <div style="font-size:0.85rem; font-weight:600; color:#0C2D4E;">Tono de voz</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.7rem; color:#a0b4c8;">¿Cómo suenas cuando estás bajo presión?</div>
+    </div>
+    <div style="display:grid; grid-template-columns:180px repeat(5,32px) 1fr; gap:6px; align-items:center; padding:10px 0; border-bottom:1px solid #f0f4f8;">
+      <div style="font-size:0.85rem; font-weight:600; color:#0C2D4E;">Postura y gestos</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.7rem; color:#a0b4c8;">¿Tu cuerpo comunica apertura o tensión?</div>
+    </div>
+    <div style="display:grid; grid-template-columns:180px repeat(5,32px) 1fr; gap:6px; align-items:center; padding:10px 0; border-bottom:1px solid #f0f4f8;">
+      <div style="font-size:0.85rem; font-weight:600; color:#0C2D4E;">Claridad del mensaje</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.7rem; color:#a0b4c8;">¿Dices lo que quieres decir, sin rodeos?</div>
+    </div>
+    <div style="display:grid; grid-template-columns:180px repeat(5,32px) 1fr; gap:6px; align-items:center; padding:10px 0; border-bottom:1px solid #f0f4f8;">
+      <div style="font-size:0.85rem; font-weight:600; color:#0C2D4E;">Empatía activa</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.7rem; color:#a0b4c8;">¿Reconoces lo que siente el otro antes de responder?</div>
+    </div>
+    <div style="display:grid; grid-template-columns:180px repeat(5,32px) 1fr; gap:6px; align-items:center; padding:10px 0;">
+      <div style="font-size:0.85rem; font-weight:600; color:#0C2D4E;">Ritmo al hablar</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.7rem; color:#a0b4c8;">¿Hablas muy rápido cuando estás nervioso?</div>
+    </div>
+  </div>
+
+  <div style="background:#f5f8fc; border-radius:10px; padding:12px 16px; margin-bottom:20px;">
+    <div class="box-label">El elemento en que quiero enfocarme hoy</div>
+    <div class="wline"></div>
+  </div>
+
+  <div style="background:#0C2D4E; border-radius:14px; padding:16px 20px; margin-top:auto;">
+    <div style="font-size:0.62rem; font-weight:800; color:#45C5BE; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Para reflexionar</div>
+    <p style="font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:1.65; margin:0; font-style:italic;">
+      "Ser escuchado es tan próximo a ser amado que la mayoría de las personas no distingue la diferencia."
+    </p>
+    <p style="font-size:0.7rem; color:rgba(255,255,255,0.45); margin:8px 0 0; font-weight:700;">— Carl Rogers</p>
+  </div>
+
+  <div class="sheet-footer" style="margin-top:16px;">
+    <span>Comparte tu reflexión solo cuando el facilitador lo indique</span>
     <span class="facilit">Mtro. Jován Naranjo</span>
   </div>
 </div>
