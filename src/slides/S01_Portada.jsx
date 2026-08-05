@@ -39,7 +39,7 @@ export default function S01_Portada() {
         <motion.div {...fade(0.1)} style={{ zIndex: 1 }}>
           <img
             src="/logo-sin-fondo.png"
-            alt="Aula Consultoría + Hosperation"
+            alt="Aula + Hosperation"
             style={{
               height: '90px',
               objectFit: 'contain',
@@ -60,19 +60,20 @@ export default function S01_Portada() {
               fontSize: '0.72rem', fontWeight: 600, color: '#45C5BE',
               letterSpacing: '0.1em', textTransform: 'uppercase',
             }}>
-              Taller de Capacitación
+              Módulo 2 · Taller de Capacitación
             </div>
           </motion.div>
 
           <motion.h1 {...fade(0.45)} style={{
             fontFamily: 'DM Serif Display, serif',
-            fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)',
+            fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 400, color: 'white',
-            lineHeight: 1.05, letterSpacing: '-0.02em', margin: 0,
+            lineHeight: 1.1, letterSpacing: '-0.02em', margin: 0,
           }}>
-            Profesionalización del
-            <br />
-            <span style={{ color: '#45C5BE' }}>Servicio Hospitalario</span>
+            Comunicación{' '}
+            <span style={{ color: '#45C5BE' }}>asertiva</span>
+            <br />en la atención
+            <br />hospitalaria
           </motion.h1>
 
           <motion.div {...fade(0.6)}>
@@ -84,11 +85,12 @@ export default function S01_Portada() {
           </motion.div>
 
           <motion.p {...fade(0.7)} style={{
-            fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)',
+            fontSize: 'clamp(0.9rem, 1.4vw, 1.05rem)',
             color: 'rgba(255,255,255,0.65)',
-            fontWeight: 300, letterSpacing: '0.02em', margin: 0,
+            fontWeight: 300, letterSpacing: '0.02em', margin: 0, lineHeight: 1.6,
           }}>
-            Construyendo una cultura de excelencia en salud
+            Cómo comunicarnos con claridad, respeto y calma<br />
+            con pacientes, familiares y colaboradores.
           </motion.p>
         </div>
 
@@ -106,6 +108,7 @@ export default function S01_Portada() {
               background: 'linear-gradient(135deg, #45C5BE, #2BA8A2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: '0.8rem', fontWeight: 700, color: 'white', letterSpacing: '-0.02em',
+              flexShrink: 0,
             }}>
               JN
             </div>
@@ -124,7 +127,6 @@ export default function S01_Portada() {
         transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         style={{ position: 'relative', overflow: 'hidden' }}
       >
-        {/* Hospital Florence building */}
         <img
           src="/images/florence-building.jpg"
           alt="Hospital Florence"
@@ -161,14 +163,15 @@ export default function S01_Portada() {
         >
           <p style={{
             fontFamily: 'DM Serif Display, serif',
-            fontSize: 'clamp(1rem, 1.6vw, 1.35rem)',
-            color: 'white', margin: 0, lineHeight: 1.35,
+            fontSize: 'clamp(1rem, 1.6vw, 1.3rem)',
+            color: 'white', margin: 0, lineHeight: 1.4,
           }}>
-            "La experiencia sanitaria es,<br />
-            <span style={{ color: '#45C5BE' }}>ante todo, una experiencia emocional.</span>"
+            "Las palabras correctas,{' '}
+            <span style={{ color: '#45C5BE' }}>en el momento correcto,</span>{' '}
+            sanan tanto como los medicamentos."
           </p>
-          <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', marginTop: '6px', fontStyle: 'italic' }}>
-            Rodríguez Fuertes, A. (2018)
+          <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', marginTop: '6px', fontStyle: 'italic', margin: '6px 0 0' }}>
+            — Comunicación terapéutica en entornos de salud
           </p>
         </motion.div>
       </motion.div>

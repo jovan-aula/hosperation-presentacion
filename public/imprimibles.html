@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imprimibles — Taller Hosperation</title>
+  <title>Imprimibles — Comunicación Asertiva · Módulo 2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,7 +15,7 @@
       color: #0C2D4E;
     }
 
-    /* ── Screen navigation ── */
+    /* ── Screen nav ── */
     .screen-only {
       display: flex;
       flex-direction: column;
@@ -30,7 +30,7 @@
       font-size: 1.8rem;
       font-weight: 400;
     }
-    .screen-only p { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+    .screen-only p { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
     .btn-print {
       background: #45C5BE;
       color: #0C2D4E;
@@ -41,9 +41,7 @@
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      letter-spacing: 0.03em;
     }
-    .btn-print:hover { background: #2BA8A2; }
     .index-links {
       display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
     }
@@ -51,7 +49,7 @@
       color: #45C5BE; font-size: 0.85rem; text-decoration: underline; cursor: pointer;
     }
 
-    /* ── Sheet layout ── */
+    /* ── Sheet ── */
     .sheet {
       width: 210mm;
       min-height: 297mm;
@@ -63,462 +61,74 @@
       flex-direction: column;
     }
 
-    /* ── Branding header ── */
+    /* ── Brand header ── */
     .brand-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-bottom: 8px;
       border-bottom: 2px solid #45C5BE;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
-    .brand-header img { height: 28px; }
-    .brand-header .taller-label {
-      font-size: 0.65rem;
+    .brand-header img { height: 24px; filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); }
+    .brand-label {
+      font-size: 0.62rem;
       font-weight: 700;
       color: #45C5BE;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       text-align: right;
-      line-height: 1.4;
+      line-height: 1.5;
     }
-    .brand-header .taller-label span {
-      display: block;
-      color: #0C2D4E;
-      font-weight: 400;
-    }
+    .brand-label span { display: block; color: #0C2D4E; font-weight: 400; }
 
-    /* ── Activity badge ── */
     .badge {
       display: inline-block;
-      background: #0C2D4E;
-      color: white;
       border-radius: 100px;
       padding: 3px 14px;
-      font-size: 0.65rem;
-      font-weight: 700;
+      font-size: 0.62rem;
+      font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .badge.teal { background: #45C5BE; color: #0C2D4E; }
-    .badge.red { background: #E53E3E; color: white; }
+    .badge-navy { background: #0C2D4E; color: white; }
+    .badge-teal { background: #45C5BE; color: #0C2D4E; }
+    .badge-red  { background: #E53E3E; color: white; }
 
-    /* ── Sheet title ── */
     .sheet-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       font-weight: 400;
       color: #0C2D4E;
       line-height: 1.2;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
-    .sheet-subtitle {
-      font-size: 0.82rem;
+    .sheet-sub {
+      font-size: 0.8rem;
       color: #4a6581;
-      margin-bottom: 14px;
       line-height: 1.5;
+      margin-bottom: 14px;
     }
-
-    /* ────────────────────────────────────────
-       SHEET 1 — Dinámicas de apertura
-    ──────────────────────────────────────── */
-    .cases-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      flex: 1;
-    }
-    .cut-line {
-      position: absolute;
-      left: 50%;
-      top: 60px;
-      bottom: 14mm;
-      width: 0;
-      border-left: 1.5px dashed #a0b4c8;
-    }
-    .cut-label {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 4px 8px;
-      font-size: 0.6rem;
-      color: #a0b4c8;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .case-card {
-      padding: 14px 18px 14px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .case-card.right { padding-left: 22px; }
-
-    .case-team {
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 6px;
-      display: inline-block;
-      width: fit-content;
-    }
-    .case-team.navy { background: rgba(12,45,78,0.1); color: #0C2D4E; }
-    .case-team.teal { background: rgba(69,197,190,0.15); color: #1a8a84; }
-
-    .case-scenario {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.05rem;
-      color: #0C2D4E;
-      line-height: 1.25;
-    }
-
     .teal-bar {
-      width: 36px;
-      height: 3px;
+      width: 40px; height: 3px;
       background: #45C5BE;
       border-radius: 2px;
+      margin-bottom: 14px;
     }
-
-    .situation-box {
-      background: #f5f8fc;
-      border-left: 3px solid #0C2D4E;
-      border-radius: 0 8px 8px 0;
-      padding: 10px 12px;
+    .wline {
+      border-bottom: 1.5px solid #d1dde8;
+      min-height: 1.5rem;
+      margin-bottom: 6px;
     }
-    .situation-box p {
-      font-size: 0.78rem;
-      line-height: 1.6;
-      color: #2d4a62;
-    }
-
-    .question-box {
-      background: #0C2D4E;
-      border-radius: 8px;
-      padding: 10px 12px;
-    }
-    .question-box .q-label {
+    .box-label {
       font-size: 0.58rem;
       font-weight: 800;
-      color: #45C5BE;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 5px;
-    }
-    .question-box p {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.55;
-    }
-
-    .write-space {
-      border: 1.5px dashed #c5d8e8;
-      border-radius: 8px;
-      padding: 8px 10px;
-      flex: 1;
-      min-height: 70px;
-    }
-    .write-space .ws-label {
-      font-size: 0.58rem;
-      font-weight: 700;
       color: #a0b4c8;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 4px;
-    }
-
-    .steps-row {
-      display: flex;
-      gap: 6px;
       margin-bottom: 6px;
     }
-    .step-pill {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #EEF2F7;
-      border-radius: 8px;
-      padding: 5px 10px;
-      flex: 1;
-    }
-    .step-pill .num {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #0C2D4E;
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .step-pill .step-text {
-      font-size: 0.65rem;
-      color: #0C2D4E;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    /* ────────────────────────────────────────
-       SHEET 2 — La orquesta
-    ──────────────────────────────────────── */
-    .examples-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 14px;
-    }
-    .examples-table th {
-      background: #0C2D4E;
-      color: white;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 7px 12px;
-      text-align: left;
-      letter-spacing: 0.05em;
-    }
-    .examples-table td {
-      font-size: 0.78rem;
-      padding: 8px 12px;
-      border-bottom: 1px solid #e8eef4;
-      vertical-align: top;
-      line-height: 1.5;
-      color: #2d4a62;
-    }
-    .examples-table tr:nth-child(even) td { background: #f7fafc; }
-    .examples-table .instrument-tag {
-      display: inline-block;
-      background: rgba(69,197,190,0.15);
-      color: #1a8a84;
-      border-radius: 5px;
-      padding: 1px 8px;
-      font-weight: 700;
-      font-size: 0.7rem;
-    }
-
-    .steps-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .step-card {
-      border: 1.5px solid #dce8f0;
-      border-radius: 10px;
-      padding: 10px 12px;
-    }
-    .step-card .step-num {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: linear-gradient(135deg, #45C5BE, #2BA8A2);
-      color: white;
-      font-size: 0.8rem;
-      font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 6px;
-    }
-    .step-card .step-title {
-      font-size: 0.8rem; font-weight: 700; color: #0C2D4E;
-      margin-bottom: 2px;
-    }
-    .step-card .step-time {
-      font-size: 0.62rem; color: #45C5BE; font-weight: 700;
-      background: rgba(69,197,190,0.1);
-      border-radius: 5px; padding: 1px 7px;
-      display: inline-block; margin-bottom: 5px;
-    }
-    .step-card .step-desc {
-      font-size: 0.72rem; color: #4a6581; line-height: 1.5;
-    }
-
-    .key-question {
-      background: #0C2D4E;
-      border-radius: 10px;
-      padding: 12px 16px;
-      color: white;
-      font-size: 0.82rem;
-      line-height: 1.55;
-    }
-    .key-question strong { color: #45C5BE; }
-
-    .my-instrument {
-      border: 1.5px dashed #c5d8e8;
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-top: 10px;
-    }
-    .my-instrument .mi-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #a0b4c8;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-    .fill-row {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 8px;
-      align-items: baseline;
-    }
-    .fill-row label {
-      font-size: 0.72rem;
-      color: #0C2D4E;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .fill-line {
-      flex: 1;
-      border-bottom: 1px solid #c5d8e8;
-      height: 1rem;
-    }
-
-    /* ────────────────────────────────────────
-       HOJA 0 — Presentación personal
-    ──────────────────────────────────────── */
-    .pres-section {
-      border: 1.5px solid #dce8f0;
-      border-radius: 14px;
-      padding: 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .pres-section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .pres-num {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
-      color: white;
-    }
-    .pres-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .pres-hint {
-      font-size: 0.72rem;
-      color: #7a96b0;
-      font-style: italic;
-      margin-left: 44px;
-      line-height: 1.5;
-    }
-    .pres-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-left: 44px;
-    }
-    .pres-line {
-      border-bottom: 1.5px solid #c5d8e8;
-      min-height: 1.4rem;
-    }
-    .commitment-box {
-      background: #f5f8fc;
-      border-radius: 10px;
-      padding: 14px 16px;
-      border-left: 4px solid #45C5BE;
-    }
-    .commitment-box .cb-label {
-      font-size: 0.62rem;
-      font-weight: 800;
-      color: #45C5BE;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-    }
-    .commitment-box p {
-      font-size: 0.78rem;
-      color: #4a6581;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    /* ────────────────────────────────────────
-       SHEET 3 — Caso de manejo
-    ──────────────────────────────────────── */
-    .case-quote {
-      background: #fff5f5;
-      border: 2px solid rgba(229,62,62,0.25);
-      border-left: 5px solid #E53E3E;
-      border-radius: 0 12px 12px 0;
-      padding: 14px 18px;
-      margin-bottom: 14px;
-    }
-    .case-quote .who {
-      font-size: 0.62rem;
-      font-weight: 800;
-      color: #C53030;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 7px;
-    }
-    .case-quote blockquote {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      font-style: italic;
-      color: #0C2D4E;
-      line-height: 1.4;
-    }
-
-    .questions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .q-block {
-      border: 1.5px solid #e8eef4;
-      border-radius: 10px;
-      padding: 10px 12px;
-    }
-    .q-block .q-num {
-      width: 24px; height: 24px; border-radius: 50%;
-      background: #E53E3E;
-      color: white;
-      font-size: 0.72rem;
-      font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 6px;
-    }
-    .q-block p {
-      font-size: 0.78rem;
-      color: #2d4a62;
-      line-height: 1.5;
-      margin-bottom: 6px;
-    }
-    .q-block .answer-line {
-      border-bottom: 1px solid #dce8f0;
-      height: 1rem;
-      margin-bottom: 5px;
-    }
-
-    .takeaway {
-      background: rgba(12,45,78,0.05);
-      border: 1px solid rgba(12,45,78,0.12);
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-size: 0.8rem;
-      color: #0C2D4E;
-      font-weight: 600;
-      line-height: 1.55;
-      text-align: center;
-    }
-
-    /* ── Footer ── */
     .sheet-footer {
       margin-top: auto;
       padding-top: 10px;
@@ -527,19 +137,217 @@
       justify-content: space-between;
       align-items: center;
     }
-    .sheet-footer span {
-      font-size: 0.6rem;
-      color: #a0b4c8;
-    }
-    .sheet-footer .facilit {
-      font-weight: 600;
-      color: #0C2D4E;
-      font-size: 0.65rem;
-    }
+    .sheet-footer span { font-size: 0.6rem; color: #a0b4c8; }
+    .sheet-footer .facilit { font-weight: 700; color: #0C2D4E; font-size: 0.65rem; }
 
-    /* ────────────────────────────────────────
-       PRINT STYLES
-    ──────────────────────────────────────── */
+    /* ── Hoja A ── */
+    .dilema-scenario {
+      background: #0C2D4E;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+    }
+    .dilema-scenario .who {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: #45C5BE;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .dilema-scenario blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: white;
+      line-height: 1.45;
+    }
+    .option-card {
+      border: 1.5px solid #dce8f0;
+      border-radius: 12px;
+      padding: 11px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .option-letter {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 2px solid #0C2D4E;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; color: #0C2D4E;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .option-text {
+      font-size: 0.82rem;
+      color: #2d4a62;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .choose-bar {
+      background: rgba(69,197,190,0.08);
+      border: 1px solid rgba(69,197,190,0.3);
+      border-radius: 10px;
+      padding: 9px 14px;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .choose-bar p { font-size: 0.78rem; color: #0C2D4E; font-weight: 600; }
+
+    /* ── Hoja B ── */
+    .scale-circle {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid #c5d8e8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; color: #a0b4c8;
+    }
+    .frase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .frase-table th {
+      background: #0C2D4E;
+      color: white;
+      padding: 7px 10px;
+      text-align: left;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .frase-table td {
+      border-bottom: 1px solid #e8eef4;
+      padding: 0;
+      vertical-align: top;
+    }
+    .frase-table td:first-child {
+      padding: 10px;
+      font-weight: 700;
+      color: #0C2D4E;
+      font-size: 0.78rem;
+      background: #f7fafc;
+      border-right: 1px solid #e8eef4;
+      white-space: nowrap;
+    }
+    .frase-cell {
+      padding: 6px 8px;
+      min-height: 48px;
+      border-right: 1px solid #e8eef4;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .frase-cell:last-child { border-right: none; }
+    .frase-inner { border-bottom: 1px solid #dce8f0; min-height: 18px; }
+
+    /* ── Hoja C ── */
+    .mensaje-row {
+      display: grid;
+      grid-template-columns: 1fr 18px 1fr;
+      gap: 8px;
+      align-items: start;
+      margin-bottom: 9px;
+    }
+    .msg-reactivo {
+      background: #fff5f5;
+      border: 1.5px solid rgba(229,62,62,0.2);
+      border-left: 4px solid #E53E3E;
+      border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: #2d4a62;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .msg-arrow {
+      display: flex; align-items: center; justify-content: center;
+      padding-top: 10px;
+      color: #a0b4c8;
+      font-size: 1rem;
+    }
+    .msg-asertivo {
+      border: 1.5px dashed #a8d5d3;
+      border-radius: 8px;
+      padding: 8px 12px;
+      min-height: 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .msg-asertivo .inner-line {
+      border-bottom: 1px solid #d1dde8;
+      min-height: 16px;
+    }
+    .estructura-box {
+      background: rgba(69,197,190,0.08);
+      border: 1px solid rgba(69,197,190,0.3);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .estructura-box .e-label {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: #1a8a84;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .estructura-box p { font-size: 0.8rem; color: #0C2D4E; line-height: 1.5; }
+    .estructura-box strong { color: #1a8a84; }
+
+    /* ── Hoja D ── */
+    .caja-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .caja-box {
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .caja-box-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 800; color: white;
+      flex-shrink: 0;
+    }
+    .drpr-card {
+      background: #0C2D4E;
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .drpr-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .drpr-letter {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: #45C5BE;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .drpr-word { font-size: 0.82rem; font-weight: 700; color: white; }
+    .drpr-desc { font-size: 0.7rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+
     @media print {
       body { background: white; }
       .screen-only { display: none !important; }
@@ -550,400 +358,414 @@
         break-after: page;
       }
       .sheet:last-child { page-break-after: auto; break-after: auto; }
-
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
+      @page { size: A4 portrait; margin: 0; }
     }
-
     @media screen {
-      .sheet {
-        box-shadow: 0 4px 32px rgba(0,0,0,0.12);
-        border-radius: 4px;
-      }
+      .sheet { box-shadow: 0 4px 32px rgba(0,0,0,0.12); border-radius: 4px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Screen-only header -->
-  <div class="screen-only">
-    <h1>Imprimibles del Taller</h1>
-    <p>Profesionalización del Servicio Hospitalario · Hosperation + Aula Consultoría</p>
-    <button class="btn-print" onclick="window.print()">Imprimir todo (4 hojas)</button>
-    <div class="index-links">
-      <a onclick="document.getElementById('hoja0').scrollIntoView({behavior:'smooth'})">Hoja 1 — Presentación personal</a>
-      <a onclick="document.getElementById('hoja1a').scrollIntoView({behavior:'smooth'})">Hoja 2 — Caso A (Equipo Azul)</a>
-      <a onclick="document.getElementById('hoja1b').scrollIntoView({behavior:'smooth'})">Hoja 3 — Caso B (Equipo Verde)</a>
-      <a onclick="document.getElementById('hoja3').scrollIntoView({behavior:'smooth'})">Hoja 4 — Caso de manejo</a>
+<div class="screen-only">
+  <h1>Imprimibles — Módulo 2</h1>
+  <p>Comunicación Asertiva en la Atención Hospitalaria · Hosperation + Aula Consultoría</p>
+  <button class="btn-print" onclick="window.print()">Imprimir todo (4 hojas)</button>
+  <div class="index-links">
+    <a onclick="document.getElementById('hojaA').scrollIntoView({behavior:'smooth'})">A — Dilemas + Termómetro</a>
+    <a onclick="document.getElementById('hojaB').scrollIntoView({behavior:'smooth'})">B — Fraseología estandarizada</a>
+    <a onclick="document.getElementById('hojaC').scrollIntoView({behavior:'smooth'})">C — Los 7 mensajes</a>
+    <a onclick="document.getElementById('hojaD').scrollIntoView({behavior:'smooth'})">D — La Caja Asertiva</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     HOJA A — DILEMA DE APERTURA
+     Entregar antes de Slide 10 (Casos debate)
+═══════════════════════════════════════════════ -->
+<div class="sheet" id="hojaA">
+  <div class="brand-header">
+    <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" />
+    <div class="brand-label">
+      Ejercicio 1 · Slide ~10
+      <span>Comunicación Asertiva · Módulo 2</span>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       HOJA 0 — PRESENTACIÓN PERSONAL
-  ══════════════════════════════════════════ -->
-  <div class="sheet" id="hoja0">
-    <div class="brand-header">
-      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
-      <div class="taller-label">
-        Dinámica de inicio · 1–2 min por persona
-        <span>Profesionalización del Servicio Hospitalario</span>
-      </div>
+  <div class="badge badge-navy">Dilema de apertura</div>
+  <div class="sheet-title">Tres respuestas. Una situación real.</div>
+  <div class="sheet-sub">Lee el escenario. Circula la respuesta que darías honestamente — sin pensar en la "correcta". Nadie más ve tu hoja todavía.</div>
+  <div class="teal-bar"></div>
+
+  <div class="dilema-scenario">
+    <div class="who">El familiar llega a recepción y dice:</div>
+    <blockquote>"Llevo más de una hora esperando y nadie me dice nada sobre mi paciente. ¿Qué clase de hospital es este?"</blockquote>
+  </div>
+
+  <div class="option-card">
+    <div class="option-letter">A</div>
+    <div class="option-text">"Sí... un momento, déjeme ver..." (te alejas y no regresas de inmediato)</div>
+  </div>
+  <div class="option-card">
+    <div class="option-letter">B</div>
+    <div class="option-text">"Ya le avisaron que tiene que esperar. La información la maneja el médico, no nosotros."</div>
+  </div>
+  <div class="option-card">
+    <div class="option-letter">C</div>
+    <div class="option-text">"Entiendo que ha sido una espera difícil. Por protocolo, la información la gestiona el médico tratante — permítame orientarle cómo solicitarla ahora mismo."</div>
+  </div>
+
+  <div class="choose-bar">
+    <span style="font-size:1rem;">&#9998;</span>
+    <p>Circula tu opción. Luego escribe: <strong>¿por qué elegiste esa?</strong></p>
+  </div>
+  <div class="wline"></div>
+  <div class="wline" style="margin-bottom:16px;"></div>
+
+  <div class="badge badge-teal" style="margin-top:4px;">Segundo dilema</div>
+  <div class="sheet-title" style="font-size:1.25rem;">Tu colega llega tarde otra vez. Hoy afectó a un paciente.</div>
+  <div class="sheet-sub" style="margin-bottom:10px;">¿Qué haces?</div>
+
+  <div class="option-card">
+    <div class="option-letter">A</div>
+    <div class="option-text">No dices nada. Ya es costumbre y no quieres conflictos.</div>
+  </div>
+  <div class="option-card">
+    <div class="option-letter">B</div>
+    <div class="option-text">"Siempre lo mismo contigo — nunca cambias."</div>
+  </div>
+  <div class="option-card">
+    <div class="option-letter">C</div>
+    <div class="option-text">"Oye, hoy tu retraso afectó al paciente. ¿Qué pasó? Necesitamos platicarlo."</div>
+  </div>
+
+  <div class="choose-bar" style="margin-top:8px;">
+    <span style="font-size:1rem;">&#9998;</span>
+    <p>Circula tu opción. <strong>¿Cuál es la diferencia real entre B y C?</strong></p>
+  </div>
+  <div class="wline"></div>
+  <div class="wline"></div>
+
+  <!-- Termómetro asertivo — cierre de Hoja A -->
+  <div style="margin-top:18px; padding-top:14px; border-top:1.5px solid #e8eef4;">
+    <div class="badge badge-navy" style="margin-bottom:8px;">Termómetro asertivo · Individual · 3 min</div>
+    <div style="font-size:0.78rem; color:#4a6581; margin-bottom:10px;">Evalúate del 1 al 5. Esta sección es solo para ti.</div>
+
+    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; margin-bottom:5px;">
+      <div></div>
+      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">1</div>
+      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">2</div>
+      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">3</div>
+      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">4</div>
+      <div style="text-align:center; font-size:0.55rem; color:#a0b4c8; font-weight:700;">5</div>
+      <div style="font-size:0.55rem; color:#a0b4c8; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;">Pregunta para reflexionar</div>
     </div>
 
-    <div class="badge teal">Actividad de presentación</div>
-    <div class="sheet-title">Conociéndonos</div>
-    <div class="sheet-subtitle" style="margin-bottom:22px;">
-      Completa esta hoja antes de presentarte con el grupo.<br/>
-      Comparte cada punto en voz alta cuando sea tu turno.
+    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
+      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Tono de voz</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.64rem; color:#a0b4c8;">¿Cómo suenas cuando estás bajo presión?</div>
     </div>
-
-    <!-- Sección 1 — Nombre -->
-    <div class="pres-section" style="margin-bottom:14px; border-color: rgba(12,45,78,0.18);">
-      <div class="pres-section-header">
-        <div class="pres-num" style="background: #0C2D4E;">01</div>
-        <div>
-          <div class="pres-label" style="color:#0C2D4E;">Tu nombre</div>
-        </div>
-      </div>
-      <div class="pres-hint">¿Cómo te llamas y cómo prefieres que te llamen?</div>
-      <div class="pres-lines">
-        <div class="pres-line"></div>
-      </div>
+    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
+      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Postura y gestos</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.64rem; color:#a0b4c8;">¿Tu cuerpo comunica apertura o tensión?</div>
     </div>
-
-    <!-- Sección 2 — Actividad -->
-    <div class="pres-section" style="margin-bottom:14px; border-color: rgba(69,197,190,0.35);">
-      <div class="pres-section-header">
-        <div class="pres-num" style="background: #2BA8A2;">02</div>
-        <div>
-          <div class="pres-label" style="color:#2BA8A2;">Tu actividad en el hospital</div>
-        </div>
-      </div>
-      <div class="pres-hint">¿En qué área trabajas y qué haces día a día?</div>
-      <div class="pres-lines">
-        <div class="pres-line"></div>
-        <div class="pres-line"></div>
-      </div>
+    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
+      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Claridad del mensaje</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.64rem; color:#a0b4c8;">¿Dices lo que quieres decir, sin rodeos?</div>
     </div>
-
-    <!-- Sección 3 — Compromiso -->
-    <div class="pres-section" style="flex:1; border-color: rgba(69,197,190,0.35); border-width: 2px;">
-      <div class="pres-section-header">
-        <div class="pres-num" style="background: linear-gradient(135deg, #45C5BE, #2BA8A2);">03</div>
-        <div>
-          <div class="pres-label" style="color:#1a8a84;">Mi compromiso en esta capacitación</div>
-        </div>
-      </div>
-      <div class="pres-hint">¿Qué esperas llevarte? ¿Qué quieres mejorar o aprender?</div>
-
-      <div class="commitment-box" style="margin-left:44px;">
-        <div class="cb-label">Para reflexionar antes de escribir</div>
-        <p>
-          Piensa en una situación reciente con un paciente o compañero que no salió como esperabas.
-          ¿Qué habrías hecho diferente? Eso puede ser tu compromiso de hoy.
-        </p>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="pres-line"></div>
-          <div class="pres-line"></div>
-          <div class="pres-line"></div>
-          <div class="pres-line"></div>
-        </div>
-      </div>
+    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; padding-bottom:5px; border-bottom:1px solid #f0f4f8; margin-bottom:5px;">
+      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Empatía activa</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.64rem; color:#a0b4c8;">¿Reconoces lo que siente el otro antes de responder?</div>
     </div>
-
-    <!-- Firma del compromiso -->
-    <div style="margin-top:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px;">
-      <div style="flex:1;">
-        <div style="font-size:0.6rem; font-weight:700; color:#a0b4c8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">
-          Firma
-        </div>
-        <div style="border-bottom: 1.5px solid #c5d8e8; height:1.6rem;"></div>
-      </div>
-      <div style="flex:1;">
-        <div style="font-size:0.6rem; font-weight:700; color:#a0b4c8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">
-          Fecha
-        </div>
-        <div style="border-bottom: 1.5px solid #c5d8e8; height:1.6rem;"></div>
-      </div>
-      <div style="flex:2;">
-        <div style="font-size:0.6rem; font-weight:700; color:#a0b4c8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">
-          Hospital / Institución
-        </div>
-        <div style="border-bottom: 1.5px solid #c5d8e8; height:1.6rem;"></div>
-      </div>
+    <div style="display:grid; grid-template-columns:160px repeat(5,24px) 1fr; gap:5px; align-items:center; margin-bottom:8px;">
+      <div style="font-size:0.78rem; font-weight:600; color:#0C2D4E;">Ritmo al hablar</div>
+      <div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div><div class="scale-circle"></div>
+      <div style="font-size:0.64rem; color:#a0b4c8;">¿Hablas muy rápido cuando estás nervioso?</div>
     </div>
-
-    <div class="sheet-footer" style="margin-top:16px;">
-      <span>Profesionalización del Servicio Hospitalario · Hosperation + Aula Consultoría</span>
-      <span class="facilit">Mtro. Jován Naranjo</span>
+    <div style="background:#f5f8fc; border-radius:8px; padding:8px 12px;">
+      <div class="box-label">El elemento en que quiero enfocarme hoy</div>
+      <div class="wline"></div>
     </div>
   </div>
 
+  <div class="sheet-footer" style="margin-top:14px;">
+    <span>Comparte tu respuesta solo cuando el facilitador lo indique</span>
+    <span class="facilit">Mtro. Jován Naranjo</span>
+  </div>
+</div>
 
-  <!-- ══════════════════════════════════════════
-       HOJA 1A — CASO A (EQUIPO AZUL)
-  ══════════════════════════════════════════ -->
-  <div class="sheet" id="hoja1a">
-    <div class="brand-header">
-      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
-      <div class="taller-label">
-        Dinámica de apertura · 8 minutos en equipo
-        <span>Profesionalización del Servicio Hospitalario</span>
-      </div>
-    </div>
 
-    <!-- Instrucción de equipo -->
-    <div style="background:#f0f6ff; border-radius:10px; padding:10px 16px; margin-bottom:14px; display:flex; align-items:center; gap:12px;">
-      <div style="font-size:1.3rem; flex-shrink:0;">👥</div>
-      <p style="font-size:0.8rem; color:#0C2D4E; font-weight:600; line-height:1.5; margin:0;">
-        Lean el caso en equipo, discútanlo y lleguen a una postura colectiva.<br/>
-        <span style="font-weight:400; color:#4a6581;">No hay respuesta correcta — lo que importa es el razonamiento detrás de su decisión.</span>
-      </p>
-    </div>
-
-    <!-- Caso -->
-    <div>
-      <span class="case-team navy" style="margin-bottom:8px; display:inline-block;">Equipo Azul — personal de salud en turno</span>
-      <div class="badge" style="display:block; width:fit-content; margin-bottom:6px;">Caso A</div>
-      <div class="case-scenario" style="font-size:1.3rem; margin-bottom:4px;">El turno que no fue tuyo</div>
-      <div class="teal-bar" style="margin-bottom:12px;"></div>
-    </div>
-
-    <div class="situation-box" style="padding:12px 16px; margin-bottom:8px;">
-      <p style="font-size:0.88rem; line-height:1.7;">
-        Al inicio de tu turno recibes a un paciente frustrado. Ayer le explicaron su procedimiento
-        de una forma; hoy otro médico le dijo algo completamente diferente. No sabe a quién creerle.
-        Revisas el expediente — ambas versiones tienen algo de verdad, pero nadie coordinó el mensaje.
-        El paciente te mira y pregunta: "¿Me pueden decir la verdad de una vez?"
-      </p>
-    </div>
-
-    <!-- Experiencia emocional -->
-    <div style="border-left:3px solid #0C2D4E; background:rgba(12,45,78,0.04); border-radius:0 8px 8px 0; padding:8px 12px; margin-bottom:12px;">
-      <div style="font-size:0.6rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:3px;">El paciente en este momento siente</div>
-      <p style="font-size:0.78rem; color:#2d4a62; font-style:italic; margin:0; line-height:1.5;">Confusión · Desconfianza · Sensación de que nadie está realmente a cargo</p>
-    </div>
-
-    <!-- Preguntas de análisis -->
-    <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
-      Analicen en equipo — respondan las tres preguntas
-    </div>
-    <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:12px;">
-      <div class="q-block" style="border-color:#c5d8e8;">
-        <div class="q-num" style="background:#0C2D4E;">1</div>
-        <p style="font-weight:700; color:#0C2D4E;">¿Cómo responden sin desacreditar a ninguno de sus colegas?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block" style="border-color:#c5d8e8;">
-        <div class="q-num" style="background:#0C2D4E;">2</div>
-        <p style="font-weight:700; color:#0C2D4E;">¿De quién es la responsabilidad cuando el mensaje del equipo no es consistente?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block" style="border-color:#c5d8e8;">
-        <div class="q-num" style="background:#0C2D4E;">3</div>
-        <p style="font-weight:700; color:#0C2D4E;">¿Qué le dicen concretamente para que recupere la confianza en el hospital?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-    </div>
-
-    <!-- Postura del equipo + disenso -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-      <div style="border:1.5px dashed #c5d8e8; border-radius:10px; padding:10px 12px;">
-        <div style="font-size:0.62rem; color:#0C2D4E; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Postura del equipo</div>
-        <div class="answer-line"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-      </div>
-      <div style="border:1.5px dashed #e8c5c5; border-radius:10px; padding:10px 12px; background:#fff8f8;">
-        <div style="font-size:0.62rem; color:#c53030; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">¿Alguien pensó diferente? ¿Por qué?</div>
-        <div class="answer-line"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-      </div>
-    </div>
-
-    <div class="sheet-footer" style="margin-top:12px;">
-      <span>El disenso dentro del equipo también es valioso — anótenlo, no lo ignoren</span>
-      <span class="facilit">Mtro. Jován Naranjo</span>
+<!-- ═══════════════════════════════════════════════
+     HOJA B — FRASEOLOGÍA ESTANDARIZADA
+     Usar en: Slide ~22 (Actividad Fraseología)
+═══════════════════════════════════════════════ -->
+<div class="sheet" id="hojaB">
+  <div class="brand-header">
+    <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" />
+    <div class="brand-label">
+      Ejercicio 2 · Hoja B
+      <span>Comunicación Asertiva · Módulo 2</span>
     </div>
   </div>
 
+  <div class="badge badge-teal">En equipos · 10 min</div>
+  <div class="sheet-title">Fraseología estandarizada</div>
+  <div class="sheet-sub">
+    Creen frases asertivas de <strong>bienvenida</strong>, <strong>despedida</strong> y <strong>cómo contestar el teléfono</strong> para cada área.<br/>
+    Deben sonar naturales — no robóticas. Piensen en cómo quisieran ser atendidos.
+  </div>
+  <div class="teal-bar"></div>
 
-  <!-- ══════════════════════════════════════════
-       HOJA 1B — CASO B (EQUIPO VERDE)
-  ══════════════════════════════════════════ -->
-  <div class="sheet" id="hoja1b">
-    <div class="brand-header">
-      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
-      <div class="taller-label">
-        Dinámica de apertura · 8 minutos en equipo
-        <span>Profesionalización del Servicio Hospitalario</span>
-      </div>
-    </div>
+  <table class="frase-table" style="flex:1;">
+    <thead>
+      <tr>
+        <th style="width:100px;">Área</th>
+        <th>Bienvenida</th>
+        <th>Despedida</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:14px 10px;">Enfermería</td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+      </tr>
+      <tr>
+        <td style="padding:14px 10px;">Recepción</td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+      </tr>
+      <tr>
+        <td style="padding:14px 10px;">Seguridad</td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+      </tr>
+      <tr>
+        <td style="padding:14px 10px;">Farmacia</td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+      </tr>
+      <tr>
+        <td style="padding:14px 10px; border-bottom:none;">Mi área</td>
+        <td style="border-bottom:none;"><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td style="border-bottom:none;"><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+        <td style="border-bottom:none;"><div class="frase-cell" style="min-height:64px;"><div class="frase-inner"></div><div class="frase-inner"></div><div class="frase-inner"></div></div></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- Instrucción de equipo -->
-    <div style="background:#f0fafa; border-radius:10px; padding:10px 16px; margin-bottom:14px; display:flex; align-items:center; gap:12px;">
-      <div style="font-size:1.3rem; flex-shrink:0;">👥</div>
-      <p style="font-size:0.8rem; color:#1a6b67; font-weight:600; line-height:1.5; margin:0;">
-        Lean el caso en equipo, discútanlo y lleguen a una postura colectiva.<br/>
-        <span style="font-weight:400; color:#4a6581;">No hay respuesta correcta — lo que importa es el razonamiento detrás de su decisión.</span>
-      </p>
-    </div>
+  <div style="background:rgba(69,197,190,0.06); border:1px solid rgba(69,197,190,0.25); border-radius:10px; padding:10px 14px; margin-top:14px;">
+    <div class="box-label">La frase que el equipo eligió como favorita y por qué</div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+  </div>
 
-    <!-- Caso -->
-    <div>
-      <span class="case-team teal" style="margin-bottom:8px; display:inline-block;">Equipo Verde — equipo del hospital</span>
-      <div class="badge teal" style="display:block; width:fit-content; margin-bottom:6px;">Caso B</div>
-      <div class="case-scenario" style="font-size:1.3rem; margin-bottom:4px;">La regla y el ser humano</div>
-      <div style="display:inline-block; background:rgba(69,197,190,0.12); border-radius:6px; padding:2px 10px; font-size:0.68rem; font-weight:700; color:#1a8a84; margin-bottom:8px;">
-        ⚡ Protocolo institucional vs. atención humanizada
-      </div>
-      <div class="teal-bar" style="margin-bottom:12px;"></div>
-    </div>
+  <div class="sheet-footer" style="margin-top:12px;">
+    <span>Cada equipo comparte sus mejores frases con el grupo</span>
+    <span class="facilit">Mtro. Jován Naranjo</span>
+  </div>
+</div>
 
-    <div class="situation-box" style="padding:12px 16px; border-left-color:#45C5BE; margin-bottom:8px;">
-      <p style="font-size:0.88rem; line-height:1.7;">
-        Una paciente de 78 años, post-operada, llora y dice tener miedo de estar sola.
-        El protocolo es claro: visitas solo de 3 a 5 p.m. Son las 7 a.m. Su hija llama
-        desesperada. Tu jefa acaba de salir de la sala y fue explícita: nadie entra fuera de horario.
-      </p>
-    </div>
 
-    <!-- Experiencia emocional -->
-    <div style="border-left:3px solid #2BA8A2; background:rgba(69,197,190,0.06); border-radius:0 8px 8px 0; padding:8px 12px; margin-bottom:12px;">
-      <div style="font-size:0.6rem; font-weight:800; color:#1a6b67; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:3px;">El paciente en este momento siente</div>
-      <p style="font-size:0.78rem; color:#2d4a62; font-style:italic; margin:0; line-height:1.5;">Miedo · Soledad · Vulnerabilidad — está en un lugar desconocido, con dolor, sin su familia</p>
-    </div>
-
-    <!-- Preguntas de análisis -->
-    <div style="font-size:0.65rem; font-weight:800; color:#1a6b67; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
-      Analicen en equipo — respondan las tres preguntas
-    </div>
-    <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:12px;">
-      <div class="q-block" style="border-color:#a8d5d3;">
-        <div class="q-num" style="background:#2BA8A2;">1</div>
-        <p style="font-weight:700; color:#1a6b67;">¿Qué está sintiendo esta paciente en este momento? Descríbanlo con detalle.</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block" style="border-color:#a8d5d3;">
-        <div class="q-num" style="background:#2BA8A2;">2</div>
-        <p style="font-weight:700; color:#1a6b67;">Si no pueden dejar entrar a la hija, ¿qué palabras concretas le dirían a la paciente para que se sienta menos sola?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block" style="border-color:#a8d5d3;">
-        <div class="q-num" style="background:#2BA8A2;">3</div>
-        <p style="font-weight:700; color:#1a6b67;">¿Qué diferencia haría en su experiencia que alguien se sentara dos minutos con ella antes de continuar?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-    </div>
-
-    <!-- Postura del equipo + disenso -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-      <div style="border:1.5px dashed #a8d5d3; border-radius:10px; padding:10px 12px;">
-        <div style="font-size:0.62rem; color:#1a6b67; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Postura del equipo</div>
-        <div class="answer-line"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-      </div>
-      <div style="border:1.5px dashed #e8c5c5; border-radius:10px; padding:10px 12px; background:#fff8f8;">
-        <div style="font-size:0.62rem; color:#c53030; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">¿Alguien pensó diferente? ¿Por qué?</div>
-        <div class="answer-line"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-        <div class="answer-line" style="margin-top:8px;"></div>
-      </div>
-    </div>
-
-    <div class="sheet-footer" style="margin-top:12px;">
-      <span>El disenso dentro del equipo también es valioso — anótenlo, no lo ignoren</span>
-      <span class="facilit">Mtro. Jován Naranjo</span>
+<!-- ═══════════════════════════════════════════════
+     HOJA C — LOS 7 MENSAJES
+     Usar en: Slide 29 (Actividad Mensaje)
+═══════════════════════════════════════════════ -->
+<div class="sheet" id="hojaC">
+  <div class="brand-header">
+    <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" />
+    <div class="brand-label">
+      Ejercicio cierre · Parte 1
+      <span>Comunicación Asertiva · Módulo 2</span>
     </div>
   </div>
 
+  <div class="badge badge-red">En equipos · 10 min</div>
+  <div class="sheet-title">Del mensaje reactivo al mensaje asertivo</div>
+  <div class="sheet-sub">Transforma cada frase. Busca respuestas que sean claras, respetuosas y orientadas a solución.</div>
+  <div class="teal-bar"></div>
 
-  <!-- ══════════════════════════════════════════
-       HOJA 3 — CASO DE MANEJO
-  ══════════════════════════════════════════ -->
-  <div class="sheet" id="hoja3">
-    <div class="brand-header">
-      <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" style="filter: invert(1) sepia(1) saturate(3) hue-rotate(170deg); height:24px;" />
-      <div class="taller-label">
-        Ejercicio práctico · 10 minutos en grupos
-        <span>Profesionalización del Servicio Hospitalario</span>
-      </div>
-    </div>
+  <div class="estructura-box">
+    <div class="e-label">Estructura</div>
+    <p><strong>Entiendo</strong> (reconoces) + <strong>explico</strong> (informas con claridad) + <strong>oriento</strong> (das el siguiente paso)</p>
+  </div>
 
-    <div class="badge red">Ejercicio práctico</div>
-    <div class="sheet-title">Caso de manejo</div>
-    <div class="sheet-subtitle">
-      Un paciente o familiar dice algo difícil. ¿Cómo respondes? Analicen juntos el escenario.
-    </div>
+  <div style="display:grid; grid-template-columns:1fr 18px 1fr; gap:8px; margin-bottom:6px; padding:0 2px;">
+    <div style="font-size:0.6rem; font-weight:800; color:#E53E3E; text-transform:uppercase; letter-spacing:0.08em;">Frase reactiva</div>
+    <div></div>
+    <div style="font-size:0.6rem; font-weight:800; color:#1a8a84; text-transform:uppercase; letter-spacing:0.08em;">Tu versión asertiva</div>
+  </div>
 
-    <!-- Cita -->
-    <div class="case-quote">
-      <div class="who">El paciente / familiar dice:</div>
-      <blockquote>"Llevo más de una hora esperando y nadie me explica nada. Esto es una falta de respeto."</blockquote>
-    </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"Eso no se puede."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"Ya se le explicó."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"Tiene que esperar."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"Esa no es mi área."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"No puedo hacer nada."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"Usted está mal."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
+  <div class="mensaje-row">
+    <div class="msg-reactivo">"Tiene que calmarse."</div>
+    <div class="msg-arrow">→</div>
+    <div class="msg-asertivo"><div class="inner-line"></div><div class="inner-line"></div></div>
+  </div>
 
-    <!-- Preguntas -->
-    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
-      Analicen en equipo — respondan cada pregunta
-    </div>
-    <div class="questions-grid">
-      <div class="q-block">
-        <div class="q-num">1</div>
-        <p>¿Qué siente probablemente esta persona en este momento?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block">
-        <div class="q-num">2</div>
-        <p>¿Cuál sería una respuesta inmediata que muestre presencia y empatía?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block">
-        <div class="q-num">3</div>
-        <p>¿Qué información concreta puedes ofrecer aunque no tengas la solución?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-      <div class="q-block">
-        <div class="q-num">4</div>
-        <p>¿Cómo cierras la interacción de manera que la persona se sienta atendida?</p>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-        <div class="answer-line"></div>
-      </div>
-    </div>
+  <div style="background:#f5f8fc; border:1px solid #dce8f0; border-radius:10px; padding:10px 14px; margin-top:10px;">
+    <div class="box-label">La frase que más usamos en nuestro equipo y queremos cambiar</div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+  </div>
 
-    <!-- Propuesta de respuesta del equipo -->
-    <div style="font-size:0.7rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">
-      Nuestra respuesta propuesta (escríbanla aquí)
-    </div>
-    <div style="border: 1.5px dashed #c5d8e8; border-radius:10px; padding:12px 14px; min-height:80px; margin-bottom:12px;"></div>
+  <div class="sheet-footer" style="margin-top:12px;">
+    <span>Cada equipo comparte su transformación más creativa</span>
+    <span class="facilit">Mtro. Jován Naranjo</span>
+  </div>
+</div>
 
-    <!-- Frase de cierre -->
-    <div class="takeaway">
-      "Responder bien no siempre significa resolver de inmediato — también implica
-      <em>informar, contener, orientar y dar seguimiento.</em>"
-    </div>
 
-    <div class="sheet-footer">
-      <span>Después de 10 minutos, comparten su respuesta propuesta con el grupo</span>
-      <span class="facilit">Mtro. Jován Naranjo</span>
+<!-- ═══════════════════════════════════════════════
+     HOJA D — LA CAJA ASERTIVA
+     Usar en: Slide 31 (Actividad Caja)
+═══════════════════════════════════════════════ -->
+<div class="sheet" id="hojaD">
+  <div class="brand-header">
+    <img src="/logo-sin-fondo.png" alt="Hosperation + Aula" />
+    <div class="brand-label">
+      Ejercicio cierre · Parte 2
+      <span>Comunicación Asertiva · Módulo 2</span>
     </div>
   </div>
+
+  <div class="badge badge-navy">Individual · 10 min</div>
+  <div class="sheet-title">La Caja Asertiva</div>
+  <div class="sheet-sub">Elige una situación difícil que hayas vivido. Construye tu respuesta usando los cuatro elementos.</div>
+  <div class="teal-bar"></div>
+
+  <div style="margin-bottom:14px;">
+    <div class="box-label" style="margin-bottom:6px;">Mi situación (descríbela en una línea)</div>
+    <div class="wline" style="margin-bottom:4px;"></div>
+    <div style="font-size:0.7rem; color:#4a6581; font-style:italic;">
+      Sugerencias: un familiar enojado · un colega que no escucha · un paciente que no coopera · una instrucción difícil de cumplir
+    </div>
+  </div>
+
+  <div class="caja-grid" style="flex:1;">
+    <div class="caja-box" style="background:#f0f6fb; border:1.5px solid #c5d8e8;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="caja-box-num" style="background:#0C2D4E;">1</div>
+        <div style="font-size:0.82rem; font-weight:800; color:#0C2D4E;">Lo que observo</div>
+      </div>
+      <div style="font-size:0.7rem; color:#6B8FA8; line-height:1.4; margin-bottom:4px;">Describe sin juzgar ni interpretar.</div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+
+    <div class="caja-box" style="background:#f0fbfa; border:1.5px solid #a8d5d3;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="caja-box-num" style="background:#2BA8A2;">2</div>
+        <div style="font-size:0.82rem; font-weight:800; color:#1a6b67;">Lo que entiendo</div>
+      </div>
+      <div style="font-size:0.7rem; color:#2BA8A2; line-height:1.4; margin-bottom:4px;">Reconoce la emoción o necesidad.</div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+
+    <div class="caja-box" style="background:#fff8f4; border:1.5px solid #f0c5a8;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="caja-box-num" style="background:#d97706;">3</div>
+        <div style="font-size:0.82rem; font-weight:800; color:#92400e;">Lo que puedo hacer</div>
+      </div>
+      <div style="font-size:0.7rem; color:#b45309; line-height:1.4; margin-bottom:4px;">¿Qué sí puedes resolver u orientar?</div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+
+    <div class="caja-box" style="background:#f5f0ff; border:1.5px solid #c4b5fd;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="caja-box-num" style="background:#7c3aed;">4</div>
+        <div style="font-size:0.82rem; font-weight:800; color:#5b21b6;">Lo que comunico</div>
+      </div>
+      <div style="font-size:0.7rem; color:#7c3aed; line-height:1.4; margin-bottom:4px;">Tu respuesta: respetuosa, clara, calmada.</div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+  </div>
+
+  <div style="font-size:0.65rem; font-weight:800; color:#0C2D4E; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; margin-top:14px;">
+    Antes de responder — Fórmula DRPR
+  </div>
+  <div class="drpr-card">
+    <div class="drpr-item">
+      <div class="drpr-letter">D</div>
+      <div>
+        <div class="drpr-word">Detente</div>
+        <div class="drpr-desc">No respondas en automático. Haz una pausa.</div>
+      </div>
+    </div>
+    <div class="drpr-item">
+      <div class="drpr-letter">R</div>
+      <div>
+        <div class="drpr-word">Respira</div>
+        <div class="drpr-desc">Una respiración baja la tensión.</div>
+      </div>
+    </div>
+    <div class="drpr-item">
+      <div class="drpr-letter">P</div>
+      <div>
+        <div class="drpr-word">Presta atención</div>
+        <div class="drpr-desc">¿Qué necesita realmente esta persona?</div>
+      </div>
+    </div>
+    <div class="drpr-item">
+      <div class="drpr-letter">R</div>
+      <div>
+        <div class="drpr-word">Responde</div>
+        <div class="drpr-desc">Desde la caja, no desde la emoción.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer" style="margin-top:14px;">
+    <span>Guarda esta hoja — es tu referencia cuando enfrentes situaciones difíciles</span>
+    <span class="facilit">Mtro. Jován Naranjo</span>
+  </div>
+</div>
 
 </body>
 </html>

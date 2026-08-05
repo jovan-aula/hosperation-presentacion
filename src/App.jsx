@@ -5,72 +5,59 @@ import Navigation from './components/Navigation'
 import './index.css'
 
 import S01 from './slides/S01_Portada'
-import S02 from './slides/S02_QuienesSomos'
-import S03 from './slides/S03_Bio'
-import S04 from './slides/S04_PropositoGeneral'
-import S04b from './slides/S04b_ActividadPresentacion'
-import S04c from './slides/S04c_CompromisoCialdini'
-import S05 from './slides/S05_DatosDuros'
-import S06 from './slides/S06_Objetivos'
-import S07 from './slides/S07_ReglasDelJuego'
-import S07b from './slides/S07b_DinamicaApertura'
-import S08 from './slides/S08_PreguntaApertura'
-import S09 from './slides/S09_QueesProfesional'
-import S09b from './slides/S09b_ProfesionistaVsProfesional'
-import S10 from './slides/S10_CumplirVsProfesionalizar'
-import S11 from './slides/S11_QueesProfesionalizar'
-import S12 from './slides/S12_PorQueImportaHospital'
-import S13 from './slides/S13_ElPacienteDeHoy'
-import S13b from './slides/S13b_VozDelPaciente'
-import S13c from './slides/S13c_ActividadResenas'
-import S14 from './slides/S14_FraseERMI'
-import S15 from './slides/S15_OchoPasos'
-import S16 from './slides/S16_HospitalAcronimo'
-import S17 from './slides/S17_QueEsHospitalidad'
-import S18 from './slides/S18_ComoSeIntegra'
-import S19 from './slides/S19_AQuienAtendemos'
-import S21 from './slides/S21_MomentosDeVerdad'
-import S21a from './slides/S21a_MomentosYDolor'
-import S21b from './slides/S21b_PatientJourneyMap'
-import S22 from './slides/S22_ComunicacionProfesional'
-import S23 from './slides/S23_CostoDeComunicar'
-import S24 from './slides/S24_EmpatiaProf'
-import S25 from './slides/S25_EmpatiaYAdherencia'
-import S25_StroopInstruccion from './slides/S25_StroopInstruccion'
-import { StroopP1, StroopP2, StroopP3, StroopP4, StroopP5, StroopP6, StroopP7, StroopP8, StroopP9, StroopP10 } from './slides/S25_StroopPalabras'
-import S25_StroopB from './slides/S25_StroopB_Revela'
-import S25_MartilloA from './slides/S25_MartilloA_Calculo'
-import S25_MartilloB from './slides/S25_MartilloB_Pregunta'
-import S25_MartilloC from './slides/S25_MartilloC_Revela'
-import S25b from './slides/S25b_JornadaEmocional'
-import S25c from './slides/S25c_ParadojaSatisfaccion'
-import S25d from './slides/S25d_PeakEndRule'
-import S26 from './slides/S26_ConductasConfianza'
-import S26b from './slides/S26b_MetodoPECP'
-import S27 from './slides/S27_ConductasDestruyen'
-import S28 from './slides/S28_PequenosDetalles'
-import S28b from './slides/S28b_PoderDelNombre'
-import S29 from './slides/S29_ModeloFlorence'
-import S30 from './slides/S30_EstandaresFlorence'
-import S31 from './slides/S31_EjercicioPractico'
-import S32 from './slides/S32_MiCompromiso'
-import S33 from './slides/S33_FraseCierre'
-import S34 from './slides/S34_Referencias'
-import S35 from './slides/S35_Portada_Cierre'
+import S02 from './slides/S02_Objetivo'
+import S02b from './slides/S02b_Pregunta1'
+import S02c from './slides/S02c_Pregunta2'
+import S02d from './slides/S02d_DatosDuros'
+import S02e from './slides/S02e_CasosDebate'
+import S02f from './slides/S02c_Etimologia'
+import S03 from './slides/S03_OchoMalentendidos'
+import S04 from './slides/S04_Video'
+import S05 from './slides/S05_FraseJimRohn'
+import S06 from './slides/S06_PorQueImportante'
+import S07 from './slides/S07_Definicion'
+import S08 from './slides/S08_TiposComunicacion'
+import S09 from './slides/S09_ElementosEsenciales'
+import S10 from './slides/S10_ActividadFraseologia'
+import S11 from './slides/S11_TipsTitle'
+import S12 from './slides/S12_Postura'
+import S13 from './slides/S13_ExpresionClara'
+import S14 from './slides/S14_EmpatiaRespeto'
+import S15 from './slides/S15_CapacitacionContinua'
+import S16 from './slides/S16_PronunciacionTono'
+import S17 from './slides/S17_Tecnicas'
+import S18 from './slides/S18_TensionHablar'
+import S19 from './slides/S19_FraseCovey'
+import S20 from './slides/S20_Recuerda'
+import S21 from './slides/S21_ActividadMensaje'
+import S22 from './slides/S22_EjemplosTitle'
+import S23 from './slides/S23_Ejemplo1'
+import S24 from './slides/S24_Ejemplo2'
+import S25 from './slides/S25_Ejemplo3'
+import S26 from './slides/S26_FraseNishan'
+import S27 from './slides/S27_FormulaDRPR'
+import S28 from './slides/S28_CajaTitle'
+import S29 from './slides/S29_ActividadCaja'
+import S30 from './slides/S30_EjemploCaja'
+import S31 from './slides/S31_PortadaCierre'
 
-// 42 slides total
 const slides = [
-  S01, S02, S03, S04, S04b, S04c, S05, S06, S07, S07b,
-  S08, S09, S09b, S10, S11, S12, S13, S13b, S13c, S14,
-  S15, S16, S17, S18, S19, S21, S21a, S21b,
-  S22, S23, S24, S25,
-  S25_StroopInstruccion,
-  StroopP1, StroopP2, StroopP3, StroopP4, StroopP5,
-  StroopP6, StroopP7, StroopP8, StroopP9, StroopP10,
-  S25_StroopB,
-  S25_MartilloA, S25_MartilloB, S25_MartilloC,
-  S25b, S25c, S25d, S26, S26b, S27,
-  S28, S28b, S29, S30, S31, S32, S33, S34, S35,
+  // BLOQUE 1 — Enganche + Fundamento (slides 1-8)
+  S01, S02, S02b, S02f, S07, S06, S02d, S08,
+  // EJERCICIO 1 — Casos debate (slide 9) · Hoja A
+  S02e,
+  // EJERCICIO 2 parte 1 — Elementos + termómetro (slide 10) · Hoja B
+  S09,
+  // BLOQUE 2 — Comprensión + Herramientas (slides 11-21)
+  S03, S02c, S04, S05, S11, S12, S13, S14, S16, S17, S18,
+  // EJERCICIO 2 — Fraseología (~slide 22)
+  S10,
+  // BLOQUE 3 — DRPR + Ejemplos (slides 23-28)
+  S27, S19, S22, S23, S24, S25,
+  // EJERCICIO CIERRE — Mensajes + Caja (slides 29-32)
+  S21, S28, S29, S30,
+  // Cierre (slides 33-36)
+  S26, S15, S20, S31,
 ]
 
 export default function App() {
@@ -78,29 +65,17 @@ export default function App() {
   const [direction, setDirection] = useState(1)
 
   const goNext = useCallback(() => {
-    if (current < slides.length - 1) {
-      setDirection(1)
-      setCurrent(c => c + 1)
-    }
+    if (current < slides.length - 1) { setDirection(1); setCurrent(c => c + 1) }
   }, [current])
 
   const goPrev = useCallback(() => {
-    if (current > 0) {
-      setDirection(-1)
-      setCurrent(c => c - 1)
-    }
+    if (current > 0) { setDirection(-1); setCurrent(c => c - 1) }
   }, [current])
 
   useEffect(() => {
     const handler = (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
-        e.preventDefault()
-        goNext()
-      }
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault()
-        goPrev()
-      }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goNext() }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goPrev() }
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
@@ -109,19 +84,13 @@ export default function App() {
   const SlideComponent = slides[current]
 
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', background: '#0C2D4E' }}>
+    <div style={{ width:'100vw', height:'100vh', overflow:'hidden', position:'relative', background:'#0C2D4E' }}>
       <AnimatePresence mode="wait" custom={direction}>
         <SlideWrapper key={current} direction={direction}>
           <SlideComponent />
         </SlideWrapper>
       </AnimatePresence>
-
-      <Navigation
-        current={current}
-        total={slides.length}
-        onPrev={goPrev}
-        onNext={goNext}
-      />
+      <Navigation current={current} total={slides.length} onPrev={goPrev} onNext={goNext} />
     </div>
   )
 }
