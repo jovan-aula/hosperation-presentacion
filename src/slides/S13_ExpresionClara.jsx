@@ -6,10 +6,10 @@ export default function S13_ExpresionClara() {
       <div style={{ background:'#EEF2F7', display:'flex', flexDirection:'column', justifyContent:'center', padding:'60px 64px', gap:'1.4rem', position:'relative' }}>
         <div className="corner-accent" style={{ opacity:0.5 }} />
         <motion.h2 initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{duration:0.6}} style={{ fontFamily:'DM Serif Display,serif', fontSize:'clamp(1.8rem,3.2vw,2.8rem)', color:'#45C5BE', lineHeight:1.15, margin:0 }}>
-          Expresión clara y<br />directa
+          Expresión clara y<br />precisa
         </motion.h2>
         <motion.p initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{duration:0.6,delay:0.2}} style={{ fontSize:'clamp(0.9rem,1.4vw,1.05rem)', color:'#4A5568', lineHeight:1.8 }}>
-          Comunicar de manera clara y comprensible, evitando tecnicismos excesivos y asegurándose de que el paciente comprenda plenamente los detalles del tratamiento médico o procedimiento.
+          Comunicar con claridad no significa hablar sin filtro — significa asegurarse de que el otro comprenda. Evitar tecnicismos innecesarios, verificar que el mensaje llegó y adaptar el lenguaje a quien escucha.
         </motion.p>
       </div>
       <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.9,delay:0.1}} style={{ position:'relative', overflow:'hidden' }}>

@@ -12,7 +12,7 @@ const tecnicas = [
     title: 'Hablar desde el yo',
     body: 'Enunciar las cosas desde la propia percepción, no como verdades absolutas. Reduce la defensividad del otro y abre el diálogo.',
     sinEj: '"Usted siempre llega tarde y desorganiza todo."',
-    conEj: '"Cuando llegamos tarde al cambio de turno, yo siento que el paciente queda desatendido. ¿Qué pasó hoy?"',
+    conEj: '"Cuando llegamos tarde al cambio de turno, el paciente queda desatendido. ¿Qué pasó hoy?"',
   },
 ]
 

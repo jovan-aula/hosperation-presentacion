@@ -55,7 +55,7 @@ const slides = [
   // BLOQUE 3 — DRPR + Ejemplos (slides 23-28)
   S27, S19, S22, S23, S24, S25,
   // EJERCICIO CIERRE — Mensajes + Caja (slides 29-32)
-  S21, S28, S29, S30,
+  S21, S28, S30, S29,
   // Cierre (slides 33-36)
   S26, S15, S20, S31,
 ]
