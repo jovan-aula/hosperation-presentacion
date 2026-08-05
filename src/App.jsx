@@ -40,6 +40,7 @@ import S28 from './slides/S28_CajaTitle'
 import S29 from './slides/S29_ActividadCaja'
 import S30 from './slides/S30_EjemploCaja'
 import S31 from './slides/S31_PortadaCierre'
+import S32 from './slides/S32_ABCFrases'
 
 const slides = [
   // BLOQUE 1 — Enganche + Fundamento (slides 1-8)
@@ -49,7 +50,7 @@ const slides = [
   // EJERCICIO 2 parte 1 — Elementos + termómetro (slide 10) · Hoja B
   S09,
   // BLOQUE 2 — Comprensión + Herramientas (slides 11-21)
-  S03, S02c, S04, S05, S11, S12, S13, S14, S16, S17, S18,
+  S03, S02c, S04, S05, S11, S12, S13, S14, S16, S17, S18, S32,
   // EJERCICIO 2 — Fraseología (~slide 22)
   S10,
   // BLOQUE 3 — DRPR + Ejemplos (slides 23-28)
