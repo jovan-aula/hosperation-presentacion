@@ -114,7 +114,7 @@ export default function S01_Portada() {
             </div>
             <div>
               <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Facilitado por</div>
-              <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'white' }}>Mtro. Jován Naranjo</div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'white' }}>Mtro. Edrick Reyes</div>
             </div>
           </div>
         </motion.div>

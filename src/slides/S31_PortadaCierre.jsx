@@ -61,9 +61,9 @@ export default function S31_PortadaCierre() {
             display:'flex', alignItems:'center', justifyContent:'center',
             fontFamily:'DM Serif Display, serif',
             fontSize:'1rem', color:'#45C5BE', fontWeight:400,
-          }}>JN</div>
+          }}>ER</div>
           <div>
-            <div style={{ fontSize:'0.82rem', fontWeight:700, color:'white' }}>Mtro. Jován Naranjo</div>
+            <div style={{ fontSize:'0.82rem', fontWeight:700, color:'white' }}>Mtro. Edrick Reyes</div>
             <div style={{ fontSize:'0.7rem', color:'rgba(255,255,255,0.45)' }}>Aula Consultoría · Hosperation</div>
           </div>
         </motion.div>
