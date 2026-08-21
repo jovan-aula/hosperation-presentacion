@@ -11,6 +11,7 @@ import S01d from './slides/S01d_PreguntaAsertividad'
 import S01e from './slides/S01e_RevealAsertividad'
 import S01f from './slides/S01f_PreguntaComunAsertiva'
 import S01g from './slides/S01g_LluviaQR'
+import S01h from './slides/S01h_LluviaDisplay'
 import S02 from './slides/S02_Objetivo'
 import S02b from './slides/S02b_Pregunta1'
 import S02c from './slides/S02c_Pregunta2'
@@ -51,7 +52,7 @@ import S33 from './slides/S33_Encuesta'
 
 const slides = [
   // APERTURA — Ellos hablan primero
-  S01, S01b, S01c, S01d, S01e, S01f, S01g, S07,
+  S01, S01b, S01c, S01d, S01e, S01f, S01g, S01h, S07,
   // GANCHO — ¿Por qué importa en tu trabajo?
   S02d, S03, S06,
   // FUNDAMENTO — Base teórica compacta
