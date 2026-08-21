@@ -19,17 +19,17 @@ const frases = [
     esEjemplo: true,
   },
   {
-    reactiva: '"Tiene que esperar."',
+    reactiva: '"Eso no es de mi área."',
     asertiva: null,
     esEjemplo: false,
   },
   {
-    reactiva: '"No puedo hacer nada."',
+    reactiva: '"Ya le comenté que debe esperar al doctor."',
     asertiva: null,
     esEjemplo: false,
   },
   {
-    reactiva: '"Tiene que calmarse."',
+    reactiva: '"No sé, puede preguntar en recepción."',
     asertiva: null,
     esEjemplo: false,
   },
