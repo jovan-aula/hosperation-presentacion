@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluación · Módulo 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0C2D4E;
+      --teal: #45C5BE;
+      --teal-dark: #2BA8A2;
+      --bg: #EEF2F7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(160deg, #081e35 0%, #0C2D4E 100%);
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(69,197,190,0.15);
+      border: 1px solid rgba(69,197,190,0.35);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
+      color: white;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    .header p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+      font-weight: 300;
+    }
+
+    /* Form */
+    .form-body {
+      padding: 28px 20px 48px;
+      max-width: 540px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .block-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px 20px;
+      box-shadow: 0 2px 12px rgba(12,45,78,0.07);
+    }
+
+    .question {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .question span {
+      display: block;
+      margin-top: 6px;
+      margin-bottom: 14px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--teal-dark);
+      background: rgba(69,197,190,0.08);
+      border: 1px solid rgba(69,197,190,0.2);
+      border-radius: 8px;
+      padding: 6px 10px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Stars */
+    .stars {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .stars input { display: none; }
+    .stars label {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(12,45,78,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: rgba(12,45,78,0.4);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .stars input:checked + label {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: white;
+    }
+    .stars label:hover {
+      border-color: var(--teal);
+      color: var(--teal-dark);
+    }
+
+    /* Options */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .options input { display: none; }
+    .options label {
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(12,45,78,0.12);
+      font-size: 0.83rem;
+      color: rgba(12,45,78,0.65);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-weight: 400;
+    }
+    .options input:checked + label {
+      background: rgba(69,197,190,0.1);
+      border-color: var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* Textarea */
+    textarea {
+      width: 100%;
+      border: 1.5px solid rgba(12,45,78,0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--navy);
+      resize: vertical;
+      min-height: 90px;
+      outline: none;
+      transition: border 0.15s;
+    }
+    textarea:focus { border-color: var(--teal); }
+    textarea::placeholder { color: rgba(12,45,78,0.3); }
+
+    /* Submit */
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit:hover { background: #163557; }
+    .btn-submit:disabled { background: rgba(12,45,78,0.3); cursor: not-allowed; }
+
+    /* Success */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(69,197,190,0.15);
+      border: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .success h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .success p {
+      font-size: 0.85rem;
+      color: rgba(12,45,78,0.55);
+      line-height: 1.6;
+    }
+
+    .divider { height: 1px; background: rgba(12,45,78,0.07); margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-badge">Módulo 2 · Comunicación Asertiva</div>
+    <h1>Evaluación de la sesión</h1>
+    <p>Evaluación anónima · Módulo 2 · Hosperation</p>
+  </div>
+
+  <form id="encuesta" class="form-body">
+
+    <!-- BLOQUE 1: El módulo -->
+    <div>
+      <div class="block-label">El módulo</div>
+
+      <div class="card">
+        <div class="question">¿Qué tan claro fue el contenido presentado?<span>1 = poco claro &nbsp;&nbsp;·&nbsp;&nbsp; 5 = muy claro</span></div>
+        <div class="stars">
+          <input type="radio" name="claridad" id="c1" value="1" required>
+          <label for="c1">1</label>
+          <input type="radio" name="claridad" id="c2" value="2">
+          <label for="c2">2</label>
+          <input type="radio" name="claridad" id="c3" value="3">
+          <label for="c3">3</label>
+          <input type="radio" name="claridad" id="c4" value="4">
+          <label for="c4">4</label>
+          <input type="radio" name="claridad" id="c5" value="5">
+          <label for="c5">5</label>
+        </div>
+        <div class="divider" style="margin-top:18px"></div>
+        <div class="question" style="margin-top:16px">¿Qué tema te resultó más útil?</div>
+        <div class="options">
+          <input type="radio" name="tema" id="t1" value="Tipos de comunicación" required>
+          <label for="t1">Tipos de comunicación</label>
+          <input type="radio" name="tema" id="t2" value="Técnicas de asertividad">
+          <label for="t2">Técnicas de asertividad</label>
+          <input type="radio" name="tema" id="t3" value="Fórmula DRPR">
+          <label for="t3">Fórmula DRPR</label>
+          <input type="radio" name="tema" id="t4" value="Ejemplos prácticos">
+          <label for="t4">Ejemplos prácticos</label>
+          <input type="radio" name="tema" id="t5" value="Actividades y ejercicios">
+          <label for="t5">Actividades y ejercicios</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 2: La dinámica -->
+    <div>
+      <div class="block-label">La dinámica</div>
+
+      <div class="card">
+        <div class="question">¿Cómo calificaría la dinámica de la sesión?<span>1 = requiere mejora &nbsp;&nbsp;·&nbsp;&nbsp; 5 = excelente</span></div>
+        <div class="stars">
+          <input type="radio" name="dinamica" id="d1" value="1" required>
+          <label for="d1">1</label>
+          <input type="radio" name="dinamica" id="d2" value="2">
+          <label for="d2">2</label>
+          <input type="radio" name="dinamica" id="d3" value="3">
+          <label for="d3">3</label>
+          <input type="radio" name="dinamica" id="d4" value="4">
+          <label for="d4">4</label>
+          <input type="radio" name="dinamica" id="d5" value="5">
+          <label for="d5">5</label>
+        </div>
+        <div class="divider" style="margin-top:18px"></div>
+        <div class="question" style="margin-top:16px">¿Qué modificaría o agregaría a la sesión?<span>Opcional</span></div>
+        <textarea name="cambio" placeholder="Comparta su sugerencia..."></textarea>
+      </div>
+    </div>
+
+    <!-- BLOQUE 3: Estrategia del hospital -->
+    <div>
+      <div class="block-label">Estrategia del hospital</div>
+
+      <div class="card">
+        <div class="question">¿Cómo valora la estrategia de comunicación actual del hospital?<span>1 = requiere atención urgente &nbsp;&nbsp;·&nbsp;&nbsp; 5 = muy sólida</span></div>
+        <div class="stars">
+          <input type="radio" name="estrategia" id="e1" value="1" required>
+          <label for="e1">1</label>
+          <input type="radio" name="estrategia" id="e2" value="2">
+          <label for="e2">2</label>
+          <input type="radio" name="estrategia" id="e3" value="3">
+          <label for="e3">3</label>
+          <input type="radio" name="estrategia" id="e4" value="4">
+          <label for="e4">4</label>
+          <input type="radio" name="estrategia" id="e5" value="5">
+          <label for="e5">5</label>
+        </div>
+        <div class="divider" style="margin-top:18px"></div>
+        <div class="question" style="margin-top:16px">¿Qué área crees que necesita más trabajo?</div>
+        <div class="options">
+          <input type="radio" name="area" id="a1" value="Comunicación interna entre equipos" required>
+          <label for="a1">Comunicación interna entre equipos</label>
+          <input type="radio" name="area" id="a2" value="Trato al paciente y familia">
+          <label for="a2">Trato al paciente y familia</label>
+          <input type="radio" name="area" id="a3" value="Comunicación entre liderazgo y staff">
+          <label for="a3">Comunicación entre liderazgo y staff</label>
+          <input type="radio" name="area" id="a4" value="Manejo de conflictos">
+          <label for="a4">Manejo de conflictos</label>
+          <input type="radio" name="area" id="a5" value="Comunicación en situaciones de crisis">
+          <label for="a5">Comunicación en situaciones de crisis</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comentario libre -->
+    <div class="card">
+      <div class="question">Comentarios adicionales<span>Opcional — cualquier observación que desee compartir</span></div>
+      <textarea name="comentario" placeholder="Comparta sus observaciones..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit" id="btn">Enviar evaluación →</button>
+  </form>
+
+  <!-- Estado de éxito -->
+  <div class="success" id="success">
+    <div class="success-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45C5BE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h2>Muchas gracias.</h2>
+    <p>Su evaluación ha sido registrada.<br/>La retroalimentación es fundamental para mejorar continuamente.</p>
+  </div>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSkf9bUF95VsUK-asDP2z5LhDLlMHGxdMM48ebxxle2IjhZDyiUjY06yXlrOoyc-s/exec";
+
+    document.getElementById("encuesta").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById("btn");
+      btn.disabled = true;
+      btn.textContent = "Enviando...";
+
+      const fd = new FormData(e.target);
+      const data = {
+        claridad:   fd.get("claridad"),
+        tema:       fd.get("tema"),
+        dinamica:   fd.get("dinamica"),
+        cambio:     fd.get("cambio") || "",
+        estrategia: fd.get("estrategia"),
+        area:       fd.get("area"),
+        comentario: fd.get("comentario") || "",
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+      } catch (_) { /* CORS error esperado — el POST sí llega */ }
+
+      document.getElementById("encuesta").style.display = "none";
+      document.getElementById("success").style.display = "block";
+      window.scrollTo(0, 0);
+    });
+  </script>
+
+</body>
+</html>

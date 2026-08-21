@@ -41,6 +41,7 @@ import S29 from './slides/S29_ActividadCaja'
 import S30 from './slides/S30_EjemploCaja'
 import S31 from './slides/S31_PortadaCierre'
 import S32 from './slides/S32_ABCFrases'
+import S33 from './slides/S33_Encuesta'
 
 const slides = [
   // BLOQUE 1 — Enganche + Fundamento (slides 1-8)
@@ -57,8 +58,10 @@ const slides = [
   S27, S19, S22, S23, S24, S25,
   // EJERCICIO CIERRE — Mensajes + Caja (slides 29-32)
   S21, S28, S30, S29,
-  // Cierre (slides 33-36)
+  // Cierre
   S26, S15, S20, S31,
+  // Encuesta final
+  S33,
 ]
 
 export default function App() {
