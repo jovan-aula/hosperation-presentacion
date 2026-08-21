@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const banco = [
+  { label: 'Reconocer', frases: ['Entiendo cómo se siente…', 'Comprendo que esto es difícil.', 'Tiene razón en estar preocupado.'] },
+  { label: 'Aclarar',   frases: ['Lo que puedo hacer ahora es…', 'Permítame explicarle…'] },
+  { label: 'Orientar',  frases: ['Lo que sí está en mis manos es…', 'Le propongo que…'] },
+]
+
 const frases = [
   {
     reactiva: '"Eso no se puede."',
@@ -32,6 +38,7 @@ const frases = [
 export default function S21_ActividadMensaje() {
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
+  const [bancoOpen, setBancoOpen] = useState(false)
 
   const frase = frases[index]
   const total = frases.length
@@ -193,6 +200,47 @@ export default function S21_ActividadMensaje() {
         </div>
 
       </div>
+        {/* Recordatorio banco de frases */}
+        <div style={{ position: 'absolute', bottom: '24px', left: '80px', right: '80px' }}>
+          <button
+            onClick={() => setBancoOpen(!bancoOpen)}
+            style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', padding: 0 }}
+          >
+            <span style={{ fontSize: '0.62rem', fontWeight: 700, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              Recordatorio — banco de frases
+            </span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ transform: bancoOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s', opacity: 0.25 }}>
+              <path d="M2 4l4 4 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          <AnimatePresence>
+            {bancoOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.25 }}
+                style={{
+                  marginTop: '10px',
+                  background: 'rgba(8,30,53,0.95)',
+                  border: '1px solid rgba(69,197,190,0.2)',
+                  borderRadius: '12px',
+                  padding: '12px 16px',
+                  display: 'flex', gap: '24px',
+                }}
+              >
+                {banco.map((grupo, i) => (
+                  <div key={i} style={{ flex: 1 }}>
+                    <div style={{ fontSize: '0.58rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '6px' }}>{grupo.label}</div>
+                    {grupo.frases.map((f, j) => (
+                      <p key={j} style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', margin: '0 0 4px', fontStyle: 'italic', lineHeight: 1.4 }}>"{f}"</p>
+                    ))}
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
       <style>{`@keyframes pulse2 { 0%,100%{opacity:0.4;transform:scale(0.8)} 50%{opacity:1;transform:scale(1.2)} }`}</style>
     </div>
   )

@@ -145,13 +145,13 @@ export default function S02c_Pregunta2() {
                 <div style={{ borderRight: '1px solid rgba(255,255,255,0.08)', paddingRight: '1rem' }}>
                   <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#e87c6a', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Sin asertividad</div>
                   <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
-                    "Su familiar está muy grave. Prepárense para lo peor."
+                    "Nada, me lo guardo… pero le puse mala cara todo el día."
                   </p>
                 </div>
                 <div>
                   <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Con asertividad</div>
                   <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
-                    "La situación es delicada. El equipo está trabajando. ¿Tienen alguna pregunta?"
+                    "Oye, te lo digo en privado porque me importa: hueles un poco fuerte hoy. Puede incomodar a los pacientes. No quiero que eso te afecte."
                   </p>
                 </div>
               </motion.div>
