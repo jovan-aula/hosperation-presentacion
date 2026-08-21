@@ -45,8 +45,10 @@ import S26 from './slides/S26_FraseNishan'
 import S27 from './slides/S27_FormulaDRPR'
 import S28 from './slides/S28_CajaTitle'
 import S29 from './slides/S29_ActividadCaja'
+import S29b from './slides/S29b_CajaDisplay'
 import S30 from './slides/S30_EjemploCaja'
 import S31 from './slides/S31_PortadaCierre'
+import SCajaEjemplo from './slides/S_CajaEjemplo'
 import S32 from './slides/S32_ABCFrases'
 import SToolkit from './slides/S_Toolkit'
 import SFraseologiaContexto from './slides/S_FraseologiaContexto'
@@ -71,9 +73,9 @@ const slides = [
   // FÓRMULA DRPR + EJEMPLOS
   S27, S19, S23, S24, S25,
   // EJERCICIO CIERRE
-  S21, S28, S30, S29,
+  S21, SCajaEjemplo, S29, S29b,
   // CIERRE
-  S26, S20, S15, S31,
+  S26, S31,
   // Encuesta
   S33,
 ]

@@ -1,106 +1,69 @@
 import { motion } from 'framer-motion'
-const fade = (d=0) => ({ initial:{opacity:0,y:16}, animate:{opacity:1,y:0}, transition:{duration:0.55,delay:d} })
-
-const cajas = [
-  {
-    num: '1',
-    title: 'Lo que observo',
-    question: '¿Qué está pasando exactamente, sin interpretar?',
-    color: '#0C2D4E',
-    bg: '#f0f6fb',
-    border: 'rgba(12,45,78,0.2)',
-  },
-  {
-    num: '2',
-    title: 'Lo que entiendo',
-    question: '¿Qué emoción o necesidad hay detrás de lo que dice?',
-    color: '#2BA8A2',
-    bg: '#f0fbfa',
-    border: 'rgba(43,168,162,0.3)',
-  },
-  {
-    num: '3',
-    title: 'Lo que puedo hacer',
-    question: '¿Qué sí está en mis manos resolver, orientar o canalizar?',
-    color: '#d97706',
-    bg: '#fff8f0',
-    border: 'rgba(217,119,6,0.25)',
-  },
-  {
-    num: '4',
-    title: 'Lo que comunico',
-    question: '¿Cómo lo digo con claridad, calma y respeto?',
-    color: '#7c3aed',
-    bg: '#f5f0ff',
-    border: 'rgba(124,58,237,0.25)',
-  },
-]
 
 export default function S29_ActividadCaja() {
+  var url = 'https://hosperation-presentacion.vercel.app/caja-input.html'
+  var qr = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=45C5BE&bgcolor=081e35&data=' + encodeURIComponent(url)
+
   return (
-    <div className="slide" style={{ padding:'44px 72px' }}>
-      <div className="corner-accent" />
-      <div style={{
-        position: 'absolute', top: '24px', right: '32px',
-        background: '#45C5BE', color: '#0C2D4E',
-        borderRadius: '100px', padding: '0.3rem 1rem',
-        fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase',
-      }}>
-        Ejercicio 4 · Hoja D
-      </div>
+    <div style={{
+      width: '100vw', height: '100vh',
+      background: 'linear-gradient(160deg, #081e35 0%, #0C2D4E 100%)',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      padding: '60px 80px',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(69,197,190,0.05) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
 
-      <div style={{ width:'100%', maxWidth:'940px', display:'flex', flexDirection:'column', gap:'1.4rem' }}>
+      <div style={{ position: 'relative', maxWidth: '900px', width: '100%', display: 'flex', alignItems: 'center', gap: '72px' }}>
 
-        {/* Header */}
-        <motion.div {...fade(0.05)} style={{ display:'flex', flexDirection:'column', gap:'0.3rem' }}>
-          <div className="pill" style={{ alignSelf:'flex-start' }}>La Caja Asertiva</div>
-          <h2 className="slide-title">Construye tu respuesta</h2>
-          <div className="teal-bar" />
+        <motion.div
+          initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
+          style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+        >
+          <div style={{ background: 'rgba(69,197,190,0.12)', border: '1px solid rgba(69,197,190,0.3)', borderRadius: '100px', padding: '0.3rem 1.2rem', fontSize: '0.72rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.12em', textTransform: 'uppercase', width: 'fit-content' }}>
+            Actividad en equipos — 10 min
+          </div>
+
+          <h2 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 400, color: 'white', lineHeight: 1.2, margin: 0 }}>
+            Construyan su propia Caja Asertiva
+          </h2>
+
+          <div style={{ width: '48px', height: '3px', background: '#45C5BE', borderRadius: '2px' }} />
+
+          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0 }}>
+            Elijan una situación difícil real de su área y llenen las <strong style={{ color: 'white' }}>4 cajas</strong> juntos.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            {[
+              { color: '#0C2D4E', label: '1', text: 'Lo que observo — sin interpretar' },
+              { color: '#2BA8A2', label: '2', text: 'Lo que entiendo — emoción detrás' },
+              { color: '#d97706', label: '3', text: 'Lo que puedo hacer' },
+              { color: '#7c3aed', label: '4', text: 'Lo que comunico — con calma y respeto' },
+            ].map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: item.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'white' }}>{item.label}</span>
+                </div>
+                <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)', margin: 0 }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Prompt */}
-        <motion.div {...fade(0.15)} style={{
-          background: '#0C2D4E',
-          borderRadius: '14px',
-          padding: '1rem 1.6rem',
-          display: 'flex', gap: '1.2rem', alignItems: 'center',
-        }}>
-          <div style={{ flexShrink:0, width:'6px', height:'48px', borderRadius:'3px', background:'#45C5BE' }} />
-          <div>
-            <div style={{ fontSize:'0.6rem', fontWeight:800, color:'#45C5BE', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:'4px' }}>Tu situación</div>
-            <p style={{ fontSize:'0.9rem', color:'rgba(255,255,255,0.85)', lineHeight:1.6, margin:0 }}>
-              Elige un momento difícil que hayas vivido en tu área — un familiar enojado, un colega que no escucha, una instrucción complicada de cumplir.
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}
+        >
+          <div style={{ background: 'rgba(255,255,255,0.04)', border: '1.5px solid rgba(69,197,190,0.25)', borderRadius: '20px', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
+            <img src={qr} alt="QR Caja Asertiva" width={200} height={200} style={{ borderRadius: '8px', display: 'block' }} />
+            <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em', textTransform: 'uppercase', margin: 0, textAlign: 'center' }}>
+              hosperation-presentacion.vercel.app
             </p>
           </div>
         </motion.div>
 
-        {/* 2×2 grid */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.9rem' }}>
-          {cajas.map((c, i) => (
-            <motion.div key={i} {...fade(0.3 + i * 0.1)} style={{
-              background: c.bg,
-              border: `1.5px solid ${c.border}`,
-              borderRadius: '16px',
-              padding: '1rem 1.3rem',
-              display: 'flex', flexDirection: 'column', gap: '0.5rem',
-            }}>
-              <div style={{ display:'flex', alignItems:'center', gap:'0.7rem' }}>
-                <div style={{
-                  width:'28px', height:'28px', borderRadius:'50%',
-                  background: c.color,
-                  display:'flex', alignItems:'center', justifyContent:'center',
-                  fontSize:'0.72rem', fontWeight:800, color:'white', flexShrink:0,
-                }}>
-                  {c.num}
-                </div>
-                <span style={{ fontSize:'0.92rem', fontWeight:700, color: c.color }}>{c.title}</span>
-              </div>
-              <p style={{ fontSize:'0.8rem', color:'#4A5568', lineHeight:1.6, margin:0, paddingLeft:'2.1rem', fontStyle:'italic' }}>
-                {c.question}
-              </p>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </div>
   )
