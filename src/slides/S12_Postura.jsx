@@ -17,6 +17,13 @@ export default function S12_Postura() {
         <motion.p initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{duration:0.6,delay:0.45}} style={{ fontSize:'clamp(0.9rem,1.4vw,1.05rem)', color:'#45C5BE', fontWeight:700, lineHeight:1.6 }}>
           Mirar a la persona al hablar ayuda a generar conexión y confianza.
         </motion.p>
+        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.5,delay:0.65}} style={{ background:'rgba(69,197,190,0.08)', border:'1px solid rgba(69,197,190,0.25)', borderRadius:'10px', padding:'0.65rem 1.2rem', display:'flex', alignItems:'center', gap:'10px' }}>
+          <span style={{ fontSize:'0.65rem', fontWeight:700, color:'#45C5BE', letterSpacing:'0.1em', textTransform:'uppercase', flexShrink:0 }}>Tip</span>
+          <span style={{ width:'1px', height:'14px', background:'rgba(69,197,190,0.3)', flexShrink:0 }} />
+          <p style={{ fontSize:'0.8rem', color:'#4A5568', margin:0, lineHeight:1.5 }}>
+            Practica hablar de pie, con los hombros relajados y sin cruzar los brazos.
+          </p>
+        </motion.div>
       </div>
       <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.9,delay:0.1}} style={{ position:'relative', overflow:'hidden' }}>
         <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop" alt="Postura" style={{ width:'100%', height:'100%', objectFit:'cover' }} />

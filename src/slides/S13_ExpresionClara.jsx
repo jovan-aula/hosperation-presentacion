@@ -11,6 +11,13 @@ export default function S13_ExpresionClara() {
         <motion.p initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{duration:0.6,delay:0.2}} style={{ fontSize:'clamp(0.9rem,1.4vw,1.05rem)', color:'#4A5568', lineHeight:1.8 }}>
           Comunicar con claridad no significa hablar sin filtro — significa asegurarse de que el otro comprenda. Evitar tecnicismos innecesarios, verificar que el mensaje llegó y adaptar el lenguaje a quien escucha.
         </motion.p>
+        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.5,delay:0.5}} style={{ background:'rgba(69,197,190,0.08)', border:'1px solid rgba(69,197,190,0.25)', borderRadius:'10px', padding:'0.65rem 1.2rem', display:'flex', alignItems:'center', gap:'10px' }}>
+          <span style={{ fontSize:'0.65rem', fontWeight:700, color:'#45C5BE', letterSpacing:'0.1em', textTransform:'uppercase', flexShrink:0 }}>Tip</span>
+          <span style={{ width:'1px', height:'14px', background:'rgba(69,197,190,0.3)', flexShrink:0 }} />
+          <p style={{ fontSize:'0.8rem', color:'#4A5568', margin:0, lineHeight:1.5 }}>
+            Despues de explicar, pregunta: ¿quedo claro? Eso confirma que el mensaje llego.
+          </p>
+        </motion.div>
       </div>
       <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.9,delay:0.1}} style={{ position:'relative', overflow:'hidden' }}>
         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop" alt="Expresión clara" style={{ width:'100%', height:'100%', objectFit:'cover' }} />

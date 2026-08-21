@@ -14,6 +14,13 @@ export default function S14_EmpatiaRespeto() {
         <motion.p initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{duration:0.6,delay:0.3}} style={{ fontSize:'clamp(0.9rem,1.4vw,1.05rem)', color:'#4A5568', lineHeight:1.8 }}>
           El personal debe reconocer las preocupaciones de la persona que atiende, escuchar sus necesidades y responder considerando sus preferencias.
         </motion.p>
+        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.5,delay:0.55}} style={{ background:'rgba(69,197,190,0.08)', border:'1px solid rgba(69,197,190,0.25)', borderRadius:'10px', padding:'0.65rem 1.2rem', display:'flex', alignItems:'center', gap:'10px' }}>
+          <span style={{ fontSize:'0.65rem', fontWeight:700, color:'#45C5BE', letterSpacing:'0.1em', textTransform:'uppercase', flexShrink:0 }}>Tip</span>
+          <span style={{ width:'1px', height:'14px', background:'rgba(69,197,190,0.3)', flexShrink:0 }} />
+          <p style={{ fontSize:'0.8rem', color:'#4A5568', margin:0, lineHeight:1.5 }}>
+            Antes de responder, repite mentalmente lo que escuchaste. Eso se nota — y el paciente lo siente.
+          </p>
+        </motion.div>
       </div>
       <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.9,delay:0.1}} style={{ position:'relative', overflow:'hidden' }}>
         <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&auto=format&fit=crop" alt="Empatía" style={{ width:'100%', height:'100%', objectFit:'cover' }} />

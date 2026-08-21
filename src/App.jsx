@@ -48,6 +48,8 @@ import S29 from './slides/S29_ActividadCaja'
 import S30 from './slides/S30_EjemploCaja'
 import S31 from './slides/S31_PortadaCierre'
 import S32 from './slides/S32_ABCFrases'
+import SToolkit from './slides/S_Toolkit'
+import SFraseologiaContexto from './slides/S_FraseologiaContexto'
 import S33 from './slides/S33_Encuesta'
 
 const slides = [
@@ -62,9 +64,9 @@ const slides = [
   // PAUSA REFLEXIVA
   S02c, S05,
   // HERRAMIENTAS — El toolkit
-  S12, S13, S14, S16, S17, S18, S32,
+  SToolkit, S12, S13, S14, S16, S17, S18, S32,
   // EJERCICIO 2
-  S10,
+  SFraseologiaContexto, S10,
   // FÓRMULA DRPR + EJEMPLOS
   S27, S19, S23, S24, S25,
   // EJERCICIO CIERRE
