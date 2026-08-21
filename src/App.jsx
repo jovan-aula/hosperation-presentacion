@@ -5,6 +5,11 @@ import Navigation from './components/Navigation'
 import './index.css'
 
 import S01 from './slides/S01_Portada'
+import S01b from './slides/S01b_PreguntaComunicacion'
+import S01c from './slides/S01c_RevealComunicacion'
+import S01d from './slides/S01d_PreguntaAsertividad'
+import S01e from './slides/S01e_RevealAsertividad'
+import S01f from './slides/S01f_PreguntaComunAsertiva'
 import S02 from './slides/S02_Objetivo'
 import S02b from './slides/S02b_Pregunta1'
 import S02c from './slides/S02c_Pregunta2'
@@ -44,23 +49,27 @@ import S32 from './slides/S32_ABCFrases'
 import S33 from './slides/S33_Encuesta'
 
 const slides = [
-  // BLOQUE 1 — Enganche + Fundamento (slides 1-8)
-  S01, S02, S02b, S02f, S07, S06, S02d, S08,
-  // EJERCICIO 1 — Casos debate (slide 9) · Hoja A
-  S02e,
-  // EJERCICIO 2 parte 1 — Elementos + termómetro (slide 10) · Hoja B
-  S09,
-  // BLOQUE 2 — Comprensión + Herramientas (slides 11-21)
-  S03, S02c, S04, S05, S11, S12, S13, S14, S16, S17, S18, S32,
-  // EJERCICIO 2 — Fraseología (~slide 22)
+  // APERTURA — Ellos hablan primero
+  S01, S01b, S01c, S01d, S01e, S01f, S07,
+  // GANCHO — ¿Por qué importa en tu trabajo?
+  S02d, S03, S06,
+  // FUNDAMENTO — Base teórica compacta
+  S02, S08, S09,
+  // EJERCICIO 1 — Aplica lo aprendido
+  S02b, S02e, S04,
+  // PAUSA REFLEXIVA
+  S02c, S05,
+  // HERRAMIENTAS — El toolkit
+  S12, S13, S14, S16, S17, S18, S32,
+  // EJERCICIO 2
   S10,
-  // BLOQUE 3 — DRPR + Ejemplos (slides 23-28)
-  S27, S19, S22, S23, S24, S25,
-  // EJERCICIO CIERRE — Mensajes + Caja (slides 29-32)
+  // FÓRMULA DRPR + EJEMPLOS
+  S27, S19, S23, S24, S25,
+  // EJERCICIO CIERRE
   S21, S28, S30, S29,
-  // Cierre
-  S26, S15, S20, S31,
-  // Encuesta final
+  // CIERRE
+  S26, S20, S15, S31,
+  // Encuesta
   S33,
 ]
 

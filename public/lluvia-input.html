@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lluvia de ideas</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(160deg, #081e35 0%, #0C2D4E 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .badge {
+      background: rgba(69,197,190,0.15);
+      border: 1px solid rgba(69,197,190,0.35);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #45C5BE;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: white;
+      text-align: center;
+      line-height: 1.25;
+      font-weight: 400;
+    }
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: #45C5BE;
+      border-radius: 2px;
+    }
+    input[type="text"] {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      color: white;
+      outline: none;
+      transition: border 0.2s;
+      text-align: center;
+    }
+    input[type="text"]::placeholder { color: rgba(255,255,255,0.3); }
+    input[type="text"]:focus { border-color: #45C5BE; }
+    button {
+      width: 100%;
+      padding: 16px;
+      background: #45C5BE;
+      color: #0C2D4E;
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      letter-spacing: 0.03em;
+    }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    .check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(69,197,190,0.15);
+      border: 2px solid #45C5BE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .success h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: white;
+      font-weight: 400;
+    }
+    .success p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .otro-btn {
+      margin-top: 8px;
+      background: transparent;
+      color: #45C5BE;
+      border: 1.5px solid rgba(69,197,190,0.4);
+      padding: 12px 24px;
+      width: auto;
+      border-radius: 100px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="formCard">
+    <div class="badge">Lluvia de ideas</div>
+    <h1>Para ti, comunicacion asertiva es...</h1>
+    <div class="divider"></div>
+    <input type="text" id="input" placeholder="Escribe una palabra o frase..." maxlength="60" autocomplete="off" />
+    <button id="btn" onclick="enviar()">Enviar</button>
+  </div>
+
+  <div class="card success" id="successCard">
+    <div class="check">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45C5BE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h2>Enviado</h2>
+    <p>Tu respuesta ya aparece en pantalla.</p>
+    <button class="otro-btn" onclick="otraRespuesta()">Enviar otra</button>
+  </div>
+
+  <script>
+    var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSkf9bUF95VsUK-asDP2z5LhDLlMHGxdMM48ebxxle2IjhZDyiUjY06yXlrOoyc-s/exec";
+
+    document.getElementById("input").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") enviar();
+    });
+
+    function enviar() {
+      var texto = document.getElementById("input").value.trim();
+      if (!texto) return;
+      var btn = document.getElementById("btn");
+      btn.disabled = true;
+      btn.textContent = "Enviando...";
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({ tipo: "lluvia", texto: texto, sesion: "comunicacion-asertiva" })
+      }).catch(function() {}).finally(function() {
+        document.getElementById("formCard").style.display = "none";
+        document.getElementById("successCard").style.display = "flex";
+      });
+    }
+
+    function otraRespuesta() {
+      document.getElementById("input").value = "";
+      document.getElementById("btn").disabled = false;
+      document.getElementById("btn").textContent = "Enviar";
+      document.getElementById("successCard").style.display = "none";
+      document.getElementById("formCard").style.display = "flex";
+      document.getElementById("input").focus();
+    }
+  </script>
+
+</body>
+</html>

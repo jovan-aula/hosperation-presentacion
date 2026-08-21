@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunicacion Asertiva — Lluvia en vivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(160deg, #081e35 0%, #0C2D4E 100%);
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      background: linear-gradient(180deg, rgba(8,30,53,0.9) 0%, transparent 100%);
+    }
+    .pregunta-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: white;
+      font-weight: 400;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .count {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+    .btn-limpiar {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-limpiar:hover { background: rgba(255,255,255,0.14); color: white; }
+
+    /* Nube */
+    #nube {
+      position: absolute;
+      inset: 80px 0 80px 0;
+    }
+
+    .palabra {
+      position: absolute;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 8px 20px;
+      white-space: nowrap;
+      animation: aparecer 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+      transform: scale(0.5);
+      cursor: default;
+      user-select: none;
+    }
+
+    @keyframes aparecer {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(0deg, rgba(8,30,53,0.9) 0%, transparent 100%);
+    }
+    .footer-text {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .url {
+      font-size: 0.72rem;
+      color: #45C5BE;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Dot grid */
+    .dots {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(69,197,190,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    /* Waiting state */
+    #waiting {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    #waiting p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.25);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .pulse {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: #45C5BE;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dots"></div>
+
+  <div class="header">
+    <div class="pregunta-title">Para ti, comunicacion asertiva es...</div>
+    <div class="controls">
+      <span class="count" id="count">0 respuestas</span>
+      <button class="btn-limpiar" onclick="limpiar()">Limpiar pantalla</button>
+    </div>
+  </div>
+
+  <div id="nube">
+    <div id="waiting">
+      <div class="pulse"></div>
+      <p>Esperando respuestas...</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-text">Escanea y participa</span>
+    <span class="url">hosperation-presentacion.vercel.app/lluvia-input.html</span>
+  </div>
+
+  <script>
+    var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSkf9bUF95VsUK-asDP2z5LhDLlMHGxdMM48ebxxle2IjhZDyiUjY06yXlrOoyc-s/exec";
+
+    var colores = [
+      { bg: "rgba(69,197,190,0.15)",  border: "rgba(69,197,190,0.4)",  text: "#45C5BE" },
+      { bg: "rgba(255,255,255,0.08)", border: "rgba(255,255,255,0.2)",  text: "white" },
+      { bg: "rgba(99,179,237,0.12)",  border: "rgba(99,179,237,0.3)",   text: "#63B3ED" },
+      { bg: "rgba(167,105,250,0.12)", border: "rgba(167,105,250,0.3)",  text: "#a769fa" },
+      { bg: "rgba(248,180,0,0.12)",   border: "rgba(248,180,0,0.3)",    text: "#F8B400" },
+    ];
+
+    var tamanos = ["0.9rem","1.1rem","1.3rem","1.5rem","1.8rem","2rem"];
+
+    var mostradas = {};
+    var posiciones = [];
+
+    function limpiar() {
+      mostradas = {};
+      posiciones = [];
+      var nube = document.getElementById("nube");
+      nube.innerHTML = '<div id="waiting"><div class="pulse"></div><p>Esperando respuestas...</p></div>';
+      document.getElementById("count").textContent = "0 respuestas";
+    }
+
+    function overlap(x, y, w, h) {
+      for (var i = 0; i < posiciones.length; i++) {
+        var p = posiciones[i];
+        if (x < p.x + p.w + 12 && x + w + 12 > p.x && y < p.y + p.h + 8 && y + h + 8 > p.y) return true;
+      }
+      return false;
+    }
+
+    function agregarPalabra(texto) {
+      if (mostradas[texto]) return;
+      mostradas[texto] = true;
+
+      var waiting = document.getElementById("waiting");
+      if (waiting) waiting.remove();
+
+      var nube = document.getElementById("nube");
+      var el = document.createElement("div");
+      el.className = "palabra";
+
+      var color = colores[Math.floor(Math.random() * colores.length)];
+      var tam = tamanos[Math.floor(Math.random() * tamanos.length)];
+
+      el.style.fontSize = tam;
+      el.style.background = color.bg;
+      el.style.border = "1.5px solid " + color.border;
+      el.style.color = color.text;
+      el.textContent = texto;
+
+      nube.appendChild(el);
+
+      var W = nube.offsetWidth;
+      var H = nube.offsetHeight;
+      var ew = el.offsetWidth || 160;
+      var eh = el.offsetHeight || 44;
+
+      var x, y, intentos = 0;
+      do {
+        x = Math.random() * (W - ew - 40) + 20;
+        y = Math.random() * (H - eh - 40) + 20;
+        intentos++;
+      } while (overlap(x, y, ew, eh) && intentos < 40);
+
+      posiciones.push({ x: x, y: y, w: ew, h: eh });
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+    }
+
+    function fetchPalabras() {
+      fetch(SCRIPT_URL)
+        .then(function(r) { return r.json(); })
+        .then(function(palabras) {
+          palabras.forEach(function(p) { agregarPalabra(p.texto); });
+          var total = Object.keys(mostradas).length;
+          document.getElementById("count").textContent = total + (total === 1 ? " respuesta" : " respuestas");
+        })
+        .catch(function() {});
+    }
+
+    fetchPalabras();
+    setInterval(fetchPalabras, 1500);
+  </script>
+
+</body>
+</html>
