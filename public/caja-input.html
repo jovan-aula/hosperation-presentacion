@@ -27,7 +27,7 @@
       max-width: 440px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
     .progress-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
     .progress-fill { height: 100%; background: #45C5BE; border-radius: 2px; transition: width 0.4s ease; }
@@ -36,6 +36,18 @@
     h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.4rem, 5vw, 1.7rem); color: white; line-height: 1.25; font-weight: 400; }
     .hint { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
     .divider { width: 40px; height: 3px; border-radius: 2px; }
+
+    /* Situación fija */
+    .caso-banner {
+      background: rgba(12,45,78,0.5);
+      border: 1px solid rgba(69,197,190,0.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: none;
+    }
+    .caso-label { font-size: 0.58rem; font-weight: 700; color: #45C5BE; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+    .caso-text { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
     .emoji-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
     .emoji-btn { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 10px 4px; font-size: 1.5rem; cursor: pointer; transition: all 0.15s; text-align: center; line-height: 1; }
     .emoji-btn:hover { background: rgba(69,197,190,0.15); border-color: rgba(69,197,190,0.4); }
@@ -43,11 +55,11 @@
     input[type="text"], textarea { width: 100%; background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 14px 16px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: white; outline: none; transition: border 0.2s; }
     input[type="text"]::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
     input[type="text"]:focus, textarea:focus { border-color: #45C5BE; }
-    textarea { min-height: 100px; line-height: 1.65; resize: none; }
+    textarea { min-height: 110px; line-height: 1.65; resize: none; }
     .btn-row { display: flex; gap: 10px; }
     .btn-prev { flex: 1; padding: 14px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; }
     .btn-prev:hover { color: white; background: rgba(255,255,255,0.1); }
-    .btn-next { flex: 2; padding: 14px; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.02em; }
+    .btn-next { flex: 2; padding: 14px; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.02em; background: #45C5BE; color: #0C2D4E; }
     .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
     .preview-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
     .preview-header { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -64,8 +76,14 @@
 
 <div class="card" id="mainCard">
   <div style="display:flex;flex-direction:column;gap:6px;">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:14%"></div></div>
-    <div class="step-label" id="stepLabel">Paso 1 de 7</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16%"></div></div>
+    <div class="step-label" id="stepLabel">Paso 1 de 6</div>
+  </div>
+
+  <!-- Banner situación (visible desde paso 3) -->
+  <div class="caso-banner" id="casoBanner">
+    <div class="caso-label">Situación del caso</div>
+    <div class="caso-text">Un familiar llega muy alterado porque lleva 2 horas esperando y dice que nadie le ha explicado nada sobre el estado del paciente.</div>
   </div>
 
   <!-- PASO 1: Nombre -->
@@ -87,18 +105,8 @@
     </div>
   </div>
 
-  <!-- PASO 3: Situación -->
+  <!-- PASO 3: Observo -->
   <div id="step3" style="display:none;">
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <h2>¿Cuál es la situación?</h2>
-      <p class="hint">Describan un momento difícil real de su área — un familiar enojado, un colega que no escucha, una instrucción complicada.</p>
-      <div class="divider" style="background:#45C5BE"></div>
-      <textarea id="situacion" placeholder="Ej: Un familiar llega muy alterado porque lleva mucho tiempo esperando..."></textarea>
-    </div>
-  </div>
-
-  <!-- PASO 4: Observo -->
-  <div id="step4" style="display:none;">
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="width:28px;height:28px;border-radius:50%;background:#0C2D4E;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:white;flex-shrink:0;">1</div>
@@ -106,12 +114,12 @@
       </div>
       <p class="hint">¿Qué está pasando exactamente, sin interpretar ni juzgar?</p>
       <div class="divider" style="background:#0C2D4E"></div>
-      <textarea id="observo" placeholder="Ej: El familiar lleva 2 horas de pie, habla en voz alta y dice que nadie le ha dado información..."></textarea>
+      <textarea id="observo" placeholder="Describan solo los hechos, sin opinar..."></textarea>
     </div>
   </div>
 
-  <!-- PASO 5: Entiendo -->
-  <div id="step5" style="display:none;">
+  <!-- PASO 4: Entiendo -->
+  <div id="step4" style="display:none;">
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="width:28px;height:28px;border-radius:50%;background:#2BA8A2;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:white;flex-shrink:0;">2</div>
@@ -119,12 +127,12 @@
       </div>
       <p class="hint">¿Qué emoción o necesidad hay detrás de lo que dice o hace?</p>
       <div class="divider" style="background:#2BA8A2"></div>
-      <textarea id="entiendo" placeholder="Ej: Está asustado por no saber qué le pasa a su familiar. Su enojo viene del miedo..."></textarea>
+      <textarea id="entiendo" placeholder="¿Qué siente esta persona realmente?..."></textarea>
     </div>
   </div>
 
-  <!-- PASO 6: Puedo hacer -->
-  <div id="step6" style="display:none;">
+  <!-- PASO 5: Puedo hacer -->
+  <div id="step5" style="display:none;">
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="width:28px;height:28px;border-radius:50%;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:white;flex-shrink:0;">3</div>
@@ -132,12 +140,12 @@
       </div>
       <p class="hint">¿Qué sí está en sus manos resolver, orientar o canalizar?</p>
       <div class="divider" style="background:#d97706"></div>
-      <textarea id="puedo" placeholder="Ej: Puedo confirmar que el equipo está trabajando y buscar una actualización..."></textarea>
+      <textarea id="puedo" placeholder="¿Qué acciones concretas pueden tomar?..."></textarea>
     </div>
   </div>
 
-  <!-- PASO 7: Comunico -->
-  <div id="step7" style="display:none;">
+  <!-- PASO 6: Comunico -->
+  <div id="step6" style="display:none;">
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="width:28px;height:28px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:white;flex-shrink:0;">4</div>
@@ -145,12 +153,12 @@
       </div>
       <p class="hint">¿Cómo lo dicen con claridad, calma y respeto?</p>
       <div class="divider" style="background:#7c3aed"></div>
-      <textarea id="comunico" placeholder="Ej: Entiendo que la espera es difícil. El equipo está con su familiar ahora mismo..."></textarea>
+      <textarea id="comunico" placeholder="Escriban exactamente lo que dirían..."></textarea>
     </div>
   </div>
 
-  <!-- PASO 8: Preview -->
-  <div id="step8" style="display:none;">
+  <!-- PASO 7: Preview -->
+  <div id="step7" style="display:none;">
     <div style="display:flex;flex-direction:column;gap:16px;">
       <h2>Su Caja Asertiva</h2>
       <p class="hint">Revisen antes de enviar.</p>
@@ -160,7 +168,7 @@
 
   <div class="btn-row">
     <button class="btn-prev" id="btnPrev" onclick="prev()" style="display:none;">Anterior</button>
-    <button class="btn-next" id="btnNext" onclick="next()" style="background:#45C5BE;color:#0C2D4E;">Siguiente</button>
+    <button class="btn-next" id="btnNext" onclick="next()">Siguiente</button>
   </div>
 </div>
 
@@ -175,10 +183,11 @@
 
 <script>
   var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSkf9bUF95VsUK-asDP2z5LhDLlMHGxdMM48ebxxle2IjhZDyiUjY06yXlrOoyc-s/exec";
+  var SITUACION = "Un familiar llega muy alterado porque lleva 2 horas esperando y dice que nadie le ha explicado nada sobre el estado del paciente.";
   var emojis = ['🏥','💊','🩺','🩹','💉','🔬','🌡️','🏨','⭐','🌟','✨','💙','💚','🤝','👏','🌿','🦸','💪','🎯','🚀','🔥','🌈','🎉','🏆'];
   var selectedEmoji = '';
   var currentStep = 1;
-  var totalSteps = 7;
+  var totalSteps = 6;
 
   var grid = document.getElementById('emojiGrid');
   emojis.forEach(function(e) {
@@ -199,29 +208,24 @@
   }
 
   function showStep(n) {
-    for (var i = 1; i <= 8; i++) {
+    for (var i = 1; i <= 7; i++) {
       var el = document.getElementById('step' + i);
       if (el) el.style.display = 'none';
     }
-    var show = document.getElementById('step' + n);
-    if (show) show.style.display = 'block';
+    document.getElementById('step' + n).style.display = 'block';
     document.getElementById('btnPrev').style.display = n > 1 ? 'block' : 'none';
-    var btn = document.getElementById('btnNext');
-    if (n === 8) { btn.textContent = 'Enviar Caja Asertiva'; }
-    else { btn.textContent = 'Siguiente'; }
+    document.getElementById('btnNext').textContent = n === 7 ? 'Enviar Caja Asertiva' : 'Siguiente';
+    document.getElementById('casoBanner').style.display = n >= 3 ? 'block' : 'none';
     updateProgress();
   }
 
   function buildPreview() {
     var nombre = document.getElementById('nombre').value.trim();
-    var p = document.getElementById('previewCard');
-    p.innerHTML =
+    document.getElementById('previewCard').innerHTML =
       '<div class="preview-header">' +
         '<div style="font-size:2rem;line-height:1">' + selectedEmoji + '</div>' +
         '<div style="font-family:DM Serif Display,serif;font-size:1.05rem;color:white;">' + nombre + '</div>' +
       '</div>' +
-      '<div class="preview-row"><div class="preview-label" style="color:rgba(255,255,255,0.35)">Situación</div><div class="preview-text">' + document.getElementById('situacion').value.trim() + '</div></div>' +
-      '<div style="height:1px;background:rgba(255,255,255,0.06)"></div>' +
       '<div class="preview-row"><div class="preview-label" style="color:#0C2D4E">1. Observo</div><div class="preview-text">' + document.getElementById('observo').value.trim() + '</div></div>' +
       '<div class="preview-row"><div class="preview-label" style="color:#2BA8A2">2. Entiendo</div><div class="preview-text">' + document.getElementById('entiendo').value.trim() + '</div></div>' +
       '<div class="preview-row"><div class="preview-label" style="color:#d97706">3. Puedo hacer</div><div class="preview-text">' + document.getElementById('puedo').value.trim() + '</div></div>' +
@@ -231,19 +235,18 @@
   function validate() {
     if (currentStep === 1) return document.getElementById('nombre').value.trim().length > 0;
     if (currentStep === 2) return selectedEmoji !== '';
-    if (currentStep === 3) return document.getElementById('situacion').value.trim().length > 0;
-    if (currentStep === 4) return document.getElementById('observo').value.trim().length > 0;
-    if (currentStep === 5) return document.getElementById('entiendo').value.trim().length > 0;
-    if (currentStep === 6) return document.getElementById('puedo').value.trim().length > 0;
-    if (currentStep === 7) return document.getElementById('comunico').value.trim().length > 0;
+    if (currentStep === 3) return document.getElementById('observo').value.trim().length > 0;
+    if (currentStep === 4) return document.getElementById('entiendo').value.trim().length > 0;
+    if (currentStep === 5) return document.getElementById('puedo').value.trim().length > 0;
+    if (currentStep === 6) return document.getElementById('comunico').value.trim().length > 0;
     return true;
   }
 
   function next() {
-    if (currentStep === 8) { enviar(); return; }
+    if (currentStep === 7) { enviar(); return; }
     if (!validate()) { shake(); return; }
     currentStep++;
-    if (currentStep === 8) buildPreview();
+    if (currentStep === 7) buildPreview();
     showStep(currentStep);
   }
 
@@ -267,7 +270,7 @@
       body: JSON.stringify({
         tipo: 'caja',
         equipo: selectedEmoji + ' ' + nombre,
-        situacion: document.getElementById('situacion').value.trim(),
+        situacion: SITUACION,
         observo: document.getElementById('observo').value.trim(),
         entiendo: document.getElementById('entiendo').value.trim(),
         puedo: document.getElementById('puedo').value.trim(),
