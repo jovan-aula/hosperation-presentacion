@@ -94,8 +94,8 @@ export default function App() {
 
   useEffect(() => {
     const handler = (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goNext() }
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goPrev() }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext() }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); goPrev() }
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
