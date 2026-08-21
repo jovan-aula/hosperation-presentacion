@@ -6,7 +6,7 @@ const fade = (d = 0) => ({
   transition: { duration: 0.7, delay: d, ease: [0.25, 0.46, 0.45, 0.94] },
 })
 
-const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=0C2D4E&bgcolor=EEF2F7&data=${encodeURIComponent('http://192.168.0.155:5173/encuesta.html')}`
+const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=0C2D4E&bgcolor=EEF2F7&data=${encodeURIComponent('https://hosperation-presentacion.vercel.app/encuesta.html')}`
 
 export default function S33_Encuesta() {
   return (
@@ -114,7 +114,7 @@ export default function S33_Encuesta() {
           textAlign: 'center', fontWeight: 300,
           maxWidth: '240px', lineHeight: 1.5,
         }}>
-          Asegúrate de estar conectado a la misma red WiFi
+          hosperation-presentacion.vercel.app/encuesta.html
         </motion.p>
       </div>
 
