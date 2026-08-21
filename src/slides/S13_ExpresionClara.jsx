@@ -15,7 +15,7 @@ export default function S13_ExpresionClara() {
           <span style={{ fontSize:'0.65rem', fontWeight:700, color:'#45C5BE', letterSpacing:'0.1em', textTransform:'uppercase', flexShrink:0 }}>Tip</span>
           <span style={{ width:'1px', height:'14px', background:'rgba(69,197,190,0.3)', flexShrink:0 }} />
           <p style={{ fontSize:'0.8rem', color:'#4A5568', margin:0, lineHeight:1.5 }}>
-            Despues de explicar, pregunta: ¿quedo claro? Eso confirma que el mensaje llego.
+            Despues de explicar, pregunta: ¿Me explique bien o quedo alguna duda? Eso abre el dialogo sin presionar.
           </p>
         </motion.div>
       </div>

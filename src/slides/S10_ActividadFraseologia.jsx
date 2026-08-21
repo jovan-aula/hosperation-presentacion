@@ -1,58 +1,65 @@
 import { motion } from 'framer-motion'
-const fade = (d=0) => ({ initial:{opacity:0,y:16}, animate:{opacity:1,y:0}, transition:{duration:0.6,delay:d} })
+
+const fade = (d = 0) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: d } })
 
 export default function S10_ActividadFraseologia() {
-  return (
-    <div className="slide" style={{ padding:'60px 80px' }}>
-      <div className="corner-accent" />
-      <div style={{
-        position: 'absolute', top: '24px', right: '32px',
-        background: '#45C5BE', color: '#0C2D4E',
-        borderRadius: '100px', padding: '0.3rem 1rem',
-        fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase',
-      }}>
-        Ejercicio 2 · Hoja B
-      </div>
-      <div style={{ width:'100%', maxWidth:'920px', display:'flex', flexDirection:'column', gap:'2rem' }}>
-        <motion.h2 {...fade(0.1)} className="slide-title" style={{ textAlign:'center' }}>
-          Actividad en equipos
-        </motion.h2>
-        <motion.div {...fade(0.2)} style={{ width:'100px', height:'4px', background:'linear-gradient(90deg,#45C5BE,#2BA8A2)', borderRadius:'2px', alignSelf:'center' }} />
+  var url = 'https://hosperation-presentacion.vercel.app/fraseologia-input.html'
+  var qr = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=45C5BE&bgcolor=081e35&data=' + encodeURIComponent(url)
 
-        <div style={{ display:'flex', alignItems:'flex-start', gap:'4rem' }}>
-          <div style={{ flex:1 }}>
-            <motion.div {...fade(0.3)} style={{ background:'white', borderRadius:'12px', border:'1.5px solid rgba(12,45,78,0.2)', padding:'0.6rem 1.4rem', display:'inline-block', marginBottom:'1.2rem' }}>
-              <span style={{ fontSize:'0.95rem', fontWeight:700, color:'#0C2D4E' }}>Fraseología estandarizada</span>
-            </motion.div>
-            <motion.p {...fade(0.4)} style={{ fontSize:'clamp(0.9rem,1.4vw,1.05rem)', color:'#4A5568', lineHeight:1.75, marginBottom:'1rem' }}>
-              En equipos vamos a crear una fraseología propuesta de{' '}
-              <strong>bienvenida, despedida y como contestar el teléfono</strong>{' '}para las áreas de:
-            </motion.p>
-            <motion.div {...fade(0.5)}>
-              {['Enfermería','Recepción','Seguridad','Farmacia'].map((area,i) => (
-                <div key={i} className="list-item">
-                  <span className="list-number">{i+1}.</span>
-                  <span>{area}</span>
-                </div>
-              ))}
-            </motion.div>
+  return (
+    <div style={{
+      width: '100vw', height: '100vh',
+      background: 'linear-gradient(160deg, #081e35 0%, #0C2D4E 100%)',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      padding: '60px 80px',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(69,197,190,0.05) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
+
+      <div style={{ position: 'relative', maxWidth: '900px', width: '100%', display: 'flex', alignItems: 'center', gap: '72px' }}>
+
+        {/* Izquierda */}
+        <motion.div {...fade(0.1)} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ background: 'rgba(69,197,190,0.12)', border: '1px solid rgba(69,197,190,0.3)', borderRadius: '100px', padding: '0.3rem 1.2rem', fontSize: '0.72rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.12em', textTransform: 'uppercase', width: 'fit-content' }}>
+            Actividad en equipos — 10 min
           </div>
-          {/* Timer SVG */}
-          <motion.div {...fade(0.6)} style={{ flexShrink:0 }}>
-            <svg width="140" height="140" viewBox="0 0 140 140">
-              <circle cx="70" cy="75" r="55" fill="none" stroke="#e2e8f0" strokeWidth="3" />
-              <path d="M70,20 A55,55 0 0,1 125,75" fill="none" stroke="#93C5D9" strokeWidth="3" strokeLinecap="round" />
-              {[0,30,60,90,120,150,180,210,240,270,300,330].map(a => {
-                const r = (a * Math.PI)/180
-                const x1 = 70 + 50*Math.sin(r), y1 = 75 - 50*Math.cos(r)
-                const x2 = 70 + 55*Math.sin(r), y2 = 75 - 55*Math.cos(r)
-                return <line key={a} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#0C2D4E" strokeWidth="1.5" opacity="0.3" />
-              })}
-              <text x="70" y="82" textAnchor="middle" fill="#0C2D4E" fontSize="32" fontWeight="700" fontFamily="DM Sans, sans-serif">10</text>
-              <text x="70" y="100" textAnchor="middle" fill="#718096" fontSize="14" fontFamily="DM Sans, sans-serif">min</text>
-            </svg>
-          </motion.div>
-        </div>
+
+          <h2 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 400, color: 'white', lineHeight: 1.2, margin: 0 }}>
+            Construyan la fraseologia de su area
+          </h2>
+
+          <div style={{ width: '48px', height: '3px', background: '#45C5BE', borderRadius: '2px' }} />
+
+          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0 }}>
+            En equipos, creen frases estandarizadas de <strong style={{ color: 'white' }}>bienvenida, despedida y como contestar el telefono</strong> para su area.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            {['Un representante escanea el QR', 'Escriben sus 3 frases juntos', 'Aparecen en pantalla al enviar'].map((paso, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(69,197,190,0.15)', border: '1.5px solid rgba(69,197,190,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#45C5BE' }}>{i + 1}</span>
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.65)', margin: 0 }}>{paso}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Derecha — QR */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.3 }}
+          style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}
+        >
+          <div style={{ background: 'rgba(255,255,255,0.04)', border: '1.5px solid rgba(69,197,190,0.25)', borderRadius: '20px', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
+            <img src={qr} alt="QR Fraseologia" width={200} height={200} style={{ borderRadius: '8px', display: 'block' }} />
+            <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em', textTransform: 'uppercase', margin: 0, textAlign: 'center' }}>
+              hosperation-presentacion.vercel.app
+            </p>
+          </div>
+        </motion.div>
+
       </div>
     </div>
   )

@@ -50,6 +50,7 @@ import S31 from './slides/S31_PortadaCierre'
 import S32 from './slides/S32_ABCFrases'
 import SToolkit from './slides/S_Toolkit'
 import SFraseologiaContexto from './slides/S_FraseologiaContexto'
+import S10b from './slides/S10b_FraseologiaDisplay'
 import S33 from './slides/S33_Encuesta'
 
 const slides = [
@@ -66,7 +67,7 @@ const slides = [
   // HERRAMIENTAS — El toolkit
   SToolkit, S12, S13, S14, S16, S17, S18, S32,
   // EJERCICIO 2
-  SFraseologiaContexto, S10,
+  SFraseologiaContexto, S10, S10b,
   // FÓRMULA DRPR + EJEMPLOS
   S27, S19, S23, S24, S25,
   // EJERCICIO CIERRE
