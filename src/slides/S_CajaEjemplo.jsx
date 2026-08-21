@@ -6,22 +6,22 @@ const cajas = [
   {
     num: '1', title: 'Lo que observo',
     color: '#0C2D4E', bg: 'rgba(12,45,78,0.12)', border: 'rgba(12,45,78,0.25)',
-    texto: 'El familiar lleva más de 2 horas esperando. Está de pie, con voz elevada y dice que nadie le ha dado información.',
+    texto: 'El paciente llegó sin cita. Exige ser atendido de inmediato con voz elevada y dice que "siempre pasa lo mismo aquí".',
   },
   {
     num: '2', title: 'Lo que entiendo',
     color: '#2BA8A2', bg: 'rgba(43,168,162,0.1)', border: 'rgba(43,168,162,0.3)',
-    texto: 'Su enojo viene del miedo. No sabe qué le pasa a su familiar — eso genera angustia, no mala intención.',
+    texto: 'Probablemente ya tuvo una mala experiencia antes. Su frustración es real, aunque la forma de expresarla no sea la adecuada.',
   },
   {
     num: '3', title: 'Lo que puedo hacer',
     color: '#d97706', bg: 'rgba(217,119,6,0.08)', border: 'rgba(217,119,6,0.25)',
-    texto: 'No tengo toda la información médica, pero puedo confirmar que el equipo está trabajando y buscar una actualización.',
+    texto: 'No puedo saltarme el protocolo de citas, pero sí puedo explicarle cómo agendar y verificar si hay un espacio disponible hoy.',
   },
   {
     num: '4', title: 'Lo que comunico',
     color: '#7c3aed', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.25)',
-    texto: '"Entiendo que la espera es difícil. El equipo está con su familiar. Le consigo información en unos minutos. ¿Le ofrezco un lugar donde esperar?"',
+    texto: '"Entiendo que necesita atención. Hoy no contamos con turno sin cita, pero le ayudo a agendar lo antes posible. ¿Le funciona revisar disponibilidad ahora?"',
   },
 ]
 
@@ -60,7 +60,7 @@ export default function S_CajaEjemplo() {
           <div>
             <div style={{ fontSize: '0.58rem', fontWeight: 800, color: '#45C5BE', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '3px' }}>Situación</div>
             <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.55, margin: 0 }}>
-              Un familiar llega muy alterado porque lleva 2 horas esperando y dice que nadie le ha explicado nada sobre el estado del paciente.
+              Un paciente llega sin cita a urgencias y exige ser atendido de inmediato, diciendo que siempre pasa lo mismo en el hospital.
             </p>
           </div>
         </motion.div>
