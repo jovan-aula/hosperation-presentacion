@@ -26,13 +26,13 @@ export default function S10_ActividadFraseologia() {
           </div>
 
           <h2 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 400, color: 'white', lineHeight: 1.2, margin: 0 }}>
-            Construyan la fraseologia de su area
+            Construyan la fraseología de su área
           </h2>
 
           <div style={{ width: '48px', height: '3px', background: '#45C5BE', borderRadius: '2px' }} />
 
           <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0 }}>
-            En equipos, creen frases estandarizadas de <strong style={{ color: 'white' }}>bienvenida, despedida y como contestar el telefono</strong> para su area.
+            En equipos, creen frases estandarizadas de <strong style={{ color: 'white' }}>bienvenida, despedida y cómo contestar el teléfono</strong> para su área.
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>

@@ -27,13 +27,13 @@ export default function S01g_LluviaQR() {
           </div>
 
           <h2 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 400, color: 'white', lineHeight: 1.15, letterSpacing: '-0.02em', margin: 0 }}>
-            Para ti, comunicacion asertiva es...
+            Para ti, comunicación asertiva es...
           </h2>
 
           <div style={{ width: '48px', height: '3px', background: '#45C5BE', borderRadius: '2px' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {['Escanea el codigo QR con tu celular', 'Escribe tu propia definicion', 'Aparecera en pantalla en tiempo real'].map((paso, i) => (
+            {['Escanea el código QR con tu celular', 'Escribe tu propia definición', 'Aparecerá en pantalla en tiempo real'].map((paso, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(69,197,190,0.15)', border: '1.5px solid rgba(69,197,190,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#45C5BE' }}>{i + 1}</span>

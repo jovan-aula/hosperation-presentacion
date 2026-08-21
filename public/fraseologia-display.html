@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fraseologia en vivo</title>
+  <title>Fraseología en vivo</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -145,7 +145,7 @@
 <body>
 
   <div class="header">
-    <div class="header-title">Fraseologia por equipos</div>
+    <div class="header-title">Fraseología por equipos</div>
     <div class="controls">
       <span class="count" id="count">0 equipos</span>
       <button class="btn-limpiar" onclick="limpiar()">Limpiar</button>
@@ -188,11 +188,22 @@
       if (waiting) waiting.remove();
 
       var grid = document.getElementById("grid");
+      var partes = item.area.split(' — ');
+      var equipoRaw = partes[0] || item.area;
+      var areaNombre = partes[1] || '';
+      var emojiMatch = equipoRaw.match(/^(\S+)\s+(.*)/);
+      var emoji = emojiMatch ? emojiMatch[1] : '🏥';
+      var nombre = emojiMatch ? emojiMatch[2] : equipoRaw;
+
       var card = document.createElement("div");
       card.className = "card";
       card.innerHTML =
         '<div class="card-header">' +
-          '<div class="area-name">' + item.area + '</div>' +
+          '<div style="font-size:2rem;line-height:1;flex-shrink:0">' + emoji + '</div>' +
+          '<div>' +
+            '<div class="area-name">' + nombre + '</div>' +
+            '<div style="font-size:0.65rem;color:#45C5BE;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">' + areaNombre + '</div>' +
+          '</div>' +
         '</div>' +
         '<div class="card-body">' +
           '<div class="frase-row">' +

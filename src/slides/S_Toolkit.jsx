@@ -2,10 +2,10 @@ import { motion } from 'framer-motion'
 
 const herramientas = [
   'Postura y presencia',
-  'Expresion clara',
-  'Empatia y respeto',
-  'Tono y pronunciacion',
-  'Tecnicas asertivas',
+  'Expresión clara',
+  'Empatía y respeto',
+  'Tono y pronunciación',
+  'Técnicas asertivas',
 ]
 
 export default function S_Toolkit() {
@@ -26,15 +26,15 @@ export default function S_Toolkit() {
           initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
           style={{ background: 'rgba(69,197,190,0.12)', border: '1px solid rgba(69,197,190,0.3)', borderRadius: '100px', padding: '0.3rem 1.2rem', fontSize: '0.72rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.12em', textTransform: 'uppercase' }}
         >
-          Ahora si, la practica
+          Ahora sí, la práctica
         </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }}
           style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 400, color: 'white', lineHeight: 1.2, letterSpacing: '-0.02em', margin: 0, textAlign: 'center' }}
         >
-          Ya sabemos el <span style={{ color: '#45C5BE' }}>que</span>.
-          <br />Ahora viene el <span style={{ color: '#a769fa' }}>como</span>.
+          Ya sabemos el <span style={{ color: '#45C5BE' }}>qué</span>.
+          <br />Ahora viene el <span style={{ color: '#a769fa' }}>cómo</span>.
         </motion.h2>
 
         <div style={{ width: '48px', height: '3px', background: '#45C5BE', borderRadius: '2px' }} />
@@ -77,7 +77,7 @@ export default function S_Toolkit() {
           <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0 }}>Tip</span>
           <span style={{ width: '1px', height: '14px', background: 'rgba(69,197,190,0.3)', flexShrink: 0 }} />
           <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.5 }}>
-            Antes de hablar, preguntate: ¿soy honesto y respetuoso al mismo tiempo?
+            Antes de hablar, pregúntate: ¿soy honesto y respetuoso al mismo tiempo?
           </p>
         </motion.div>
 

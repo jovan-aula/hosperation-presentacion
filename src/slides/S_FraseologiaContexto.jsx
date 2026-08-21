@@ -22,10 +22,10 @@ export default function S_FraseologiaContexto() {
 
         <motion.div {...fade(0.1)} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', textAlign: 'center' }}>
           <div style={{ background: 'rgba(69,197,190,0.12)', border: '1px solid rgba(69,197,190,0.3)', borderRadius: '100px', padding: '0.3rem 1.2rem', fontSize: '0.68rem', fontWeight: 700, color: '#2BA8A2', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            Fraseologia estandarizada
+            Fraseología estandarizada
           </div>
           <h2 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontWeight: 400, color: '#0C2D4E', lineHeight: 1.2, margin: 0 }}>
-            ¿Por que los bancos siempre<br />suenan igual?
+            ¿Por qué los bancos siempre<br />suenan igual?
           </h2>
         </motion.div>
 
@@ -53,7 +53,7 @@ export default function S_FraseologiaContexto() {
           {/* Por que funciona */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', justifyContent: 'center' }}>
             <p style={{ fontSize: '0.9rem', color: '#4A5568', lineHeight: 1.75, margin: 0 }}>
-              Cuando una institucion tiene frases estandarizadas, no improvisa — <strong style={{ color: '#0C2D4E' }}>comunica con intencion</strong>.
+              Cuando una institución tiene frases estandarizadas, no improvisa — <strong style={{ color: '#0C2D4E' }}>comunica con intención</strong>.
             </p>
             <p style={{ fontSize: '0.9rem', color: '#4A5568', lineHeight: 1.75, margin: 0 }}>
               El paciente escucha lo mismo sin importar quien lo atiende. Eso genera <strong style={{ color: '#0C2D4E' }}>confianza, profesionalismo y calidez</strong>.
@@ -63,7 +63,7 @@ export default function S_FraseologiaContexto() {
               <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#45C5BE', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0 }}>Tip</span>
               <span style={{ width: '1px', height: '14px', background: 'rgba(69,197,190,0.3)', flexShrink: 0 }} />
               <p style={{ fontSize: '0.8rem', color: '#4A5568', margin: 0, lineHeight: 1.5 }}>
-                No se trata de sonar robotico — se trata de tener un punto de partida asertivo.
+                No se trata de sonar robótico — se trata de tener un punto de partida asertivo.
               </p>
             </div>
           </div>

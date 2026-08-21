@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fraseologia del equipo</title>
+  <title>Fraseología del equipo</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,20 +15,43 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 32px 24px;
+      padding: 32px 20px;
       -webkit-font-smoothing: antialiased;
     }
     .card {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 24px;
-      padding: 36px 28px;
+      padding: 32px 24px;
       width: 100%;
-      max-width: 480px;
+      max-width: 440px;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
+
+    /* Progress */
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #45C5BE;
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .step-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
     .badge {
       background: rgba(69,197,190,0.15);
       border: 1px solid rgba(69,197,190,0.35);
@@ -41,50 +64,95 @@
       text-transform: uppercase;
       width: fit-content;
     }
-    h1 {
+    h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      font-size: clamp(1.4rem, 5vw, 1.7rem);
       color: white;
       line-height: 1.25;
       font-weight: 400;
     }
-    .divider {
-      width: 40px;
-      height: 3px;
-      background: #45C5BE;
-      border-radius: 2px;
+    .hint {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
     }
-    .field {
+    .divider { width: 40px; height: 3px; background: #45C5BE; border-radius: 2px; }
+
+    /* Emoji grid */
+    .emoji-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+    .emoji-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 10px 4px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+      line-height: 1;
+    }
+    .emoji-btn:hover { background: rgba(69,197,190,0.15); border-color: rgba(69,197,190,0.4); }
+    .emoji-btn.selected { background: rgba(69,197,190,0.2); border-color: #45C5BE; transform: scale(1.1); }
+
+    /* Area buttons */
+    .area-grid {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #45C5BE;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .area-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.15s;
     }
+    .area-btn:hover { background: rgba(69,197,190,0.12); border-color: rgba(69,197,190,0.3); color: white; }
+    .area-btn.selected { background: rgba(69,197,190,0.2); border-color: #45C5BE; color: white; font-weight: 600; }
+
     input[type="text"], textarea {
       width: 100%;
       background: rgba(255,255,255,0.07);
       border: 1.5px solid rgba(255,255,255,0.15);
       border-radius: 12px;
-      padding: 13px 16px;
+      padding: 14px 16px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: white;
       outline: none;
       transition: border 0.2s;
-      resize: none;
     }
     input[type="text"]::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
     input[type="text"]:focus, textarea:focus { border-color: #45C5BE; }
-    textarea { min-height: 80px; line-height: 1.6; }
-    button {
-      width: 100%;
-      padding: 15px;
+    textarea { min-height: 110px; line-height: 1.65; resize: none; }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: 10px; }
+    .btn-prev {
+      flex: 1;
+      padding: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-prev:hover { color: white; background: rgba(255,255,255,0.1); }
+    .btn-next {
+      flex: 2;
+      padding: 14px;
       background: #45C5BE;
       color: #0C2D4E;
       border: none;
@@ -94,9 +162,35 @@
       font-weight: 800;
       cursor: pointer;
       transition: opacity 0.2s;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
     }
-    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* Preview */
+    .preview-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .preview-emoji { font-size: 2rem; line-height: 1; }
+    .preview-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: white; font-weight: 400; }
+    .preview-area { font-size: 0.7rem; color: #45C5BE; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+    .preview-row { display: flex; flex-direction: column; gap: 2px; }
+    .preview-label { font-size: 0.58rem; font-weight: 700; color: #45C5BE; letter-spacing: 0.1em; text-transform: uppercase; }
+    .preview-text { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.5; }
+
+    /* Success */
     .success {
       display: none;
       flex-direction: column;
@@ -105,83 +199,263 @@
       text-align: center;
     }
     .check {
-      width: 64px; height: 64px;
+      width: 70px; height: 70px;
       border-radius: 50%;
       background: rgba(69,197,190,0.15);
       border: 2px solid #45C5BE;
       display: flex; align-items: center; justify-content: center;
     }
+    .success-emoji { font-size: 2.5rem; }
     .success h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: white; font-weight: 400; }
     .success p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
   </style>
 </head>
 <body>
 
-  <div class="card" id="formCard">
-    <div class="badge">Actividad en equipos</div>
-    <h1>Fraseologia de su equipo</h1>
-    <div class="divider"></div>
+<div class="card" id="mainCard">
 
-    <div class="field">
-      <label>Area del equipo</label>
-      <input type="text" id="area" placeholder="Ej: Enfermeria, Recepcion, Farmacia..." maxlength="40" autocomplete="off" />
-    </div>
-
-    <div class="field">
-      <label>Frase de bienvenida</label>
-      <textarea id="bienvenida" placeholder="¿Como reciben a un paciente o familiar?" maxlength="200"></textarea>
-    </div>
-
-    <div class="field">
-      <label>Frase de despedida</label>
-      <textarea id="despedida" placeholder="¿Como se despiden al final de la atencion?" maxlength="200"></textarea>
-    </div>
-
-    <div class="field">
-      <label>Como contestan el telefono</label>
-      <textarea id="telefono" placeholder="¿Como responden cuando suena el telefono?" maxlength="200"></textarea>
-    </div>
-
-    <button id="btn" onclick="enviar()">Enviar fraseologia del equipo</button>
+  <!-- Progress -->
+  <div style="display:flex; flex-direction:column; gap:6px;">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16%"></div></div>
+    <div class="step-label" id="stepLabel">Paso 1 de 6</div>
   </div>
 
-  <div class="card success" id="successCard">
-    <div class="check">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45C5BE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"/>
-      </svg>
+  <!-- PASO 1: Nombre del equipo -->
+  <div id="step1">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="badge">Actividad en equipos</div>
+      <h2>¿Cómo se llama su equipo?</h2>
+      <div class="divider"></div>
+      <input type="text" id="nombre" placeholder="Ej: Los Campeones, Equipo A..." maxlength="40" autocomplete="off" />
     </div>
-    <h2>Enviado</h2>
-    <p>La fraseologia de su equipo ya aparece en pantalla.</p>
   </div>
 
-  <script>
-    var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSkf9bUF95VsUK-asDP2z5LhDLlMHGxdMM48ebxxle2IjhZDyiUjY06yXlrOoyc-s/exec";
+  <!-- PASO 2: Emoji -->
+  <div id="step2" style="display:none;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h2>Elijan un emoji que los represente</h2>
+      <div class="divider"></div>
+      <div class="emoji-grid" id="emojiGrid"></div>
+    </div>
+  </div>
 
-    function enviar() {
-      var area = document.getElementById("area").value.trim();
-      var bienvenida = document.getElementById("bienvenida").value.trim();
-      var despedida = document.getElementById("despedida").value.trim();
-      var telefono = document.getElementById("telefono").value.trim();
+  <!-- PASO 3: Área -->
+  <div id="step3" style="display:none;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h2>¿De qué área son?</h2>
+      <div class="divider"></div>
+      <div class="area-grid" id="areaGrid">
+        <button class="area-btn" onclick="selectArea(this)">Enfermería</button>
+        <button class="area-btn" onclick="selectArea(this)">Recepción</button>
+        <button class="area-btn" onclick="selectArea(this)">Farmacia</button>
+        <button class="area-btn" onclick="selectArea(this)">Seguridad</button>
+        <button class="area-btn" onclick="selectArea(this)">Consulta</button>
+        <button class="area-btn" onclick="selectArea(this)">Laboratorio</button>
+        <button class="area-btn" onclick="selectArea(this)">Urgencias</button>
+        <button class="area-btn" onclick="selectArea(this)">Otro</button>
+      </div>
+      <input type="text" id="areaCustom" placeholder="O escribe su área aquí..." maxlength="40" autocomplete="off" style="display:none;" />
+    </div>
+  </div>
 
-      if (!area || !bienvenida || !despedida || !telefono) {
-        alert("Por favor completa todos los campos.");
-        return;
-      }
+  <!-- PASO 4: Bienvenida -->
+  <div id="step4" style="display:none;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h2>Frase de bienvenida</h2>
+      <p class="hint">¿Cómo reciben a un paciente o familiar al llegar a su área?</p>
+      <div class="divider"></div>
+      <textarea id="bienvenida" placeholder="Ej: Buenos días, bienvenido al área de Enfermería. ¿En qué le puedo ayudar?"></textarea>
+    </div>
+  </div>
 
-      var btn = document.getElementById("btn");
-      btn.disabled = true;
-      btn.textContent = "Enviando...";
+  <!-- PASO 5: Despedida -->
+  <div id="step5" style="display:none;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h2>Frase de despedida</h2>
+      <p class="hint">¿Cómo se despiden al terminar la atención?</p>
+      <div class="divider"></div>
+      <textarea id="despedida" placeholder="Ej: Que se mejore pronto. Estamos para servirle cuando lo necesite."></textarea>
+    </div>
+  </div>
 
-      fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify({ tipo: "fraseologia", area: area, bienvenida: bienvenida, despedida: despedida, telefono: telefono })
-      }).catch(function() {}).finally(function() {
-        document.getElementById("formCard").style.display = "none";
-        document.getElementById("successCard").style.display = "flex";
-      });
+  <!-- PASO 6: Teléfono -->
+  <div id="step6" style="display:none;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h2>¿Cómo contestan el teléfono?</h2>
+      <p class="hint">La primera impresión también ocurre por teléfono.</p>
+      <div class="divider"></div>
+      <textarea id="telefono" placeholder="Ej: Área de Enfermería, le atiende María, ¿en qué le puedo servir?"></textarea>
+    </div>
+  </div>
+
+  <!-- PASO 7: Confirmar -->
+  <div id="step7" style="display:none;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h2>Así quedó su fraseología</h2>
+      <p class="hint">Revisen y confirmen antes de enviar.</p>
+      <div class="preview-card" id="previewCard"></div>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="btn-row">
+    <button class="btn-prev" id="btnPrev" onclick="prev()" style="display:none;">Anterior</button>
+    <button class="btn-next" id="btnNext" onclick="next()">Siguiente</button>
+  </div>
+
+</div>
+
+<!-- Success -->
+<div class="card success" id="successCard">
+  <div class="check">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45C5BE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </div>
+  <div class="success-emoji" id="successEmoji"></div>
+  <h2>¡Enviado!</h2>
+  <p>La fraseología de su equipo ya aparece en pantalla.</p>
+</div>
+
+<script>
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSkf9bUF95VsUK-asDP2z5LhDLlMHGxdMM48ebxxle2IjhZDyiUjY06yXlrOoyc-s/exec";
+
+  var emojis = ['🏥','💊','🩺','🩹','💉','🔬','🌡️','🏨','⭐','🌟','✨','💙','💚','🤝','👏','🌿','🦸','💪','🎯','🚀','🔥','🌈','🎉','🏆'];
+  var selectedEmoji = '';
+  var selectedArea = '';
+  var currentStep = 1;
+  var totalSteps = 6;
+
+  // Build emoji grid
+  var grid = document.getElementById('emojiGrid');
+  emojis.forEach(function(e) {
+    var btn = document.createElement('button');
+    btn.className = 'emoji-btn';
+    btn.textContent = e;
+    btn.onclick = function() {
+      document.querySelectorAll('.emoji-btn').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      selectedEmoji = e;
+    };
+    grid.appendChild(btn);
+  });
+
+  function selectArea(btn) {
+    document.querySelectorAll('.area-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    if (btn.textContent === 'Otro') {
+      document.getElementById('areaCustom').style.display = 'block';
+      document.getElementById('areaCustom').focus();
+      selectedArea = '';
+    } else {
+      document.getElementById('areaCustom').style.display = 'none';
+      selectedArea = btn.textContent;
     }
-  </script>
+  }
+
+  document.getElementById('areaCustom').addEventListener('input', function() {
+    selectedArea = this.value.trim();
+  });
+
+  function updateProgress() {
+    var pct = (currentStep / totalSteps) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('stepLabel').textContent = 'Paso ' + currentStep + ' de ' + totalSteps;
+  }
+
+  function showStep(n) {
+    for (var i = 1; i <= 7; i++) {
+      var el = document.getElementById('step' + i);
+      if (el) el.style.display = (i === n) ? 'block' : 'none';
+    }
+    document.getElementById('btnPrev').style.display = n > 1 ? 'block' : 'none';
+
+    if (n === 7) {
+      document.getElementById('btnNext').textContent = 'Enviar fraseología';
+      buildPreview();
+    } else {
+      document.getElementById('btnNext').textContent = 'Siguiente';
+    }
+    updateProgress();
+  }
+
+  function buildPreview() {
+    var nombre = document.getElementById('nombre').value.trim();
+    var area = selectedArea || document.getElementById('areaCustom').value.trim();
+    var preview = document.getElementById('previewCard');
+    preview.innerHTML =
+      '<div class="preview-header">' +
+        '<div class="preview-emoji">' + selectedEmoji + '</div>' +
+        '<div>' +
+          '<div class="preview-name">' + nombre + '</div>' +
+          '<div class="preview-area">' + area + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="preview-row"><div class="preview-label">Bienvenida</div><div class="preview-text">"' + document.getElementById('bienvenida').value.trim() + '"</div></div>' +
+      '<div style="height:1px;background:rgba(255,255,255,0.06)"></div>' +
+      '<div class="preview-row"><div class="preview-label">Despedida</div><div class="preview-text">"' + document.getElementById('despedida').value.trim() + '"</div></div>' +
+      '<div style="height:1px;background:rgba(255,255,255,0.06)"></div>' +
+      '<div class="preview-row"><div class="preview-label">Teléfono</div><div class="preview-text">"' + document.getElementById('telefono').value.trim() + '"</div></div>';
+  }
+
+  function validate() {
+    if (currentStep === 1) return document.getElementById('nombre').value.trim().length > 0;
+    if (currentStep === 2) return selectedEmoji !== '';
+    if (currentStep === 3) return (selectedArea !== '' || document.getElementById('areaCustom').value.trim() !== '');
+    if (currentStep === 4) return document.getElementById('bienvenida').value.trim().length > 0;
+    if (currentStep === 5) return document.getElementById('despedida').value.trim().length > 0;
+    if (currentStep === 6) return document.getElementById('telefono').value.trim().length > 0;
+    return true;
+  }
+
+  function next() {
+    if (currentStep === 7) { enviar(); return; }
+    if (!validate()) { shake(); return; }
+    currentStep++;
+    showStep(currentStep < 7 ? currentStep : 7);
+  }
+
+  function prev() {
+    if (currentStep > 1) { currentStep--; showStep(currentStep); }
+  }
+
+  function shake() {
+    var btn = document.getElementById('btnNext');
+    btn.style.transform = 'translateX(-6px)';
+    setTimeout(function() { btn.style.transform = 'translateX(6px)'; }, 100);
+    setTimeout(function() { btn.style.transform = 'translateX(0)'; }, 200);
+  }
+
+  function enviar() {
+    var nombre = document.getElementById('nombre').value.trim();
+    var area = selectedArea || document.getElementById('areaCustom').value.trim();
+    var btn = document.getElementById('btnNext');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        tipo: 'fraseologia',
+        area: selectedEmoji + ' ' + nombre + ' — ' + area,
+        bienvenida: document.getElementById('bienvenida').value.trim(),
+        despedida: document.getElementById('despedida').value.trim(),
+        telefono: document.getElementById('telefono').value.trim()
+      })
+    }).catch(function() {}).finally(function() {
+      document.getElementById('mainCard').style.display = 'none';
+      document.getElementById('successEmoji').textContent = selectedEmoji;
+      document.getElementById('successCard').style.display = 'flex';
+    });
+  }
+
+  // Enter key advances
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') next();
+  });
+
+  showStep(1);
+</script>
 
 </body>
 </html>
